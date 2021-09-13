@@ -331,7 +331,7 @@ p{
 .home-title{}
 .home-title h1 {
 	font-family: 'Source Code Pro', monospace;
-	color: var(--addColor1);
+	color: #40c3d8;
 	font-weight: 900;
 	text-transform: capitalize;
 	font-size: 6rem;
@@ -340,7 +340,7 @@ p{
 .home-title h3 {
 	font-size: 3rem;
 	font-family: 'Source Code Pro', monospace;
-	color: var(--addColor1);
+	color: tomato;
 	font-weight: 700;
 	word-spacing: -7px;
 }
@@ -375,7 +375,7 @@ p{
 }
 .home-description {
 	padding: 4rem 2rem;
-	border: 1px solid #000;
+	border: 1px solid #00ABE1;
 	border-width: 2px;
 	border-radius: 10px;
 	margin-top: 3rem;
@@ -384,7 +384,7 @@ p{
 .home-description p {
 	font-size: 1.8rem;
 	color: #000;
-	font-weight: 400;
+	font-weight: 500;
 	font-family: Source Code Pro;
 }
 .home-description:last-child p {}
@@ -398,13 +398,12 @@ p{
 .home-cvupload a {
 	position: absolute;
 	bottom: -25px;
-	left: 25%;
+	left: 21%;
 	box-shadow: 2px 2px 2px 2px #00000069;
 	font-size: 2rem;
 	padding: 1rem 4rem;
 	border-radius: 10px;
-	background: rgb(18, 46, 196) linear-gradient(rgb(4, 90, 91) 0%, rgb(7, 40, 31) 100%) repeat scroll 0% 0%;
-
+	background: #c41294 linear-gradient(#14c3e6 0%, rgb(48 224 177) 100%) repeat scroll 0% 0%;
 	text-transform: uppercase;
 	font-weight: 700;
 	transition: .3s;
@@ -934,6 +933,16 @@ svg circle:nth-child(2) {
 .card:nth-child(8) svg circle:nth-child(2) {
 	stroke-dashoffset: 0px;
 	stroke: #0073aa;
+}
+
+.card:nth-child(9) svg circle:nth-child(2) {
+	stroke-dashoffset: 0px;
+	stroke: darkblue;
+}
+
+.card:nth-child(10) svg circle:nth-child(2) {
+	stroke-dashoffset: 0px;
+	stroke: purple;
 }
 
 
