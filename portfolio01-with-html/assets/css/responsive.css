@@ -1,0 +1,201 @@
+@media only screen and (max-width: 1345px) and (min-width: 992px) {
+	.left-menu .logo {
+		padding: 3rem 0rem;
+	}
+	.left-menu .logo {
+		border-bottom: none;
+		background-color: #f8f9fa;
+	}
+
+	.menu-subsection ul li:not(:first-child) a:hover {
+		 
+		background-color: #f8f9fa;
+		 
+	}
+
+	.menu-subsection ul li:not(:first-child):hover {
+		background-color: #f8f9fa;
+	}
+
+	.nav-dots .nav-link.active{
+    	background-color: #f8f9fa;
+    	padding-left: 14px;
+    	font-weight: 500;
+    }
+
+    .al_border{
+    	display: block;
+    }
+ 
+} 
+
+@media only screen and (max-width: 1200px) and (min-width: 992px) {
+	 .project-main-area .project {
+		width: 25rem;
+	 
+	}
+}
+
+
+
+@media only screen and (max-width: 1150px) and (min-width: 992px) {
+.skill-main-area {
+	display: grid;
+	grid-template-columns: 260px 260px 260px;
+}
+
+}
+
+@media all and (min-width: 992px){
+ 
+
+} 
+
+@media all and (max-width: 991px){
+
+.menu-subsection{
+	display: none;
+} 
+
+.responsive-menu{
+	display: block;
+}
+
+.responsive-sidebar {
+	display: block;
+	position: absolute;
+	top: 55px;
+	left: -999px;
+	height: 100%;
+	transition: 0.5s;
+	background: #00000021;
+	width: 100%;
+}
+
+.nav {
+	height: calc(100vh - 0px);
+	box-shadow: 1px 2px 7px #000000b3;
+	z-index: 9999;
+	background: #fff;
+}
+
+.responsive-sidebar.active{
+	left: 0;
+}
+
+
+/*home section*/
+.home-main-area {
+    top: 10%; 
+}
+
+/*about section*/
+.about-section {
+	padding-top: 5rem;
+}
+
+.about-image {
+	width: 50%;
+	height: 100%;
+	z-index: 999;
+	margin: 0 auto;
+}
+
+.about-description {
+	margin-top: 32px;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+	 
+}
+
+/*project section*/
+.project3,.project6{
+	display: none;
+}
+
+/*skill section*/
+.skill-main-area {
+	 
+	grid-template-columns: 320px 320px;
+	 
+}
+
+.card {
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+}
+
+
+@media all and (max-width: 767px){
+
+/*home section*/
+.home-main-area {
+	left: 12%;
+}
+
+/*project section*/
+.project3,.project6{
+	display: block;
+}
+
+/*project section*/
+.project-main-area .project {
+	margin: 0 auto;
+	margin-bottom: 2rem;
+}
+
+/*skill section*/
+.skill-main-area { 
+	grid-template-columns:auto;
+	 
+}
+
+/*social */
+.main_social_link_area {
+	margin: 2rem 0rem;
+}
+
+} 
+
+@media all and (max-width: 575px){
+
+.home-main-area {
+	left: 0%;
+}	
+	
+ .home-cvupload a {
+	left: 20%;
+	padding: .8rem .8rem;
+	font-size: 1.8rem;
+	 
+}
+
+/*about section*/
+.about-title ul li {
+	width: 18rem;
+}
+.about-title h3 {
+	font-size: 2rem;
+	margin-right: 2rem;
+	 
+}
+
+.about-description p {
+	text-align: justify;
+	 
+}
+
+/*experience section*/
+
+.experience-head ul {
+	display: block;
+}
+
+.experience-head ul li a {
+	display: none;
+}
+
+}
