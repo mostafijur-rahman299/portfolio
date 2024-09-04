@@ -19,7 +19,7 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="w-full h-full">
+      {/* <div className="w-full h-full">
         <h3 className="text-xl uppercase text-designColor tracking-wider">
           Quick Link
         </h3>
@@ -55,8 +55,8 @@ const Footer = () => {
             </span>
           </li>
         </ul>
-      </div>
-      <div className="w-full h-full">
+      </div> */}
+      {/* <div className="w-full h-full">
         <h3 className="text-xl uppercase text-designColor tracking-wider">
           RESOURCES
         </h3>
@@ -129,7 +129,7 @@ const Footer = () => {
             </span>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
