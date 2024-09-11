@@ -34,7 +34,6 @@ const LeftBanner = () => {
           I've worked on many different projects, which has helped me learn to adapt quickly and work well with teams. I can handle pressure and tight deadlines – it's all part of the fun! 
         </p>
       </div>
-     {/* Media */}
      <Media />
     </div>
   );

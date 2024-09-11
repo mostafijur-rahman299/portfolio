@@ -12,45 +12,21 @@ const Projects = () => {
       <div className="flex justify-center items-center text-center">
         <Title
           title="VISIT MY PORTFOLIO AND KEEP YOUR FEEDBACK"
-          des="My Projects"
+          des="Projects"
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-14">
         <ProjectsCard
-          title="SOCIAL MEDIA CLONE"
-          des=" Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo quibusdam voluptate sapiente voluptatibus harum quidem!"
+          title="Telemedicine Consultation Platform – Revolutionizing Remote Healthcare"
+          des="I led the development of a telemedicine platform where patients can create consultation requests, and doctors can respond efficiently. Using Django, React, and PostgreSQL, I built a secure, scalable solution that streamlines communication between patients and healthcare providers for seamless remote healthcare."
           src={projectOne}
+          link={"https://9jatelemedicine.com"}
         />
         <ProjectsCard
-          title="E-commerce Website"
-          des=" Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo quibusdam voluptate sapiente voluptatibus harum quidem!"
+          title="Polls and PTC Earning Platform – Empowering Users to Earn and Advertise"
+          des="As a key full-stack developer, I contributed to building a platform where users can participate in polls, PTC, and third-party surveys to earn money. The system, developed with Django, PostgreSQL, VanillaJS, and jQuery, also allows users to create their own ads, offering a versatile earning and advertising solution."
           src={projectTwo}
-        />
-        <ProjectsCard
-          title="Chatting App"
-          des=" Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo quibusdam voluptate sapiente voluptatibus harum quidem!"
-          src={projectThree}
-        />
-        <ProjectsCard
-          title="SOCIAL MEDIA CLONE"
-          des=" Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo quibusdam voluptate sapiente voluptatibus harum quidem!"
-          src={projectThree}
-        />
-        <ProjectsCard
-          title="E-commerce Website"
-          des=" Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo quibusdam voluptate sapiente voluptatibus harum quidem!"
-          src={projectOne}
-        />
-        <ProjectsCard
-          title="Chatting App"
-          des=" Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo quibusdam voluptate sapiente voluptatibus harum quidem!"
-          src={projectTwo}
+          link={"https://crinf.net/"}
         />
       </div>
     </section>
