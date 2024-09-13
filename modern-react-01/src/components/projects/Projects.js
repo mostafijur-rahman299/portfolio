@@ -26,7 +26,13 @@ const Projects = () => {
           title="Polls and PTC Earning Platform – Empowering Users to Earn and Advertise"
           des="As a key full-stack developer, I contributed to building a platform where users can participate in polls, PTC, and third-party surveys to earn money. The system, developed with Django, PostgreSQL, VanillaJS, and jQuery, also allows users to create their own ads, offering a versatile earning and advertising solution."
           src={projectTwo}
-          link={"https://crinf.net/"}
+          link={"https://crinf.net"}
+        />
+        <ProjectsCard
+          title="WhatsApp API Integration & Customer Management System"
+          des="A Django and React-based platform integrating the WhatsApp API, allowing users to manage customer communication, create meta templates, and set reminder messages for better engagement. The system also enables real-time chatting and customer profile creation."
+          src={projectThree}
+          link={"https://whato.vaid.tech"}
         />
       </div>
     </section>
