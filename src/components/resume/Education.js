@@ -17,16 +17,18 @@ const Education = () => {
         </div>
         <div className="mt-6 lgl:mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
           <ResumeCard
-            title="BSC in Computer Science"
-            subTitle="European University Of Bangladesh (2022 - Present)"
+            title="Bachelor of Science in Computer Science"
+            subTitle="European University of Bangladesh"
             result="--"
-            des="The training provided by universities in order to prepare people to work in various sectors of the economy or areas of culture."
+            des="I am currently pursuing a Bachelor of Science in Computer Science at European University of Bangladesh. This program is designed to provide a strong foundation in computer science theory and practical skills, with a focus on advanced technologies. It's preparing me for a cutting-edge career in the rapidly evolving field of technology, exposing me to the latest tools and methodologies used in the industry."
+            programmingCoursework="Data structure & Algorithm, Operating System, Computer Vision, Database Systems, Software Engineering, Compiler Design, Web Development, Object-Oriented Programming, Basic of Artificial Intelligence"
           />
           <ResumeCard
             title="Diploma in Computer Science"
-            subTitle="Thakurgaon Polytechnic Institute (2016 - 2020)"
+            subTitle="Thakurgaon Polytechnic Institute"
             result="3.52/4"
-            des="Higher education is tertiary education leading to award of an academic degree. Higher education, also called post-secondary education."
+            des="I completed my Diploma in Computer Science at Thakurgaon Polytechnic Institute. This program provided me with a solid foundation in computer science and practical skills, preparing me for a career in the field of technology."
+            programmingCoursework="Basic of Computer, Introduction to Programming, Data structure & Algorithm, Networks, Introduction to Database, Software Engineering, Object-Oriented Programming, Programming with Python, Programming with C++"
           />
 
           {/* <ResumeCard

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ResumeCard = ({title,subTitle,result,des,programmingCoursework}) => {
+const ExperienceCard = ({title,subTitle,des}) => {
   return (
     <div className="w-full h-1/3 group flex">
       <div className="w-10 h-[6px] bgOpacity mt-16 relative">
@@ -28,19 +28,9 @@ const ResumeCard = ({title,subTitle,result,des,programmingCoursework}) => {
           {des}
         </p>
 
-        {/* Like what kind of technology i learned in this course */}
-        <div className="flex flex-col md:flex-row gap-4">
-          <div>
-            <h2 className="text-xl font-semibold">Programming Coursework</h2>
-            <p className="text-sm text-gray-400 group-hover:text-white duration-300">
-              {programmingCoursework}
-            </p>
-          </div>
-        </div>
-
       </div>
     </div>
   );
 }
 
-export default ResumeCard
+export default ExperienceCard

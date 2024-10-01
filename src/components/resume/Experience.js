@@ -1,6 +1,6 @@
 import React from "react";
 import {motion} from "framer-motion"
-import ResumeCard from "./ResumeCard";
+import ExperienceCard from "./ExperienceCard";
 
 const Experience = () => {
   return (
@@ -11,20 +11,18 @@ const Experience = () => {
     >
       <div>
         <div className="flex flex-col gap-4">
-          <p className="text-sm text-designColor tracking-[4px]">2010 - 2022</p>
-          <h2 className="text-4xl font-bold">Job Experience</h2>
+          <p className="text-sm text-designColor tracking-[4px]">2020 - Present</p>
+          <h2 className="text-4xl font-bold">Work Experience</h2>
         </div>
         <div className="mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
-          <ResumeCard
-            title="Full-Stack Software Engineer"
-            subTitle="Google Out Tech - (2020 - Present)"
-            result="USA"
+          <ExperienceCard
+            title="VaidTech Services"
+            subTitle="Full Stack Developer"
             des="Led the development of high-quality software applications utilizing microservices architecture. Engaged in the complete software development lifecycle, from design to deployment. Conducted comprehensive code reviews to ensure high code quality, identify weaknesses, and enforce coding standards. Collaborated on designing and optimizing SQL databases to enhance system efficiency and transparency."
           />
-          <ResumeCard
-            title="Web Developer & Trainer"
-            subTitle="Junior Full-Stack Software Developer - Intern - (February, 2020 - March, 2020)"
-            result="MALAYSIA"
+          <ExperienceCard
+            title="Freelancer"
+            subTitle="Web Developer (Remote)"
             des="Successfully met individual development plan milestones for each project. Involved in requirement study, analysis, and design processes. Developed Home service and E-commerce web applications using HTML, CSS, jQuery, Python, and Django."
           />
         </div>
