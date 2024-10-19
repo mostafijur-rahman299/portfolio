@@ -246,11 +246,11 @@ export function Projects() {
               transition={{ duration: 0.3 }}
             >
               <div className="hidden md:flex space-x-6">
-                <NavItem href="#work" isActive={activeSection === 'work'}>Work</NavItem>
-                <NavItem href="#about" isActive={activeSection === 'about'}>About</NavItem>
-                <NavItem href="#play" isActive={activeSection === 'play'}>Play</NavItem>
-                <NavItem href="#notes" isActive={activeSection === 'notes'}>Notes</NavItem>
-                <NavItem href="#contact" isActive={activeSection === 'contact'}>Contact</NavItem>
+                <NavItem href="/projects" isActive={activeSection === 'projects'}>Projects</NavItem>
+                <NavItem href="/about" isActive={activeSection === 'about'}>About</NavItem>
+                <NavItem href="/play" isActive={activeSection === 'play'}>Play</NavItem>
+                <NavItem href="/notes" isActive={activeSection === 'notes'}>Notes</NavItem>
+                <NavItem href="/contact" isActive={activeSection === 'contact'}>Contact</NavItem>
               </div>
               <div className="md:hidden">
                 <Button

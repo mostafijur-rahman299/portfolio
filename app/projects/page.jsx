@@ -1,7 +1,5 @@
 import { Projects } from "@/app/projects/components/Projects"
 
-function Page() {
+export default function Page() {
   return <Projects />
 }
-
-export default Page;
