@@ -1,3 +1,16 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["."], // Use the root directory
+        "extensions": [".js", ".jsx", ".ts", ".tsx"] // Include relevant extensions
+      }
+    }
+  },
+  "plugins": ["import"], // Ensure the import plugin is added
+  "rules": {
+    // Add any additional rules or overrides you need
+  }
 }
+

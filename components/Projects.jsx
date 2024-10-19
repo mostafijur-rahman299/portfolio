@@ -3,17 +3,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion"
 import { ArrowRight, ExternalLink, Github, Linkedin, Twitter, Code, Zap, ChevronDown, Mail, Menu, X, Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { Button } from "@/components/Button"
+import { Badge } from "@/components/Badge"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/Tooltip"
 import Image from "next/image"
 
 const projects = [
@@ -25,6 +17,78 @@ const projects = [
     github: "#",
     color: "from-emerald-400 to-cyan-400",
     skills: ["CSS", "Design", "Creativity"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Neon Nexus",
+    description: "A futuristic web platform for digital art exhibitions.",
+    image: "/placeholder.svg?height=600&width=800",
+    link: "#",
+    github: "#",
+    color: "from-pink-500 to-purple-500",
+    skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
   },
   {
     title: "Neon Nexus",
@@ -90,7 +154,7 @@ const SocialIcon = ({ Icon, href }) => (
   </motion.a>
 )
 
-export function EnhancedPortfolioJsx() {
+export function Projects() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const [selectedTags, setSelectedTags] = useState([])
   const [activeSection, setActiveSection] = useState('notes')

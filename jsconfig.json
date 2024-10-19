@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".", // Sets the base URL to the root directory
+      "paths": {
+        "@/*": ["*"] // Maps `@/*` to the root of the project
+      }
+    },
+    "include": ["**/*"] // Include all files
+}
