@@ -1,7 +1,7 @@
-import { Projects } from "@/app/projects/components/Projects"
+import { HomeComponent } from "@/app/home/index"
 
 function Page() {
-  return <Projects />
+  return <HomeComponent />
 }
 
 export default Page;

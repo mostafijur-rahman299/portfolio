@@ -1,5 +1,7 @@
 import React from "react";
 import "../public/globals.css";
+import { Navbar } from '@/components/Navbar';
+
 
 const geistSans = {
   fontFamily: "Geist Sans",
@@ -24,6 +26,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
       </head>
       <body style={{ ...geistSans, ...geistMono }} className="antialiased">
+        <Navbar />
         {children}
       </body>
     </html>
