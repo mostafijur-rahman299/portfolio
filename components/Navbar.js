@@ -86,6 +86,12 @@ export function Navbar() {
                                 About Me
                             </NavItem>
                             <NavItem
+                                href="/resume"
+                                isActive={activeSection === "resume"}
+                            >
+                                Resume
+                            </NavItem>
+                            <NavItem
                                 href="/contact"
                                 isActive={activeSection === "contact"}
                             >
@@ -123,25 +129,19 @@ export function Navbar() {
                                 href="#work"
                                 isActive={activeSection === "work"}
                             >
-                                Work
+                                Projects
                             </NavItem>
                             <NavItem
                                 href="#about"
                                 isActive={activeSection === "about"}
                             >
-                                About
+                                About Me
                             </NavItem>
                             <NavItem
-                                href="#play"
-                                isActive={activeSection === "play"}
+                                href="/resume"
+                                isActive={activeSection === "resume"}
                             >
-                                Play
-                            </NavItem>
-                            <NavItem
-                                href="#notes"
-                                isActive={activeSection === "notes"}
-                            >
-                                Notes
+                                Resume
                             </NavItem>
                             <NavItem
                                 href="#contact"
