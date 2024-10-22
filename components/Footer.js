@@ -45,9 +45,9 @@ export default function Projects() {
                             transition={{ delay: 1.4, duration: 0.5 }}
                         >
                             Passionate about creating innovative digital
-                            solutions that make a difference in people's lives
-                            and push the boundaries of what's possible in
-                            technology.
+                            solutions that make a difference in people&lsquo;s
+                            lives and push the boundaries of what&lsquo;s
+                            possible in technology.
                         </motion.p>
                         <motion.div
                             className="flex space-x-4"
@@ -125,8 +125,8 @@ export default function Projects() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 2.4, duration: 0.5 }}
                         >
-                            Interested in working together? Let's connect and
-                            create something amazing.
+                            Interested in working together? Let&lsquo;s connect
+                            and create something amazing.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

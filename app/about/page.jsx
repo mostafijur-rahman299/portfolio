@@ -188,17 +188,17 @@ export default function About() {
                                 <div className="space-y-4 text-emerald-600">
                                     <p className="text-lg relative pl-6">
                                         <span className="absolute left-0 top-0 text-2xl text-emerald-500">
-                                            "
+                                            &quot;
                                         </span>
-                                        As a passionate full-stack developer and
-                                        tech innovator, I've always been
+                                        As a passionate full-stack developer
+                                        and tech innovator, I always been
                                         fascinated by the power of technology to
                                         solve real-world problems. My journey in
                                         software development began with a simple
-                                        "Hello, World!" program and has since
-                                        evolved into creating complex, scalable
-                                        applications that make a difference in
-                                        people's lives.
+                                        &quot;Hello, World!&quot; program and
+                                        has since evolved into creating complex,
+                                        scalable applications that make a
+                                        difference in people&lsquo;s lives.
                                     </p>
                                     <p className="text-lg">
                                         I thrive on challenges and continuously
@@ -206,13 +206,14 @@ export default function About() {
                                         and methodologies. My goal is to create
                                         elegant, efficient solutions that not
                                         only meet but exceed expectations.
-                                        Whether it's crafting intuitive user
+                                        Whether it&lsquo;s crafting intuitive user
                                         interfaces or optimizing backend
-                                        systems, I'm committed to delivering
-                                        excellence in every line of code.
+                                        systems, I&lsquo;m committed to
+                                        delivering excellence in every line of
+                                        code.
                                     </p>
                                     <p className="text-lg relative pr-6">
-                                        When I'm not coding, you can find me
+                                        When I&lsquo;m not coding, you can find me
                                         contributing to open-source projects,
                                         mentoring aspiring developers, or
                                         exploring the latest advancements in AI
@@ -220,7 +221,7 @@ export default function About() {
                                         power of community and collaboration to
                                         drive innovation in the tech industry.
                                         <span className="absolute right-0 bottom-0 text-2xl text-emerald-500">
-                                            "
+                                            &quot;
                                         </span>
                                     </p>
                                 </div>
