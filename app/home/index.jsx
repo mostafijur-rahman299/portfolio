@@ -88,7 +88,7 @@ export function HomeComponent() {
             }}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
-              Your Name
+              Mostafijur Rahman
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl text-emerald-700 mb-4 sm:mb-6">
               Full-Stack Developer & Tech Innovator
