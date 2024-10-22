@@ -6,47 +6,43 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./Button";
 import Link from "next/link";
 
-const NavItem = ({ href, children, isActive }) => (
+const NavItem = ({ href, children, isActive, onClick }) => {
+    
+    return (
     <Link
         href={href}
-        className={`text-sm font-medium transition-colors duration-300 ${
+        onClick={onClick}
+        className={`text-sm font-medium transition-colors duration-300 px-2 py-2 rounded-lg border-1 ${
             isActive
-                ? "text-emerald-800 font-bold"
-                : "text-emerald-700 hover:text-emerald-900"
+                ? "text-emerald-800 font-bold bg-emerald-200 border-emerald-600 hover:bg-emerald-300" // Changed background color and border for active item
+                : "text-emerald-700 hover:text-emerald-900 border-transparent hover:border-emerald-800 hover:bg-emerald-200"
         }`}
     >
         {children}
-    </Link>
-);
+    </Link>)
+}
+
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState("notes");
+    const [activeSection, setActiveSection] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
             setIsScrolled(scrollPosition > 50);
-
-            const sections = ["home", "projects", "about", "contact"];
-            const currentSection = sections.find((section) => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    return rect.top <= 100 && rect.bottom >= 100;
-                }
-                return false;
-            });
-            if (currentSection) {
-                setActiveSection(currentSection);
-            }
         };
 
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
+    }, []);
+
+    // Add active section after loading current page
+    useEffect(() => {
+        setActiveSection(window.location.pathname.split("/")[1]);
     }, []);
 
     return (
@@ -70,30 +66,35 @@ export function Navbar() {
                             <NavItem
                                 href="/"
                                 isActive={activeSection === "home"}
+                                onClick={() => setActiveSection("home")}
                             >
                                 Home
                             </NavItem>
                             <NavItem
                                 href="/projects"
                                 isActive={activeSection === "projects"}
+                                onClick={() => setActiveSection("projects")}
                             >
                                 Projects
                             </NavItem>
                             <NavItem
                                 href="/about"
                                 isActive={activeSection === "about"}
+                                onClick={() => setActiveSection("about")}
                             >
                                 About Me
                             </NavItem>
                             <NavItem
                                 href="/resume"
                                 isActive={activeSection === "resume"}
+                                onClick={() => setActiveSection("resume")}
                             >
                                 Resume
                             </NavItem>
                             <NavItem
                                 href="/contact"
                                 isActive={activeSection === "contact"}
+                                onClick={() => setActiveSection("contact")}
                             >
                                 Contact
                             </NavItem>
@@ -126,26 +127,37 @@ export function Navbar() {
                     >
                         <div className="flex flex-col space-y-4">
                             <NavItem
-                                href="#work"
-                                isActive={activeSection === "work"}
+                                href="/"
+                                isActive={activeSection === "home"}
+                                onClick={() => setActiveSection("home")}
+                            >
+                                Home
+                            </NavItem>
+                            <NavItem
+                                href="/projects"
+                                isActive={activeSection === "projects"}
+                                onClick={() => setActiveSection("projects")}
                             >
                                 Projects
                             </NavItem>
                             <NavItem
-                                href="#about"
+                                href="/about"
                                 isActive={activeSection === "about"}
+                                onClick={() => setActiveSection("about")}
                             >
                                 About Me
                             </NavItem>
                             <NavItem
                                 href="/resume"
                                 isActive={activeSection === "resume"}
+                                onClick={() => setActiveSection("resume")}
                             >
                                 Resume
                             </NavItem>
                             <NavItem
-                                href="#contact"
+                                href="/contact"
                                 isActive={activeSection === "contact"}
+                                onClick={() => setActiveSection("contact")}
                             >
                                 Contact
                             </NavItem>

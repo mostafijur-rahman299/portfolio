@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -10,18 +10,10 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/Card";
-import { ScrollArea } from "@/components/ScrollArea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
-import { Button } from "@/components/Button";
-import { Badge } from "@/components/Badge";
 import {
     Code,
     GraduationCap,
-    Briefcase,
-    Camera,
     X,
-    Youtube,
-    Terminal,
     Server,
     Database,
     Globe,
@@ -30,119 +22,67 @@ import {
     GitBranch,
     Layers,
     Paintbrush,
-    Smartphone
+    Smartphone,
+    Briefcase,
 } from "lucide-react";
 import Footer from "@/components/Footer";
+import profilePic from "@/public/assets/images/profile-image.jpeg";
+
 
 export default function About() {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [code, setCode] = useState(`function fibonacci(n) {
-        if (n <= 1) return n;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-      }
-
-      console.log(fibonacci(10));`);
-    const [output, setOutput] = useState("");
-    const [activeSection, setActiveSection] = useState("about");
 
     const skills = {
+        backend: [
+            { name: "Python, Django", icon: Server, level: "Advanced" },
+            { name: "Django Rest Framework", icon: Server, level: "Intermediate" },
+            { name: "PostgreSQL", icon: Database, level: "Intermediate" },
+            { name: "MySQL", icon: Database, level: "Intermediate" },
+            { name: "GraphQL", icon: Globe, level: "Beginner" },
+        ],
         frontend: [
             { name: "React", icon: Code, level: "Advanced" },
             { name: "Next.js", icon: Server, level: "Advanced" },
-            { name: "TypeScript", icon: Code, level: "Intermediate" },
+            { name: "Tailwind CSS", icon: Code, level: "Intermediate" },
             { name: "CSS/SASS", icon: Paintbrush, level: "Advanced" },
-            { name: "Responsive Design", icon: Smartphone, level: "Advanced" },
-        ],
-        backend: [
-            { name: "Node.js", icon: Server, level: "Advanced" },
-            { name: "Express", icon: Server, level: "Intermediate" },
-            { name: "MongoDB", icon: Database, level: "Intermediate" },
-            { name: "SQL", icon: Database, level: "Intermediate" },
-            { name: "GraphQL", icon: Globe, level: "Beginner" },
+            { name: "jQuery", icon: Smartphone, level: "Advanced" },
         ],
         devops: [
             { name: "Docker", icon: Cloud, level: "Intermediate" },
-            { name: "AWS", icon: Cloud, level: "Beginner" },
             { name: "CI/CD", icon: GitBranch, level: "Intermediate" },
             { name: "Kubernetes", icon: Layers, level: "Beginner" },
         ],
         other: [
             { name: "Git", icon: GitBranch, level: "Advanced" },
-            { name: "TDD", icon: Terminal, level: "Intermediate" },
             { name: "Agile", icon: Cpu, level: "Advanced" },
-            { name: "REST APIs", icon: Cloud, level: "Advanced" },
         ],
     };
 
     const education = [
         {
             degree: "Bachelor of Science in Computer Science",
-            school: "Tech University",
-            year: "2015 - 2019",
+            school: "European University Of Bangladesh",
+            year: "2020 - 2024",
             description:
                 "Focused on algorithms, data structures, and software engineering principles.",
         },
         {
-            degree: "Master of Science in Artificial Intelligence",
-            school: "Innovation Institute",
-            year: "2020 - 2022",
+            degree: "Diploma in Computer Science",
+            school: "Thakurgaon Polytechnic Institute",
+            year: "2016 - 2020",
             description:
-                "Specialized in machine learning, neural networks, and AI ethics.",
+                "Specialized in computer hardware and software.",
         },
     ];
 
-    const photos = [
-        "/placeholder.svg?height=800&width=1200&text=Coding+Session",
-        "/placeholder.svg?height=800&width=1200&text=Hackathon+Win",
-        "/placeholder.svg?height=800&width=1200&text=Conference+Talk",
-        "/placeholder.svg?height=800&width=1200&text=Team+Building",
-        "/placeholder.svg?height=800&width=1200&text=Project+Demo",
-        "/placeholder.svg?height=800&width=1200&text=Award+Ceremony",
+    const services = [
+        { name: "Full-Stack Development", icon: Code, description: "I develop full-stack applications using the latest technologies, ensuring seamless integration and functionality across all parts of the stack." },
+        { name: "Frontend Development", icon: Code, description: "I create responsive and dynamic user interfaces with modern JavaScript frameworks and CSS pre-processors." },
+        { name: "API Integration", icon: Globe, description: "I integrate APIs to enhance the functionality of applications, focusing on seamless data exchange and system interoperability." },
+        { name: "DevOps & Deployment", icon: Cloud, description: "I deploy applications using Docker, Kubernetes, and CI/CD pipelines, emphasizing automation, scalability, and maintainability." },
+        { name: "Performance Optimization", icon: Cpu, description: "I optimize applications for performance and scalability, reducing load times and improving user experience." },
+        { name: "Consulting", icon: Briefcase, description: "I provide expert consulting services to help businesses strategize, implement, and manage their technology solutions effectively." },
     ];
-
-    const runCode = () => {
-        try {
-            const func = new Function(code);
-            const consoleLog = console.log;
-            let result = "";
-            console.log = (...args) => {
-                result += args.join(" ") + "\n";
-            };
-            func();
-            console.log = consoleLog;
-            setOutput(result);
-        } catch (error) {
-            setOutput(`Error: ${error.message}`);
-        }
-    };
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = [
-                "about",
-                "skills",
-                "education",
-                "gallery",
-                "youtube",
-                "showcase",
-                "contact",
-            ];
-            const currentSection = sections.find((section) => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    return rect.top <= 100 && rect.bottom >= 100;
-                }
-                return false;
-            });
-            if (currentSection) {
-                setActiveSection(currentSection);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground">
@@ -154,7 +94,7 @@ export default function About() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    About Me
+                    The Person Behind the Code
                 </motion.h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
@@ -165,7 +105,7 @@ export default function About() {
                         transition={{ duration: 0.8 }}
                     >
                         <Image
-                            src="/placeholder.svg?height=600&width=600&text=Your+Photo"
+                            src={profilePic}
                             alt="Your Name"
                             width={600}
                             height={600}
@@ -182,14 +122,12 @@ export default function About() {
                         <div className="bg-white bg-opacity-70 backdrop-blur-lg rounded-lg p-8 shadow-xl relative overflow-hidden border border-emerald-500">
                             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20"></div>
                             <div className="relative z-10">
-                                <h2 className="text-3xl font-semibold mb-6 text-emerald-700 border-b-2 border-emerald-500 pb-2">
+                                {/* <h2 className="text-3xl font-semibold mb-6 text-emerald-700 border-b-2 border-emerald-500 pb-2">
                                     My Story
-                                </h2>
+                                </h2> */}
                                 <div className="space-y-4 text-emerald-600">
                                     <p className="text-lg relative pl-6">
-                                        <span className="absolute left-0 top-0 text-2xl text-emerald-500">
-                                            &quot;
-                                        </span>
+                                    
                                         As a passionate full-stack developer
                                         and tech innovator, I always been
                                         fascinated by the power of technology to
@@ -213,16 +151,18 @@ export default function About() {
                                         code.
                                     </p>
                                     <p className="text-lg relative pr-6">
-                                        When I&lsquo;m not coding, you can find me
-                                        contributing to open-source projects,
-                                        mentoring aspiring developers, or
-                                        exploring the latest advancements in AI
-                                        and machine learning. I believe in the
-                                        power of community and collaboration to
-                                        drive innovation in the tech industry.
-                                        <span className="absolute right-0 bottom-0 text-2xl text-emerald-500">
-                                            &quot;
-                                        </span>
+                                        When I&lsquo;m not coding, you&lsquo;ll
+                                        likely find me traveling to discover new
+                                        cultures, blogging about tech trends, or
+                                        creating engaging content to share my
+                                        passion for development and innovation.
+                                        Whether it&lsquo;s capturing scenic views
+                                        or documenting my tech journey, I love
+                                        blending creativity with technology. I also
+                                        believe deeply in the power of community
+                                        and collaboration to spark new ideas
+                                        and drive progress in the ever-evolving
+                                        world of tech.
                                     </p>
                                 </div>
                             </div>
@@ -238,7 +178,7 @@ export default function About() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <h2 className="text-3xl font-semibold mb-6 text-center text-emerald-700">
-                        My Skills
+                        Skills
                     </h2>
                     <div className="bg-white bg-opacity-70 backdrop-blur-lg rounded-lg p-6 shadow-xl relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-500/20"></div>
@@ -267,20 +207,6 @@ export default function About() {
                                                     <span className="text-emerald-700 font-medium">
                                                         {skill.name}
                                                     </span>
-                                                    <Badge
-                                                        variant={
-                                                            skill.level ===
-                                                            "Advanced"
-                                                                ? "default"
-                                                                : skill.level ===
-                                                                  "Intermediate"
-                                                                ? "secondary"
-                                                                : "outline"
-                                                        }
-                                                        className="ml-2"
-                                                    >
-                                                        {skill.level}
-                                                    </Badge>
                                                 </div>
                                             </motion.div>
                                         ))}
@@ -337,283 +263,47 @@ export default function About() {
                 </motion.div>
 
                 <motion.div
-                    id="youtube"
+                    id="education"
                     className="mb-16"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 1 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
                 >
                     <h2 className="text-3xl font-semibold mb-6 text-center text-emerald-700">
-                        My YouTube Channel
+                        Services I Offer
                     </h2>
-                    <div className="bg-white bg-opacity-70 backdrop-blur-lg rounded-lg p-8 shadow-xl relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
-                        <div className="flex flex-col md:flex-row items-center justify-between">
-                            <div className="mb-4 md:mb-0 md:mr-8">
-                                <h3 className="text-2xl font-semibold mb-2 text-emerald-700">
-                                    Tech Tutorials and Coding Tips
-                                </h3>
-                                <p className="text-emerald-600 mb-4">
-                                    Join me on my coding journey as I share
-                                    insights, tutorials, and tips for aspiring
-                                    developers.
-                                </p>
-                                <a
-                                    href="https://www.youtube.com/your-channel"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-300"
-                                >
-                                    <Youtube className="w-6 h-6 mr-2" />
-                                    <span>Subscribe Now</span>
-                                </a>
-                            </div>
-                            <div className="w-full md:w-1/2 aspect-video rounded-lg overflow-hidden shadow-lg">
-                                <Image
-                                    src="/placeholder.svg?height=720&width=1280&text=YouTube+Channel+Preview"
-                                    alt="YouTube Channel Preview"
-                                    width={1280}
-                                    height={720}
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                <AnimatePresence>
-                    {selectedImage && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center"
-                            onClick={() => setSelectedImage(null)}
-                        >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {services.map((service, index) => (
                             <motion.div
-                                initial={{ scale: 0.8 }}
-                                animate={{ scale: 1 }}
-                                exit={{ scale: 0.8 }}
-                                className="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-lg"
-                                onClick={(e) => e.stopPropagation()}
+                                key={service.name}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: index * 0.2,
+                                }}
                             >
-                                <Image
-                                    src={selectedImage}
-                                    alt="Enlarged gallery image"
-                                    width={1200}
-                                    height={800}
-                                    className="object-contain w-full h-full"
-                                />
-                                <button
-                                    className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2"
-                                    onClick={() => setSelectedImage(null)}
-                                >
-                                    <X className="w-6 h-6" />
-                                </button>
-                            </motion.div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                <motion.div
-                    id="showcase"
-                    className="mb-16"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 1.2 }}
-                >
-                    <h2 className="text-3xl font-semibold mb-6 text-center text-emerald-700">
-                        Tech Showcase
-                    </h2>
-                    <Tabs defaultValue="live-coding" className="w-full">
-                        <TabsList className="w-full mb-8 p-1 bg-white bg-opacity-70 backdrop-blur-lg rounded-full">
-                            <TabsTrigger
-                                value="live-coding"
-                                className="w-1/3 data-[state=active]:bg-emerald-500 data-[state=active]:text-white rounded-full transition-all duration-300"
-                            >
-                                <Code className="w-5 h-5 mr-2" />
-                                Live Coding
-                            </TabsTrigger>
-                            <TabsTrigger
-                                value="project-insights"
-                                className="w-1/3 data-[state=active]:bg-emerald-500 data-[state=active]:text-white rounded-full transition-all duration-300"
-                            >
-                                <Briefcase className="w-5 h-5 mr-2" />
-                                Project Insights
-                            </TabsTrigger>
-                            <TabsTrigger
-                                value="tech-blog"
-                                className="w-1/3 data-[state=active]:bg-emerald-500 data-[state=active]:text-white rounded-full transition-all duration-300"
-                            >
-                                <Camera className="w-5 h-5 mr-2" />
-                                Tech Blog
-                            </TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="live-coding">
-                            <Card className="bg-white bg-opacity-70 backdrop-blur-lg overflow-hidden">
-                                <CardHeader>
-                                    <CardTitle className="text-2xl text-emerald-700">
-                                        Live Coding Demo
-                                    </CardTitle>
-                                    <CardDescription className="text-emerald-600">
-                                        Edit and run the code in real-time
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="mb-4">
-                                        <textarea
-                                            value={code}
-                                            onChange={(e) =>
-                                                setCode(e.target.value)
-                                            }
-                                            className="w-full h-48 p-4 bg-zinc-900 text-zinc-100 font-mono text-sm rounded-lg"
-                                        />
-                                    </div>
-                                    <Button onClick={runCode}>Run Code</Button>
-                                    {output && (
-                                        <div className="mt-4 p-4 bg-zinc-100 rounded-lg">
-                                            <h4 className="text-lg font-semibold mb-2">
-                                                Output:
-                                            </h4>
-                                            <pre className="whitespace-pre-wrap">
-                                                {output}
-                                            </pre>
+                                <Card className="bg-white bg-opacity-70 backdrop-blur-lg overflow-hidden">
+                                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+                                    <CardHeader className="relative">
+                                        <div className="absolute top-5 right-4 w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                                            <service.icon className="w-5 h-5 text-white" />
                                         </div>
-                                    )}
-                                </CardContent>
-                            </Card>
-                        </TabsContent>
-                        <TabsContent value="project-insights">
-                            <Card className="bg-white bg-opacity-70 backdrop-blur-lg overflow-hidden">
-                                <CardHeader>
-                                    <CardTitle className="text-2xl text-emerald-700">
-                                        Project Insights
-                                    </CardTitle>
-                                    <CardDescription className="text-emerald-600">
-                                        Deep dive into my recent projects
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <ScrollArea className="h-[300px] w-full rounded-md border p-4">
-                                        <h3 className="text-lg font-semibold mb-2 text-emerald-700">
-                                            AI-Powered Task Manager
-                                        </h3>
-                                        <p className="mb-4 text-emerald-600">
-                                            Developed a task management
-                                            application that uses natural
-                                            language processing to automatically
-                                            categorize and prioritize tasks.
-                                            Implemented using React, Node.js,
-                                            and TensorFlow.js.
-                                        </p>
-                                        <h3 className="text-lg font-semibold mb-2 text-emerald-700">
-                                            Blockchain-based Voting System
-                                        </h3>
-                                        <p className="mb-4 text-emerald-600">
-                                            Created a secure and transparent
-                                            voting system using Ethereum smart
-                                            contracts. The frontend was built
-                                            with Next.js and ethers.js for
-                                            blockchain interaction.
-                                        </p>
-                                        <h3 className="text-lg font-semibold mb-2 text-emerald-700">
-                                            Real-time Collaborative IDE
-                                        </h3>
+                                        <CardTitle className="text-2xl text-emerald-700">
+                                            {service.name}
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
                                         <p className="text-emerald-600">
-                                            Engineered a web-based IDE that
-                                            allows multiple developers to code
-                                            together in real-time. Utilized
-                                            WebSockets for live updates and
-                                            Docker for isolated code execution
-                                            environments.
+                                            {service.description}
                                         </p>
-                                    </ScrollArea>
-                                </CardContent>
-                            </Card>
-                        </TabsContent>
-                        <TabsContent value="tech-blog">
-                            <Card className="bg-white bg-opacity-70 backdrop-blur-lg overflow-hidden">
-                                <CardHeader>
-                                    <CardTitle className="text-2xl text-emerald-700">
-                                        Tech Blog
-                                    </CardTitle>
-                                    <CardDescription className="text-emerald-600">
-                                        My latest thoughts on technology trends
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <ScrollArea className="h-[300px] w-full rounded-md border p-4">
-                                        <h3 className="text-lg font-semibold mb-2 text-emerald-700">
-                                            The Future of Web Development with
-                                            AI
-                                        </h3>
-                                        <p className="mb-4 text-emerald-600">
-                                            Exploring how artificial
-                                            intelligence is reshaping the
-                                            landscape of web development, from
-                                            code generation to automated
-                                            testing.
-                                        </p>
-                                        <h3 className="text-lg font-semibold mb-2 text-emerald-700">
-                                            Mastering Microservices Architecture
-                                        </h3>
-                                        <p className="mb-4 text-emerald-600">
-                                            A deep dive into the principles of
-                                            microservices and how they can be
-                                            effectively implemented in
-                                            large-scale applications.
-                                        </p>
-                                        <h3 className="text-lg font-semibold mb-2 text-emerald-700">
-                                            The Rise of Edge Computing in Web
-                                            Applications
-                                        </h3>
-                                        <p className="text-emerald-600">
-                                            Discussing the benefits and
-                                            challenges of edge computing and its
-                                            impact on web application
-                                            performance and user experience.
-                                        </p>
-                                    </ScrollArea>
-                                </CardContent>
-                            </Card>
-                        </TabsContent>
-                    </Tabs>
-                </motion.div>
-
-                <motion.div
-                    id="gallery"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                >
-                    <h2 className="text-3xl font-semibold mb-6 text-center text-emerald-700">
-                        Photo Gallery
-                    </h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {photos.map((photo, index) => (
-                            <motion.div
-                                key={index}
-                                className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => setSelectedImage(photo)}
-                            >
-                                <Image
-                                    src={photo}
-                                    alt={`Gallery Image ${index + 1}`}
-                                    width={400}
-                                    height={300}
-                                    className="object-cover  w-full h-full"
-                                />
-                                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                                    <span className="text-white text-lg font-semibold">
-                                        View
-                                    </span>
-                                </div>
+                                    </CardContent>
+                                </Card>
                             </motion.div>
                         ))}
                     </div>
                 </motion.div>
+
             </div>
             <Footer />
         </div>

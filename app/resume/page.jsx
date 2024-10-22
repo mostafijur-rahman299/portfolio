@@ -7,6 +7,7 @@ import { Button } from "@/components/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/Card";
 
 export default function Page() {
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 py-32 sm:px-6 lg:px-8">
             <motion.div
@@ -20,7 +21,7 @@ export default function Page() {
                     variant="secondary"
                     className="bg-white text-emerald-600 hover:bg-emerald-100 mb-4"
                 >
-                    <a href="/mostafijur-rahman-resume.pdf" download>
+                    <a href="/assets/download/mostafijur-resume.pdf" download>
                         <Download className="mr-2 h-4 w-4" /> Download Resume
                     </a>
                 </Button>

@@ -14,36 +14,13 @@ import {
 import { Button } from "@/components/Button";
 import Image from "next/image";
 import Link from "next/link";
+import { MotionPath } from "@/components/MotionPath";
+import profilePic from "@/public/assets/images/profile-image.jpeg";
 
 export function HomeComponent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground overflow-hidden flex items-center justify-center">
-      <div className="absolute inset-0 overflow-hidden">
-        <svg
-          className="absolute w-full h-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <motion.path
-            d="M0,0 C20,20 50,20 100,0 L100,100 L0,100 Z"
-            fill="rgba(16, 185, 129, 0.1)"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-          />
-          <motion.path
-            d="M0,100 C30,80 70,80 100,100 L100,0 L0,0 Z"
-            fill="rgba(16, 185, 129, 0.05)"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              duration: 2,
-              ease: "easeInOut",
-              delay: 0.5,
-            }}
-          />
-        </svg>
-      </div>
+      <MotionPath />
 
       <main className="relative z-10 container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 max-w-6xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
@@ -55,8 +32,8 @@ export function HomeComponent() {
           >
             <div className="relative inline-block mx-auto md:mx-0">
               <Image
-                src="/placeholder.svg?height=500&width=500&text=Your+Photo"
-                alt="Your Name"
+                src={profilePic}
+                alt="Mostafij"
                 width={500}
                 height={500}
                 className="rounded-full border-8 border-emerald-500 shadow-2xl w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96"
@@ -87,20 +64,23 @@ export function HomeComponent() {
               delay: 0.2,
             }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
-              Mostafijur Rahman
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
+                Mostafijur Rahman
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl text-emerald-700 mb-4 sm:mb-6">
               Full-Stack Developer & Tech Innovator
             </p>
             <p className="text-base sm:text-lg md:text-xl text-emerald-600 mb-6 sm:mb-8">
-              Crafting cutting-edge digital experiences and pushing the boundaries of technology. Passionate about creating innovative solutions that make a difference.
+              Transforming ideas into impactful digital solutions. With a passion
+              for technology and innovation, I specialize in building robust,
+              user-centered applications that solve real-world problems. Let&lsquo;s
+              push the boundaries of what&lsquo;s possible together.
             </p>
             <div className="flex justify-center md:justify-start space-x-4 sm:space-x-6 mb-6 sm:mb-8">
-              <SocialIcon Icon={Github} href="#" />
-              <SocialIcon Icon={Linkedin} href="#" />
-              <SocialIcon Icon={Twitter} href="#" />
-              <SocialIcon Icon={Mail} href="#" />
+              <SocialIcon Icon={Github} href="https://github.com/mostafijur-rahman299" />
+              <SocialIcon Icon={Linkedin} href="https://www.linkedin.com/in/hello-mostafij" />
+              <SocialIcon Icon={Twitter} href="https://x.com/mostafijur_" />
+              <SocialIcon Icon={Mail} href="mailto:secret.mostafij@gmail.com" />
             </div>
             <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
               <Button size="lg" asChild className="w-full sm:w-auto">
@@ -120,14 +100,14 @@ export function HomeComponent() {
         </div>
       </main>
 
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
         <ChevronDown className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-700 animate-bounce" />
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }
