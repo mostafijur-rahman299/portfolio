@@ -92,12 +92,20 @@ export function Navbar() {
                                 Resume
                             </NavItem>
                             <NavItem
+                                href="/blogs"
+                                isActive={activeSection === "blogs"}
+                                onClick={() => setActiveSection("blogs")}
+                            >
+                                Blogs
+                            </NavItem>
+                            <NavItem
                                 href="/contact"
                                 isActive={activeSection === "contact"}
                                 onClick={() => setActiveSection("contact")}
                             >
                                 Contact
                             </NavItem>
+                            
                         </div>
                         <div className="md:hidden">
                             <Button
@@ -153,6 +161,13 @@ export function Navbar() {
                                 onClick={() => setActiveSection("resume")}
                             >
                                 Resume
+                            </NavItem>
+                            <NavItem
+                                href="/blogs"
+                                isActive={activeSection === "blogs"}
+                                onClick={() => setActiveSection("blogs")}
+                            >
+                                Blogs
                             </NavItem>
                             <NavItem
                                 href="/contact"
