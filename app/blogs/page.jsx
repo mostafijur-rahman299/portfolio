@@ -59,7 +59,6 @@ export default function BlogShowcase() {
     const [filteredPosts, setFilteredPosts] = useState(blogPosts);
 
     const filterPosts = (selectedSource) => {
-        console.log(selectedSource);
         if (selectedSource === "All") {
             setFilteredPosts(blogPosts);
         } else {

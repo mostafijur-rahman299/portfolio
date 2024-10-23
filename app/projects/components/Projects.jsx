@@ -11,12 +11,7 @@ import {
     ExternalLink,
     Github,
     Zap,
-    ChevronDown,
-    Mail,
-    Menu,
-    X,
-    Moon,
-    Sun,
+    ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
@@ -29,50 +24,67 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Telemedicine from "@/public/assets/images/projects/telemedicine/banner.webp";
+import Crinf from "@/public/assets/images/projects/crinf/banner.webp";
+import WhatsappIntegration from "@/public/assets/images/projects/whatsapp-integration/banner.webp";
+import PropertyManagement from "@/public/assets/images/projects/property-management/banner.jpeg";
+import ResumeChecker from "@/public/assets/images/projects/resume-checker/banner.jpeg";
 
-const projects = [
+const allProjects = [
     {
-        title: "CSS for the shell of it",
-        description: "Not all work needs to lead somewhere.",
-        image: "/placeholder.svg?height=100&width=100",
-        link: "#",
+        id: 1,
+        title: "Telemedicine Consultation System",
+        description: "A platform where patients can consult with doctors using AI-driven medical suggestions.",
+        image: Telemedicine,
+        demo_link: "#",
         github: "#",
-        color: "from-emerald-400 to-cyan-400",
-        skills: ["CSS", "Design", "Creativity"],
+        color: "from-blue-400 to-indigo-400",
+        skills: ["Django", "React", "PostgreSQL", "OpenAI API"],
     },
     {
-        title: "Neon Nexus",
-        description: "A futuristic web platform for digital art exhibitions.",
-        image: "/placeholder.svg?height=600&width=800",
-        link: "#",
+        id: 2,
+        title: "Poll & PTC Earn Platform",
+        description: "A platform where users can earn by participating in polls, PTC, and surveys.",
+        image: Crinf,
+        demo_link: "#",
         github: "#",
-        color: "from-pink-500 to-purple-500",
-        skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+        color: "from-yellow-400 to-orange-400",
+        skills: ["Django", "PostgreSQL", "VanillaJS", "jQuery"],
     },
     {
-        title: "Neon Nexus",
-        description: "A futuristic web platform for digital art exhibitions.",
-        image: "/placeholder.svg?height=600&width=800",
-        link: "#",
+        id: 3,
+        title: "WhatsApp API Integration & Customer Management",
+        description: "A system that integrates WhatsApp API for customer communication and management.",
+        image: WhatsappIntegration,
+        demo_link: "#",
         github: "#",
-        color: "from-pink-500 to-purple-500",
-        skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+        color: "from-green-500 to-teal-500",
+        skills: ["Django", "React", "WhatsApp API", "Customer Management"],
     },
     {
-        title: "Neon Nexus",
-        description: "A futuristic web platform for digital art exhibitions.",
-        image: "/placeholder.svg?height=600&width=800",
-        link: "#",
+        id: 4,
+        title: "Property Management System",
+        description: "A platform for property owners and managers to oversee real estate listings, manage tenants, and track rent payments.",
+        image: PropertyManagement,
+        demo_link: "#",
         github: "#",
-        color: "from-pink-500 to-purple-500",
-        skills: ["React", "Three.js", "WebGL", "Node.js", "MongoDB"],
+        color: "from-purple-500 to-blue-400",
+        skills: ["Django", "React", "PostgreSQL", "Stripe API"],
     },
-    // ... (include the rest of the projects)
+    {
+        id: 5,
+        title: "AI Resume Checker",
+        description: "An AI-powered tool that reviews and analyzes resumes, providing insights and suggestions to improve content and structure.",
+        image: ResumeChecker,
+        demo_link: "#",
+        github: "#",
+        color: "from-red-400 to-pink-500",
+        skills: ["Python", "OpenAI API", "Natural Language Processing", "Django"],
+    }
 ];
 
-const allTags = Array.from(
-    new Set(projects.flatMap((project) => project.skills))
-);
+
+const allTags = ["All", "Django", "React", "PostgreSQL", "OpenAI API", "WhatsApp API", "Customer Management", "Stripe API", "Python", "Natural Language Processing"];
 
 const SkillBadge = ({ skill, onClick, isActive }) => (
     <TooltipProvider>
@@ -104,7 +116,8 @@ const SkillBadge = ({ skill, onClick, isActive }) => (
 
 export function Projects() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [selectedTags, setSelectedTags] = useState([]);
+    const [selectedTags, setSelectedTags] = useState(["All"]);
+    const [filteredProjects, setFilteredProjects] = useState(allProjects);
 
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, amount: 0.2 });
@@ -126,30 +139,28 @@ export function Projects() {
         },
     };
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-            },
-        },
-    };
-
-    const filteredProjects =
-        selectedTags.length > 0
-            ? projects.filter((project) =>
-                  selectedTags.every((tag) => project.skills.includes(tag))
-              )
-            : projects;
-
+    // Toggle tag
     const toggleTag = (tag) => {
-        setSelectedTags((prev) =>
-            prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-        );
+        if(tag === "All") {
+            setSelectedTags(["All"]);
+        } else {
+            const newTags = selectedTags.includes(tag) ? selectedTags.filter(t => t !== tag) : [...selectedTags.filter(t => t !== "All"), tag];
+            setSelectedTags(newTags);
+        }
     };
+
+    // Filter projects when selected tags change
+    useEffect(() => {
+        if (selectedTags.includes("All")) {
+            setFilteredProjects(allProjects); 
+        } else {
+            setFilteredProjects(
+                allProjects.filter((project) =>
+                    selectedTags.every((tag) => project.skills.includes(tag))
+                )
+            );
+        }
+    }, [selectedTags]);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground overflow-hidden transition-all duration-500">
@@ -171,7 +182,7 @@ export function Projects() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5 }}
                         >
-                            Projects.
+                            Latest Works & Innovations.
                         </motion.h1>
                         <motion.p
                             className="text-xl text-emerald-700 mb-8"
@@ -179,10 +190,9 @@ export function Projects() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.5 }}
                         >
-                            Some thoughts, reflections, & notes on design and
-                            development,
-                            <br className="hidden md:inline" />
-                            along with some latest work in progress.
+                            A deep dive into design strategies, development insights,
+                                <br className="hidden md:inline" />
+                            and some of the most recent projects I&apos;m working on.
                         </motion.p>
                     </motion.div>
 
@@ -208,11 +218,11 @@ export function Projects() {
                         initial="hidden"
                         animate={controls}
                     >
+                        
                         {filteredProjects.map((project, index) => (
                             <motion.div
-                                key={index}
+                                key={project.id}
                                 className="relative group"
-                                variants={itemVariants}
                                 onHoverStart={() => setHoveredIndex(index)}
                                 onHoverEnd={() => setHoveredIndex(null)}
                             >
@@ -236,12 +246,9 @@ export function Projects() {
                                     />
                                     <motion.div
                                         className="absolute inset-0 flex flex-col justify-end p-6"
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileHover={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.3 }}
                                     >
                                         <h2 className="text-2xl font-bold mb-2 text-white">
-                                            {project.title}
+                                            <Link href={`/projects/${project.title}`}>{project.title}</Link>
                                         </h2>
                                         <p className="text-sm mb-4 text-white">
                                             {project.description}
@@ -259,7 +266,7 @@ export function Projects() {
                                                 )
                                             )}
                                         </div>
-                                        <div className="flex space-x-4">
+                                        {/* <div className="flex space-x-4">
                                             <Button
                                                 variant="secondary"
                                                 size="sm"
@@ -267,7 +274,8 @@ export function Projects() {
                                                 asChild
                                             >
                                                 <Link href="/projects/new-project">
-                                                    View Project
+                                                    Learn More
+                                                    <ArrowRight className="ml-2 h-4 w-4" />
                                                 </Link>
                                             </Button>
                                             <Button
@@ -292,7 +300,7 @@ export function Projects() {
                                                     <ExternalLink className="ml-2 h-4 w-4" />
                                                 </a>
                                             </Button>
-                                        </div>
+                                        </div> */}
                                     </motion.div>
                                 </motion.div>
                                 <AnimatePresence>
