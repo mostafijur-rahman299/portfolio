@@ -31,13 +31,19 @@ export function HomeComponent() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="relative inline-block mx-auto md:mx-0">
-              <Image
-                src={profilePic}
-                alt="Mostafij"
-                width={500}
-                height={500}
-                className="rounded-full border-8 border-emerald-500 shadow-2xl w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96"
-              />
+              <div className="relative">
+                <div className="w-96 h-96 rounded-full overflow-hidden border-12 border-double border-white shadow-2xl transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-[20deg]">
+                  <Image
+                    src={profilePic}
+                    alt="Mostafij"
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-opacity duration-700 ease-in-out group-hover:opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-300 via-emerald-400 to-teal-500 mix-blend-multiply opacity-95"></div>
+                  <div className="absolute inset-0 border-8 border-dotted border-white/90 transform rotate-12"></div>
+                </div>
+              </div>
               <motion.div
                 className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white rounded-full p-3 sm:p-4 shadow-lg"
                 initial={{ scale: 0, rotate: -180 }}

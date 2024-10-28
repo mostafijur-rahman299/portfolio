@@ -6,6 +6,16 @@ import PropertyManagement from "@/public/assets/images/projects/property-managem
 import ResumeChecker from "@/public/assets/images/projects/resume-checker/banner.jpeg";
 
 export const allProjects = [
+    {
+        id: 3,
+        title: "WhatsApp API Integration & Customer Management",
+        description: "A system that integrates WhatsApp API for customer communication and management.",
+        image: WhatsappIntegration,
+        demo_link: "https://app.whatsupseller.com/",
+        github: "#",
+        color: "from-green-500 to-teal-500",
+        skills: ["Django", "React", "WhatsApp API", "Customer Management"],
+    },
   {
       id: 1,
       title: "Telemedicine Consultation System",
@@ -25,16 +35,6 @@ export const allProjects = [
       github: "#",
       color: "from-yellow-400 to-orange-400",
       skills: ["Django", "PostgreSQL", "VanillaJS", "jQuery"],
-  },
-  {
-      id: 3,
-      title: "WhatsApp API Integration & Customer Management",
-      description: "A system that integrates WhatsApp API for customer communication and management.",
-      image: WhatsappIntegration,
-      demo_link: "#",
-      github: "#",
-      color: "from-green-500 to-teal-500",
-      skills: ["Django", "React", "WhatsApp API", "Customer Management"],
   },
   {
       id: 4,

@@ -89,12 +89,12 @@ export default function ProjectDetails({ projectData }) {
                 <div className="flex items-center">
                   <Calendar className="mr-2 h-5 w-5" />
                   <span>
-                    {new Date(projectData.startDate).toLocaleDateString()} - {new Date(projectData.endDate).toLocaleDateString()}
+                    {projectData.startDate} - {projectData.endDate}
                   </span>
                 </div>
                 <div className="flex items-center">
                   <Users className="mr-2 h-5 w-5" />
-                  <span>{projectData.teamMembers.length} Team Members</span>
+                  <span>{projectData.teamSize} Team Members</span>
                 </div>
                 <div className="flex items-center">
                   <Code className="mr-2 h-5 w-5" />
@@ -120,11 +120,17 @@ export default function ProjectDetails({ projectData }) {
                   View Project <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="outline" asChild>
-                <a href={projectData.github} target="_blank" rel="noopener noreferrer">
-                  GitHub <Github className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              {projectData.github ? (
+                <Button variant="outline" asChild>
+                  <a href={projectData.github} target="_blank" rel="noopener noreferrer">
+                    GitHub <Github className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              ): (
+                <p className="text-sm text-gray-500">
+                  This project is not open source. I&apos;m not allowed to share the code.
+                </p>
+              )}
             </div>
           </motion.div>
         </div>
@@ -140,23 +146,13 @@ export default function ProjectDetails({ projectData }) {
         </motion.div>
 
         <motion.div
+          className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <h2 className="text-3xl font-semibold mb-6">Team Members</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projectData.teamMembers.map((member, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-md">
-                <Avatar className="w-16 h-16 mb-4">
-                  <AvatarImage src={member.avatar} alt={member.name} />
-                  <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                </Avatar>
-                <h3 className="text-lg font-semibold">{member.name}</h3>
-                <p className="text-emerald-600">{member.role}</p>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-3xl font-semibold mb-4">My Role</h2>
+          <p className="text-lg leading-relaxed">{projectData.myRole}</p>
         </motion.div>
       </div>
     </div>
