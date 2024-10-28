@@ -7,12 +7,13 @@ import { Button } from "./Button";
 import Link from "next/link";
 
 const NavItem = ({ href, children, isActive, onClick }) => {
-    
     return (
     <Link
         href={href}
-        onClick={onClick}
-        className={`text-sm font-medium transition-colors duration-300 px-2 py-2 rounded-lg border-1 ${
+        onClick={(e) => {
+            onClick(e);
+        }}
+        className={`text-sm font-medium transition-colors duration-300 px-3 py-3 rounded-md ${
             isActive
                 ? "text-emerald-800 font-bold bg-emerald-200 border-emerald-600 hover:bg-emerald-300" // Changed background color and border for active item
                 : "text-emerald-700 hover:text-emerald-900 border-transparent hover:border-emerald-800 hover:bg-emerald-200"
@@ -21,7 +22,6 @@ const NavItem = ({ href, children, isActive, onClick }) => {
         {children}
     </Link>)
 }
-
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -40,10 +40,14 @@ export function Navbar() {
         };
     }, []);
 
-    // Add active section after loading current page
     useEffect(() => {
         setActiveSection(window.location.pathname.split("/")[1]);
     }, []);
+
+    const handleNavItemClick = (section) => {
+        setActiveSection(section);
+        setIsMenuOpen(false); // Close the menu when an item is clicked
+    };
 
     return (
         <motion.header
@@ -66,46 +70,45 @@ export function Navbar() {
                             <NavItem
                                 href="/"
                                 isActive={activeSection === "home"}
-                                onClick={() => setActiveSection("home")}
+                                onClick={() => handleNavItemClick("home")}
                             >
                                 Home
                             </NavItem>
                             <NavItem
                                 href="/projects"
                                 isActive={activeSection === "projects"}
-                                onClick={() => setActiveSection("projects")}
+                                onClick={() => handleNavItemClick("projects")}
                             >
                                 Projects
                             </NavItem>
                             <NavItem
                                 href="/about"
                                 isActive={activeSection === "about"}
-                                onClick={() => setActiveSection("about")}
+                                onClick={() => handleNavItemClick("about")}
                             >
                                 About Me
                             </NavItem>
                             <NavItem
                                 href="/resume"
                                 isActive={activeSection === "resume"}
-                                onClick={() => setActiveSection("resume")}
+                                onClick={() => handleNavItemClick("resume")}
                             >
                                 Resume
                             </NavItem>
                             <NavItem
                                 href="/blogs"
                                 isActive={activeSection === "blogs"}
-                                onClick={() => setActiveSection("blogs")}
+                                onClick={() => handleNavItemClick("blogs")}
                             >
                                 Blogs
                             </NavItem>
                             <NavItem
                                 href="/contact"
                                 isActive={activeSection === "contact"}
-                                onClick={() => setActiveSection("contact")}
+                                onClick={() => handleNavItemClick("contact")}
                             >
                                 Contact
                             </NavItem>
-                            
                         </div>
                         <div className="md:hidden">
                             <Button
@@ -117,7 +120,7 @@ export function Navbar() {
                                 {isMenuOpen ? (
                                     <X className="h-6 w-6" />
                                 ) : (
-                                    <Menu className="h-6 w-6" />
+                                    <Menu className="h-6 w-6" color="grey"/>
                                 )}
                             </Button>
                         </div>
@@ -131,48 +134,48 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden bg-white/80 backdrop-blur-md p-4"
+                        className="md:hidden bg-white/90 backdrop-blur-lg p-5 rounded-lg shadow-lg"
                     >
-                        <div className="flex flex-col space-y-4">
+                        <div className="flex flex-col space-y-5">
                             <NavItem
                                 href="/"
                                 isActive={activeSection === "home"}
-                                onClick={() => setActiveSection("home")}
+                                onClick={() => handleNavItemClick("home")}
                             >
                                 Home
                             </NavItem>
                             <NavItem
                                 href="/projects"
                                 isActive={activeSection === "projects"}
-                                onClick={() => setActiveSection("projects")}
+                                onClick={() => handleNavItemClick("projects")}
                             >
                                 Projects
                             </NavItem>
                             <NavItem
                                 href="/about"
                                 isActive={activeSection === "about"}
-                                onClick={() => setActiveSection("about")}
+                                onClick={() => handleNavItemClick("about")}
                             >
                                 About Me
                             </NavItem>
                             <NavItem
                                 href="/resume"
                                 isActive={activeSection === "resume"}
-                                onClick={() => setActiveSection("resume")}
+                                onClick={() => handleNavItemClick("resume")}
                             >
                                 Resume
                             </NavItem>
                             <NavItem
                                 href="/blogs"
                                 isActive={activeSection === "blogs"}
-                                onClick={() => setActiveSection("blogs")}
+                                onClick={() => handleNavItemClick("blogs")}
                             >
                                 Blogs
                             </NavItem>
                             <NavItem
                                 href="/contact"
                                 isActive={activeSection === "contact"}
-                                onClick={() => setActiveSection("contact")}
+                                onClick={() => handleNavItemClick("contact")}
                             >
                                 Contact
                             </NavItem>
