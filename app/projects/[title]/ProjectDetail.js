@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Calendar, Users, Code } from 'lucide-react'
 import { Button } from '@/components/Button'
 import { Badge } from '@/components/Badge'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/Avatar'
 
 
 export default function ProjectDetails({ projectData }) {

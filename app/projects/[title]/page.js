@@ -53,8 +53,8 @@ const projectData = [
   {
     id: 3,
     title: "Poll & PTC Earn Platform",
-    description: "A platform where users can earn by participating in polls, PTC, and surveys.",
-    longDescription: "The Poll & PTC Earn Platform is an engaging online system designed to provide users with opportunities to earn rewards by participating in various activities, including polls, pay-to-click (PTC) ads, and surveys. This user-friendly platform allows participants to share their opinions through interactive polls, providing valuable insights to businesses while earning rewards for their contributions.In addition to polls, users can earn by clicking on advertisements, which generates revenue for both the platform and the participants. The survey feature allows users to complete targeted surveys, sharing their perspectives on products and services in exchange for monetary rewards or points that can be redeemed for cash or prizes.Built with a robust backend to ensure secure transactions and a seamless user experience, the Poll & PTC Earn Platform encourages user engagement and provides a steady stream of earning opportunities. By connecting businesses with consumers, the platform creates a mutually beneficial ecosystem that values user input and rewards participation, making it an attractive choice for individuals looking to monetize their time and opinions.",
+    description: "A platform for property owners and managers to oversee real estate listings, manage tenants, and track rent payments.",
+    longDescription: "The Property Management System is a web-based platform designed for property owners, managers, and real estate agents to efficiently oversee properties, manage tenant relations, and track rent payments. It simplifies day-to-day tasks, centralizes data, and ensures effective property management through automated workflows and detailed record-keeping. This system is built to reduce manual effort, minimize human error, and provide an organized, user-friendly interface for all stakeholders.",
     myRole: "As a full-stack developer for the Poll & PTC Earn Platform, I played a pivotal role in designing and implementing the system that allows users to earn rewards by participating in polls, PTC ads, and surveys. I developed the backend using Django, ensuring secure user registrations, transactions, and data management.On the frontend, I utilized React to create an engaging and intuitive user interface that encourages participation and makes navigation seamless. I implemented features that allow users to easily share their opinions through polls, click on advertisements for earnings, and complete surveys for additional rewards.I also integrated payment gateways to facilitate secure transactions and ensure users receive their earnings promptly. By focusing on user experience and robust functionality, I aimed to create a platform that not only monetizes users' time and opinions but also fosters engagement between businesses and consumers, driving a vibrant ecosystem of participation and rewards.",
     images: [
       "/assets/images/projects/crinf/crinf-net.gif",
@@ -65,6 +65,22 @@ const projectData = [
     startDate: "March 2020",
     endDate: "Still Running",
     skills: ["Django", "PostgreSQL", "VanillaJS", "jQuery"]
+  },
+  {
+    id: 4,
+    title: "Property Management System",
+    description: "A platform where users can earn by participating in polls, PTC, and surveys.",
+    longDescription: "s. This user-friendly platform allows participants to share their opinions through interactive polls, providing valuable insights to businesses while earning rewards for their contributions.In addition to polls, users can earn by clicking on advertisements, which generates revenue for both the platform and the participants. The survey feature allows users to complete targeted surveys, sharing their perspectives on products and services in exchange for monetary rewards or points that can be redeemed for cash or prizes.Built with a robust backend to ensure secure transactions and a seamless user experience, the Poll & PTC Earn Platform encourages user engagement and provides a steady stream of earning opportunities. By connecting businesses with consumers, the platform creates a mutually beneficial ecosystem that values user input and rewards participation, making it an attractive choice for individuals looking to monetize their time and opinions.",
+    myRole: "As a Full-Stack Developer for the Property Management System, you play a crucial role in the design, development, and deployment of the platform. Your expertise spans both front-end and back-end technologies, ensuring a seamless, scalable, and user-friendly experience.",
+    images: [
+      "/assets/images/projects/property-management/wz.gif",
+    ],
+    link: "https://wizerproperties.com/",
+    // github: "#",
+    teamSize: "5",
+    startDate: "July 2023",
+    endDate: "Still Running",
+    skills: ["Django", "React", "PostgreSQL", "Stripe API"]
   }
 ]
 
