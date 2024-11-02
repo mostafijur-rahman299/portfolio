@@ -79,12 +79,7 @@ export function HomeComponent() {
                             Full-Stack Developer & Tech Innovator
                         </p>
                         <p className="text-base sm:text-lg md:text-xl text-emerald-600 mb-6 sm:mb-8">
-                            Transforming ideas into impactful digital solutions.
-                            With a passion for technology and innovation, I
-                            specialize in building robust, user-centered
-                            applications that solve real-world problems.
-                            Let&lsquo;s push the boundaries of what&lsquo;s
-                            possible together.
+                            Transforming ideas into impactful digital solutions with 5 years of experience. With a passion for technology and innovation, I specialize in building robust, user-centered applications that solve real-world problems. Let&lsquo;s push the boundaries of what&lsquo;s possible together.
                         </p>
                         <div className="flex justify-center md:justify-start space-x-4 sm:space-x-6 mb-6 sm:mb-8">
                             <SocialIcon

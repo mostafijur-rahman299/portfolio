@@ -8,12 +8,8 @@ import {
     AnimatePresence,
 } from "framer-motion";
 import {
-    ExternalLink,
-    Github,
     Zap,
-    ArrowRight,
 } from "lucide-react";
-import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
 import {
     Tooltip,
@@ -26,7 +22,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import { allProjects } from "../page";
 
-const allTags = ["All", "Django", "React", "PostgreSQL", "OpenAI API", "WhatsApp API", "Customer Management", "Stripe API", "Python", "Natural Language Processing"];
+const allTags = ["All", "Django", "React", "Django Rest Framework", "PostgreSQL", "OpenAI API", "WhatsApp API", "Stripe API", "Python", "Natural Language Processing", "Websocket", "RabbitMQ", "Celery", "Redis"];
 
 const SkillBadge = ({ skill, onClick, isActive }) => (
     <TooltipProvider>
@@ -40,7 +36,7 @@ const SkillBadge = ({ skill, onClick, isActive }) => (
                         variant="secondary"
                         className={`mr-2 mb-2 cursor-pointer ${
                             isActive
-                                ? "bg-primary text-primary-foreground"
+                                ? "bg-primary text-primary-foreground hover:bg-primary/20"
                                 : "bg-primary/10 text-primary hover:bg-primary/20"
                         }`}
                         onClick={onClick}

@@ -83,7 +83,7 @@ export default function ProjectDetails({ projectData }) {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <div>
-              <h2 className="text-2xl font-semibold mb-2">Project Project</h2>
+              <h2 className="text-2xl font-semibold mb-2">Project</h2>
               <div className="space-y-2">
                 <div className="flex items-center">
                   <Calendar className="mr-2 h-5 w-5" />
