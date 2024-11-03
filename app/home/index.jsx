@@ -76,10 +76,10 @@ export function HomeComponent() {
                             Mostafijur Rahman
                         </h1>
                         <p className="text-xl sm:text-2xl md:text-3xl text-emerald-700 mb-4 sm:mb-6">
-                            Full-Stack Developer & Tech Innovator
+                            Full-Stack Developer | Tech Innovator
                         </p>
                         <p className="text-base sm:text-lg md:text-xl text-emerald-600 mb-6 sm:mb-8">
-                            Transforming ideas into impactful digital solutions with 5 years of experience. With a passion for technology and innovation, I specialize in building robust, user-centered applications that solve real-world problems. Let&lsquo;s push the boundaries of what&lsquo;s possible together.
+                            Building impactful, high-performance digital solutions that drive success. With 5+ years of experience, I turn complex ideas into user-focused applications that address real-world challenges. Fueled by a passion for technology and innovation, I&lsquo;m committed to pushing the boundaries of what&lsquo;s possible and delivering excellence with every project. Let&lsquo;s create the future, together.
                         </p>
                         <div className="flex justify-center md:justify-start space-x-4 sm:space-x-6 mb-6 sm:mb-8">
                             <SocialIcon

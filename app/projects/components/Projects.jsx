@@ -7,9 +7,7 @@ import {
     useInView,
     AnimatePresence,
 } from "framer-motion";
-import {
-    Zap,
-} from "lucide-react";
+import { Zap } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import {
     Tooltip,
@@ -21,8 +19,29 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { allProjects } from "../page";
+import { Button } from "@/components/Button";
+import { ExternalLink, Github } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const allTags = ["All", "Django", "React", "Django Rest Framework", "PostgreSQL", "OpenAI API", "WhatsApp API", "Stripe API", "Python", "Natural Language Processing", "Websocket", "RabbitMQ", "Celery", "Redis"];
+const allTags = [
+    "All",
+    "Django",
+    "Django Rest Framework",
+    "PostgreSQL",
+    "MySQL",
+    "Docker",
+    "React",
+    "jQuery",
+    "VanillaJS",
+    "OpenAI API",
+    "WhatsApp API",
+    "Stripe API",
+    "Python",
+    "Django Channels",
+    "RabbitMQ",
+    "Celery",
+    "Redis",
+];
 
 const SkillBadge = ({ skill, onClick, isActive }) => (
     <TooltipProvider>
@@ -79,10 +98,12 @@ export function Projects() {
 
     // Toggle tag
     const toggleTag = (tag) => {
-        if(tag === "All") {
+        if (tag === "All") {
             setSelectedTags(["All"]);
         } else {
-            const newTags = selectedTags.includes(tag) ? selectedTags.filter(t => t !== tag) : [...selectedTags.filter(t => t !== "All"), tag];
+            const newTags = selectedTags.includes(tag)
+                ? selectedTags.filter((t) => t !== tag)
+                : [...selectedTags.filter((t) => t !== "All"), tag];
             setSelectedTags(newTags);
         }
     };
@@ -90,7 +111,7 @@ export function Projects() {
     // Filter projects when selected tags change
     useEffect(() => {
         if (selectedTags.includes("All")) {
-            setFilteredProjects(allProjects); 
+            setFilteredProjects(allProjects);
         } else {
             setFilteredProjects(
                 allProjects.filter((project) =>
@@ -128,9 +149,11 @@ export function Projects() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.5 }}
                         >
-                            A deep dive into design strategies, development insights,
-                                <br className="hidden md:inline" />
-                            and some of the most recent projects I&apos;m working on.
+                            A deep dive into design strategies, development
+                            insights,
+                            <br className="hidden md:inline" />
+                            and some of the most recent projects I&apos;m
+                            working on.
                         </motion.p>
                     </motion.div>
 
@@ -156,7 +179,6 @@ export function Projects() {
                         initial="hidden"
                         animate={controls}
                     >
-                        
                         {filteredProjects.map((project, index) => (
                             <motion.div
                                 key={project.id}
@@ -165,16 +187,16 @@ export function Projects() {
                                 onHoverEnd={() => setHoveredIndex(null)}
                             >
                                 <motion.div
-                                    className="relative overflow-hidden rounded-2xl shadow-lg"
+                                    className="relative overflow-hidden rounded-3xl shadow-lg"
                                     whileHover={{ scale: 1.03 }}
                                     transition={{ duration: 0.3 }}
                                 >
                                     <Image
                                         src={project.image}
                                         alt={project.title}
-                                        width={800}
-                                        height={600}
-                                        className="w-full h-64 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                                        width={850}
+                                        height={700}  // Increased height from 650 to 700
+                                        className="w-full h-72 object-cover transition-transform duration-500 ease-out group-hover:scale-110"  // Adjusted height class from h-64 to h-72
                                     />
                                     <motion.div
                                         className={`absolute inset-0 opacity-70 transition-opacity duration-300 group-hover:opacity-90 bg-gradient-to-br ${project.color}`}
@@ -182,11 +204,13 @@ export function Projects() {
                                         animate={{ opacity: 0.7 }}
                                         whileHover={{ opacity: 0.9 }}
                                     />
-                                    <motion.div
-                                        className="absolute inset-0 flex flex-col justify-end p-6"
-                                    >
+                                    <motion.div className="absolute inset-0 flex flex-col justify-end p-6">
                                         <h2 className="text-2xl font-bold mb-2 text-white">
-                                            <Link href={`/projects/${project.title}`}>{project.title}</Link>
+                                            <Link
+                                                href={`/projects/${project.title}`}
+                                            >
+                                                {project.title}
+                                            </Link>
                                         </h2>
                                         <p className="text-sm mb-4 text-white">
                                             {project.description}
@@ -204,41 +228,38 @@ export function Projects() {
                                                 )
                                             )}
                                         </div>
-                                        {/* <div className="flex space-x-4">
+                                        <div className="flex space-x-4">
                                             <Button
                                                 variant="secondary"
                                                 size="sm"
-                                                className="bg-white/20 text-white hover:bg-white hover:text-black transition-colors duration-300"
+                                                className="bg-white/40 text-white hover:bg-white hover:text-black transition-colors duration-300"
                                                 asChild
                                             >
-                                                <Link href="/projects/new-project">
+                                                <Link
+                                                    href={`/projects/${project.title}`}
+                                                >
                                                     Learn More
                                                     <ArrowRight className="ml-2 h-4 w-4" />
                                                 </Link>
                                             </Button>
-                                            <Button
-                                                variant="secondary"
-                                                size="sm"
-                                                className="bg-white/20 text-white hover:bg-white hover:text-black transition-colors duration-300"
+                                            {project.demo_link && (
+                                                <Button
+                                                    size="sm"
+                                                    variant="secondary"
+                                                className="bg-white/40 text-white hover:bg-white hover:text-black transition-colors duration-300"
                                                 asChild
                                             >
-                                                <a href={project.github}>
-                                                    GitHub
-                                                    <Github className="ml-2 h-4 w-4" />
-                                                </a>
-                                            </Button>
-                                            <Button
-                                                variant="secondary"
-                                                size="sm"
-                                                className="bg-white/20 text-white hover:bg-white hover:text-black transition-colors duration-300"
-                                                asChild
-                                            >
-                                                <a href={project.link}>
+                                                <a
+                                                    href={project.demo_link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
                                                     Live Demo
                                                     <ExternalLink className="ml-2 h-4 w-4" />
                                                 </a>
                                             </Button>
-                                        </div> */}
+                                            )}
+                                        </div>
                                     </motion.div>
                                 </motion.div>
                                 <AnimatePresence>

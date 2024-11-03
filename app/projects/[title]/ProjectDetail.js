@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Calendar, Users, Code } from 'lucide-react'
 import { Button } from '@/components/Button'
 import { Badge } from '@/components/Badge'
+import Link from 'next/link'
 
 
 export default function ProjectDetails({ projectData }) {
@@ -114,11 +115,13 @@ export default function ProjectDetails({ projectData }) {
             </div>
 
             <div className="flex space-x-4">
-              <Button asChild>
-                <a href={projectData.link} target="_blank" rel="noopener noreferrer">
-                  View Project <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              {projectData.demo_link && (
+                <Button asChild>
+                  <a href={projectData.demo_link} target="_blank" rel="noopener noreferrer">
+                    Live Demo <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              )}
               {projectData.github ? (
                 <Button variant="outline" asChild>
                   <a href={projectData.github} target="_blank" rel="noopener noreferrer">
@@ -130,6 +133,11 @@ export default function ProjectDetails({ projectData }) {
                   This project is not open source. I&apos;m not allowed to share the code.
                 </p>
               )}
+              <Button asChild>
+                  <Link href="/contact">
+                    Contact Me <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
             </div>
           </motion.div>
         </div>

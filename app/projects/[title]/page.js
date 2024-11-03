@@ -27,7 +27,7 @@ const projectData = [
     teamSize: "4",
     startDate: "February 2023",
     endDate: "Still Running",
-    skills: ["Django", "Django Rest Framework", "React", "Redux", "WhatsApp API", "PostgreSQL", "Celery", "Websocket", "RabbitMQ"]
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "WhatsApp API", "Celery", "Django Channels", "RabbitMQ"]
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const projectData = [
     teamSize: "5",
     startDate: "June 2022",
     endDate: "Still Running",
-    skills: ["Django", "Django Rest Framework", "React", "PostgreSQL", "OpenAI API", "Celery", "Redis"]
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "OpenAI API", "Celery", "Redis"]
   },
   {
     id: 3,
@@ -80,7 +80,23 @@ const projectData = [
     teamSize: "5",
     startDate: "July 2023",
     endDate: "Still Running",
-    skills: ["Django", "React", "PostgreSQL", "Stripe API", "Google Map", "Google Place API"]
+    skills: ["Django", "React", "Docker", "MySQL", "Stripe API", "Google Map", "Google Place API"]
+  },
+  {
+    id: 5,
+    title: "Enterprise Resource Planning (ERP)",
+    description: "It's designed to streamline business processes, including finance, inventory, human resources, and sales, within a single, integrated platform.",
+    longDescription: "The ERP system project is a comprehensive solution aimed at centralizing and optimizing various operational functions such as finance, inventory management, human resources, and sales. The system is designed to automate processes and enable seamless information flow across departments, leading to enhanced productivity and reduced redundancies. This ERP solution facilitates real-time data insights, allowing the company to make data-driven decisions that align with strategic goals. The project involved phases of requirement gathering, design, development, testing, and deployment to ensure robust functionality and user satisfaction. Key features include custom dashboards, role-based access, automated reporting, and integration with third-party services for extended capabilities.",
+    myRole: "I joined the team at the beginning of my journey in this company, contributing to the ERP project from its initial stages. My responsibilities included collaborating with stakeholders to define requirements, designing and implementing key modules, and ensuring data security and integrity within the system. I played an instrumental role in the back-end development, ensuring the ERP system’s scalability and smooth integration across various departments.",
+    images: [
+      "/assets/images/projects/erp/erp-system-demo.gif",
+    ],
+    link: "",
+    // github: "#",
+    teamSize: "5",
+    startDate: "April 2020",
+    endDate: "November 2021",
+    skills: ["Django", "Django Rest Framework", "PostgreSQL", "jQuery"]
   }
 ]
 

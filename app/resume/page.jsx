@@ -188,7 +188,9 @@ export default function Page() {
                                         "Django Rest Framework",
                                         "MySQL",
                                         "PostgreSQL",
-                                        "Docker",
+                                        "Redis",
+                                        "GraphQL",
+                                        "RESTful API",
                                     ]}
                                 />
                                 <SkillCard
@@ -199,6 +201,15 @@ export default function Page() {
                                         "Bootstrap",
                                         "VanillaJS",
                                         "jQuery",
+                                    ]}
+                                />
+                                <SkillCard
+                                    title="DevOps"
+                                    skills={[
+                                        "Docker",
+                                        "Kubernetes",
+                                        "Git",
+                                        "CI/CD Pipeline",
                                     ]}
                                 />
                             </div>
