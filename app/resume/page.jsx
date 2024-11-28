@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/Card";
 export default function Page() {
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 py-32 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-gray-700 py-32 sm:px-6 lg:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -19,19 +19,19 @@ export default function Page() {
                 <Button
                     asChild
                     variant="secondary"
-                    className="bg-white text-emerald-600 hover:bg-emerald-100 mb-4"
+                    className="bg-slate-100 text-gray-600 hover:bg-slate-200 mb-4"
                 >
                     <a href="/assets/download/mostafijur-resume.pdf" download>
                         <Download className="mr-2 h-4 w-4" /> Download Resume
                     </a>
                 </Button>
 
-                <Card className="bg-white shadow-xl rounded-lg overflow-hidden">
-                    <CardHeader className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6">
+                <Card className="bg-slate-100 shadow-xl rounded-lg overflow-hidden">
+                    <CardHeader className="bg-gradient-to-r from-gray-700 to-gray-800 text-white p-6">
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                             <div>
                                 <CardTitle className="text-3xl font-bold">MOSTAFIJUR RAHMAN</CardTitle>
-                                <p className="mt-2 text-emerald-100">
+                                <p className="mt-2 text-gray-300">
                                     Software Engineer
                                 </p>
                             </div>
@@ -39,7 +39,7 @@ export default function Page() {
                         <div className="mt-4 flex flex-wrap gap-4">
                             <a
                                 href="mailto:hello.mostafij@gmail.com"
-                                className="flex items-center text-emerald-100 hover:text-white"
+                                className="flex items-center text-gray-300 hover:text-white"
                             >
                                 <Mail className="mr-2 h-4 w-4" />{" "}
                                 hello.mostafij@gmail.com
@@ -48,7 +48,7 @@ export default function Page() {
                                 href="https://github.com/mostafijur-rahman299"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center text-emerald-100 hover:text-white"
+                                className="flex items-center text-gray-300 hover:text-white"
                             >
                                 <Github className="mr-2 h-4 w-4" />{" "}
                                 mostafijur-rahman299
@@ -57,12 +57,12 @@ export default function Page() {
                                 href="https://linkedin.com/in/hello-mostafij"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center text-emerald-100 hover:text-white"
+                                className="flex items-center text-gray-300 hover:text-white"
                             >
                                 <Linkedin className="mr-2 h-4 w-4" />{" "}
                                 hello-mostafij
                             </a>
-                            <span className="flex items-center text-emerald-100">
+                            <span className="flex items-center text-gray-300">
                                 <Phone className="mr-2 h-4 w-4" />{" "}
                                 +8801789929182
                             </span>
@@ -70,7 +70,7 @@ export default function Page() {
                     </CardHeader>
                     <CardContent className="p-6">
                         <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-emerald-800">
+                            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                                 Projects
                             </h2>
                             <div className="space-y-6">
@@ -96,21 +96,21 @@ export default function Page() {
                             </div>
                         </section>
                         <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-emerald-800">
+                            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                                 Employment
                             </h2>
-                            <Card className="bg-emerald-50">
+                            <Card className="bg-gray-50">
                                 <CardContent className="p-4">
-                                    <h3 className="text-xl font-semibold text-emerald-700">
+                                    <h3 className="text-xl font-semibold text-gray-700">
                                         Software Engineer
                                     </h3>
-                                    <p className="text-emerald-600">
+                                    <p className="text-gray-600">
                                         VaidTech Services, Dhaka, Bangladesh
                                     </p>
-                                    <p className="text-emerald-600">
+                                    <p className="text-gray-600">
                                         2020-Present
                                     </p>
-                                    <ul className="list-disc list-inside mt-2 space-y-1 text-emerald-700">
+                                    <ul className="list-disc list-inside mt-2 space-y-1 text-gray-700">
                                         <li>
                                             Contributed to the development of a
                                             telemedicine platform, improving
@@ -140,35 +140,35 @@ export default function Page() {
                             </Card>
                         </section>
                         <section className="mb-8">
-                            <h2 className="text-2xl font-semibold mb-4 text-emerald-800">
+                            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                                 Education
                             </h2>
                             <div className="space-y-4">
-                                <Card className="bg-emerald-50">
+                                <Card className="bg-gray-50">
                                     <CardContent className="p-4">
-                                        <h3 className="text-xl font-semibold text-emerald-700">
+                                        <h3 className="text-xl font-semibold text-gray-700">
                                             Bachelor of Science in Computer
                                             Science
                                         </h3>
-                                        <p className="text-emerald-600">
+                                        <p className="text-gray-600">
                                             European University Of Bangladesh
                                         </p>
                                     </CardContent>
                                 </Card>
-                                <Card className="bg-emerald-50">
+                                <Card className="bg-gray-50">
                                     <CardContent className="p-4">
-                                        <h3 className="text-xl font-semibold text-emerald-700">
+                                        <h3 className="text-xl font-semibold text-gray-700">
                                             Diploma In Computer Technology
                                         </h3>
-                                        <p className="text-emerald-600">
+                                        <p className="text-gray-600">
                                             Thakurgaon Polytechnic Institute
                                         </p>
                                     </CardContent>
                                 </Card>
                             </div>
                         </section>
-                        <section>
-                            <h2 className="text-2xl font-semibold mb-4 text-emerald-800">
+                        <section className="mb-8">
+                            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                                 Skills
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -222,11 +222,11 @@ export default function Page() {
 }
 
 const ProjectCard = ({ title, techStack, description }) => (
-    <Card className="bg-emerald-50">
+    <Card className="bg-gray-50">
         <CardContent className="p-4">
-            <h3 className="text-xl font-semibold text-emerald-700">{title}</h3>
-            <p className="text-emerald-600 mb-2">Tech Stack: {techStack}</p>
-            <ul className="list-disc list-inside space-y-1 text-emerald-700">
+            <h3 className="text-xl font-semibold text-gray-700">{title}</h3>
+            <p className="text-gray-600 mb-2">Tech Stack: {techStack}</p>
+            <ul className="list-disc list-inside space-y-1 text-gray-700">
                 {description.map((item, index) => (
                     <li key={index}>{item}</li>
                 ))}
@@ -236,16 +236,16 @@ const ProjectCard = ({ title, techStack, description }) => (
 );
 
 const SkillCard = ({ title, skills }) => (
-    <Card className="bg-emerald-50">
+    <Card className="bg-gray-50">
         <CardContent className="p-4">
-            <h3 className="text-lg font-semibold mb-2 text-emerald-700">
+            <h3 className="text-lg font-semibold mb-2 text-gray-700">
                 {title}
             </h3>
             <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
                     <span
                         key={index}
-                        className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded text-sm"
+                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm"
                     >
                         {skill}
                     </span>

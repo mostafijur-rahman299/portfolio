@@ -15,8 +15,8 @@ const NavItem = ({ href, children, isActive, onClick }) => {
         }}
         className={`text-sm font-medium transition-colors duration-300 px-3 py-3 rounded-md ${
             isActive
-                ? "text-emerald-800 font-bold bg-emerald-200 border-emerald-600 hover:bg-emerald-300" // Changed background color and border for active item
-                : "text-emerald-700 hover:text-emerald-900 border-transparent hover:border-emerald-800 hover:bg-emerald-200"
+                ? "text-gray-900 font-bold bg-gray-100 border-gray-700 hover:bg-gray-200" // Enhanced color scheme for better visibility
+                : "text-gray-800 hover:text-black border-transparent hover:border-gray-700 hover:bg-gray-100"
         }`}
     >
         {children}
@@ -41,12 +41,12 @@ export function Navbar() {
     }, []);
 
     useEffect(() => {
-        setActiveSection(window.location.pathname.split("/")[1]);
+        setActiveSection(window.location.pathname.split("/")[1] || "home");
     }, []);
 
     const handleNavItemClick = (section) => {
         setActiveSection(section);
-        setIsMenuOpen(false); // Close the menu when an item is clicked
+        setIsMenuOpen(false); // Ensures the menu closes upon item selection
     };
 
     return (
@@ -60,7 +60,7 @@ export function Navbar() {
                 <div className="flex justify-between items-center md:justify-center">
                     <motion.div
                         className={`px-4 py-2 rounded-full transition-all duration-300 ${
-                            isScrolled ? "bg-white shadow-md" : "bg-transparent"
+                            isScrolled ? "bg-gray-50 shadow-lg" : "bg-transparent"
                         }`}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -120,7 +120,7 @@ export function Navbar() {
                                 {isMenuOpen ? (
                                     <X className="h-6 w-6" />
                                 ) : (
-                                    <Menu className="h-6 w-6" color="grey"/>
+                                    <Menu className="h-6 w-6" color="gray"/>
                                 )}
                             </Button>
                         </div>
@@ -134,7 +134,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden bg-white/90 backdrop-blur-lg p-5 rounded-lg shadow-lg"
+                        className="md:hidden bg-gray-50/90 backdrop-blur-lg p-5 rounded-lg shadow-lg"
                     >
                         <div className="flex flex-col space-y-5">
                             <NavItem
