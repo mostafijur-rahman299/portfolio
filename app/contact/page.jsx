@@ -63,8 +63,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white overflow-hidden flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl w-full space-y-12 flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white overflow-hidden flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl w-full space-y-12 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex gap-12 w-full"
+          className="flex flex-col lg:flex-row gap-12 w-full"
         >
           <Card className="bg-white/10 backdrop-blur-lg border-gray-600 flex-1">
             <CardContent className="pt-8">
