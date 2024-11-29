@@ -2,10 +2,12 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { Code } from 'lucide-react'
+import { Code, Briefcase, Folder } from 'lucide-react'
 import Image from "next/image"
+import { Button } from "@/components/Button"
 import { MotionPath } from "@/components/MotionPath"
 import Profile from "@/public/assets/images/profile-image.jpeg"
+import Link from "next/link"
 
 export function HomeComponent() {
   return (
@@ -69,10 +71,16 @@ export function HomeComponent() {
             <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-8">
               Building impactful, high-performance digital solutions that drive success. With 5+ years of experience, I turn complex ideas into user-focused applications that address real-world challenges.
             </p>
+            <div className="flex justify-center md:justify-start space-x-4 mt-4">
+              <Link href="/contact">
+                <Button variant="primary" className="flex items-center text-white font-bold bg-gray-500 hover:bg-gray-600">
+                  <Briefcase className="h-6 w-6 mr-2" /> Contact Me
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </main>
     </div>
   )
 }
-
