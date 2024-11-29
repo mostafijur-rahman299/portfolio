@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader } from "@/components/Card"
 
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white">
       <div className="container mx-auto px-4 pt-32 pb-16 max-w-6xl">
         <motion.div
           className="text-center mb-12"

@@ -21,14 +21,14 @@ export default function ProjectDetails({ projectData }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-emerald-800">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white">
       <div className="container mx-auto px-4 pt-32 pb-16 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-5xl font-bold mb-6">{projectData.title}</h1>
+          <h1 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500">{projectData.title}</h1>
           <p className="text-xl mb-8">{projectData.description}</p>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function ProjectDetails({ projectData }) {
               <Button
                 variant="secondary"
                 size="icon"
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 hover:bg-white"
+                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-200/80 hover:bg-gray-200"
                 onClick={prevImage}
               >
                 <ArrowLeft className="h-6 w-6" />
@@ -58,7 +58,7 @@ export default function ProjectDetails({ projectData }) {
               <Button
                 variant="secondary"
                 size="icon"
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hover:bg-white"
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-200/80 hover:bg-gray-200"
                 onClick={nextImage}
               >
                 <ArrowRight className="h-6 w-6" />
@@ -69,7 +69,7 @@ export default function ProjectDetails({ projectData }) {
                 <button
                   key={index}
                   className={`w-3 h-3 rounded-full ${
-                    index === currentImageIndex ? 'bg-emerald-600' : 'bg-emerald-300'
+                    index === currentImageIndex ? 'bg-gray-600' : 'bg-gray-300'
                   }`}
                   onClick={() => setCurrentImageIndex(index)}
                 />
@@ -107,7 +107,7 @@ export default function ProjectDetails({ projectData }) {
               <h2 className="text-2xl font-semibold mb-2">Tech Stack</h2>
               <div className="flex flex-wrap gap-2">
                 {projectData.skills.map((skill, index) => (
-                  <Badge key={index} variant="secondary" className="bg-emerald-100 text-emerald-800">
+                  <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-800">
                     {skill}
                   </Badge>
                 ))}

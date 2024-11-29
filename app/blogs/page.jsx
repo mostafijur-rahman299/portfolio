@@ -19,6 +19,15 @@ const blogSources = [
 const blogPosts = [
     {
         id: 1,
+        title: "Object-Oriented Programming (OOP) In Python",
+        excerpt:
+            "Object-Oriented Programming (OOP) is a powerful paradigm that makes code more modular, organized, and scalable. By focusing on the creation and interaction of 'objects', OOP allows developers to design complex systems through...",
+        url: "https://neptunecode.hashnode.dev/object-oriented-programming-in-python",
+        source: "Hashnode",
+        date: "Nov 25, 2024",
+    },
+    {
+        id: 2,
         title: "Integrating Django with React: A Comprehensive Guide.",
         excerpt:
             "Combining Django with React is a powerful approach for full-stack development. Django handles the backend logic and data management, while React powers the frontend user interface (UI). In this post, we’ll explore two methods of integrating React with Django...",
@@ -27,7 +36,7 @@ const blogPosts = [
         date: "Oct 6, 2024",
     },
     {
-        id: 2,
+        id: 3,
         title: "Securing Your Django Application: Best Practices for Preventing XSS, CSRF, and More",
         excerpt:
             "Security should always be at the forefront of any web development project. With Django, you get a framework that provides a lot of built-in security features, but there are still steps you must take to ensure your application is secure. In this post, we'll explore some best practices for preventing common web vulnerabilities such as Cross-Site Scripting (XSS), SQL Injection, Cross-Site Request Forgery (CSRF), and more...",
@@ -36,7 +45,7 @@ const blogPosts = [
         date: "Sep 25, 2024",
     },
     {
-        id: 3,
+        id: 4,
         title: "Must-Know HTML Attributes for Every Web Developer",
         excerpt:
             "HTML is the backbone of any web page, providing the essential structure needed to display content. Whether you're a beginner or an experienced web developer, having a handy reference to key HTML attributes can be invaluable. In this blog, we’ll explore some of the most important HTML attributes to help you enhance your web pages...",
@@ -45,7 +54,7 @@ const blogPosts = [
         date: "Sep 21, 2024",
     },
     {
-        id: 4,
+        id: 5,
         title: "Introduction to CSS: A Beginner's Guide",
         excerpt:
             "CSS, or Cascading Style Sheets, is a cornerstone of modern web development. It plays a crucial role in defining the look and feel of websites, allowing developers to control layout, colors, fonts, and overall appearance. Without CSS, websites would look plain, unattractive, and difficult to navigate...",
@@ -69,14 +78,14 @@ export default function BlogShowcase() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground">
-            <main className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white">
+            <main className="container mx-auto px-4 py-4 max-w-6xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h1 className="text-4xl font-bold mb-8 text-emerald-800 text-center mt-32">
+                    <h1 className="text-4xl font-bold mb-8 via-gray-600 text-center mt-32">
                         My Blog Posts
                     </h1>
 

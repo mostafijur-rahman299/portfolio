@@ -88,12 +88,12 @@ export default function About() {
             <div className="container mx-auto px-4 pt-32 pb-16 max-w-7xl">
                 <motion.h1
                     id="about"
-                    className="text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-gray-500"
+                    className="text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-gray-500"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    About the Developer
+                    Explore the Craft of Coding
                 </motion.h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">

@@ -122,7 +122,7 @@ export function Projects() {
     }, [selectedTags]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground overflow-hidden transition-all duration-500">
+        <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white overflow-hidden transition-all duration-500">
             <main className="relative z-10 pt-32 pb-16" ref={containerRef}>
                 <div className="container mx-auto px-4 max-w-6xl">
                     <motion.div
@@ -136,7 +136,7 @@ export function Projects() {
                         }}
                     >
                         <motion.h1
-                            className="text-5xl md:text-7xl font-bold mb-8 text-emerald-800"
+                            className="text-4xl md:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500"
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5 }}
@@ -144,7 +144,7 @@ export function Projects() {
                             Latest Works & Innovations.
                         </motion.h1>
                         <motion.p
-                            className="text-xl text-emerald-700 mb-8"
+                            className="text-xl text-gray-200 mb-8"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.5 }}
@@ -205,14 +205,14 @@ export function Projects() {
                                         whileHover={{ opacity: 0.9 }}
                                     />
                                     <motion.div className="absolute inset-0 flex flex-col justify-end p-6">
-                                        <h2 className="text-2xl font-bold mb-2 text-white">
+                                        <h2 className="text-2xl font-bold mb-2 text-gray-200">
                                             <Link
                                                 href={`/projects/${project.title}`}
                                             >
                                                 {project.title}
                                             </Link>
                                         </h2>
-                                        <p className="text-sm mb-4 text-white">
+                                        <p className="text-sm mb-4 text-gray-200">
                                             {project.description}
                                         </p>
                                         <div className="mb-4 flex flex-wrap">
@@ -221,7 +221,7 @@ export function Projects() {
                                                     <Badge
                                                         key={skillIndex}
                                                         variant="secondary"
-                                                        className="mr-2 mb-2 bg-white/20 text-white"
+                                                        className="mr-2 mb-2 bg-gray-200/20 text-gray-200"
                                                     >
                                                         {skill}
                                                     </Badge>
@@ -232,7 +232,7 @@ export function Projects() {
                                             <Button
                                                 variant="secondary"
                                                 size="sm"
-                                                className="bg-white/40 text-white hover:bg-white hover:text-black transition-colors duration-300"
+                                                className="bg-gray-200/40 text-gray-200 hover:bg-gray-200 hover:text-black transition-colors duration-300"
                                                 asChild
                                             >
                                                 <Link
@@ -246,7 +246,7 @@ export function Projects() {
                                                 <Button
                                                     size="sm"
                                                     variant="secondary"
-                                                className="bg-white/40 text-white hover:bg-white hover:text-black transition-colors duration-300"
+                                                className="bg-gray-200/40 text-gray-200 hover:bg-gray-200 hover:text-black transition-colors duration-300"
                                                 asChild
                                             >
                                                 <a
@@ -265,7 +265,7 @@ export function Projects() {
                                 <AnimatePresence>
                                     {hoveredIndex === index && (
                                         <motion.div
-                                            className="absolute -top-2 -right-2 bg-white rounded-full p-2 shadow-lg"
+                                            className="absolute -top-2 -right-2 bg-gray-200 rounded-full p-2 shadow-lg"
                                             initial={{ scale: 0, rotate: -180 }}
                                             animate={{ scale: 1, rotate: 0 }}
                                             exit={{ scale: 0, rotate: 180 }}

@@ -13,7 +13,7 @@ export default function ComingSoon({ projectTitle }) {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-emerald-800 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white flex items-center justify-center">
       <div className="container mx-auto px-4 max-w-3xl">
         <motion.div
           className="text-center"
@@ -29,7 +29,7 @@ export default function ComingSoon({ projectTitle }) {
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-emerald-100 text-emerald-800"
+                className="bg-gray-100 text-gray-800"
               >
                 {skill}
               </Badge>
@@ -42,7 +42,7 @@ export default function ComingSoon({ projectTitle }) {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Rocket className="w-16 h-16 mx-auto mb-4 text-emerald-600" />
+            <Rocket className="w-16 h-16 mx-auto mb-4 text-gray-600" />
             <h2 className="text-3xl font-semibold mb-4">Coming Soon</h2>
           </motion.div>
 

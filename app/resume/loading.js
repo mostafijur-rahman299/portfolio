@@ -5,12 +5,12 @@ import { Skeleton } from "@/components/Skeleton"
 
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 py-32 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white">
       <div className="max-w-4xl mx-auto">
         <Skeleton className="h-10 w-40 mb-4" />
 
         <Card className="bg-white shadow-xl rounded-lg overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+          <CardHeader className="bg-gradient-to-r from-gray-600 to-gray-600 p-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div className="w-full">
                 <Skeleton className="h-8 w-3/4 mb-2" />

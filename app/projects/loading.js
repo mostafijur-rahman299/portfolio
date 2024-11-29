@@ -28,7 +28,7 @@ export default function Loading() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 text-foreground overflow-hidden transition-all duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white overflow-hidden transition-all duration-500">
       <main className="relative z-10 pt-32 pb-16">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
@@ -37,9 +37,9 @@ export default function Loading() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
           >
-            <Skeleton className="h-20 w-72 mx-auto mb-8 rounded-xl bg-gradient-to-r from-emerald-300 to-teal-300 animate-pulse" />
-            <Skeleton className="h-6 w-3/4 mx-auto mb-4 rounded-full bg-emerald-200 animate-pulse" />
-            <Skeleton className="h-6 w-1/2 mx-auto rounded-full bg-emerald-200 animate-pulse" />
+            <Skeleton className="h-20 w-72 mx-auto mb-8 rounded-xl bg-gradient-to-r from-gray-300 to-gray-300 animate-pulse" />
+            <Skeleton className="h-6 w-3/4 mx-auto mb-4 rounded-full bg-gray-200 animate-pulse" />
+            <Skeleton className="h-6 w-1/2 mx-auto rounded-full bg-gray-200 animate-pulse" />
           </motion.div>
 
           <motion.div
@@ -51,7 +51,7 @@ export default function Loading() {
             {[...Array(10)].map((_, index) => (
               <Skeleton
                 key={index}
-                className="h-8 w-20 rounded-full bg-gradient-to-r from-emerald-200 to-teal-200 animate-pulse"
+                className="h-8 w-20 rounded-full bg-gradient-to-r from-gray-200 to-gray-200 animate-pulse"
               />
             ))}
           </motion.div>
@@ -73,7 +73,7 @@ export default function Loading() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Skeleton className="w-full h-64 bg-gradient-to-br from-emerald-300 to-teal-300 animate-pulse" />
+                  <Skeleton className="w-full h-64 bg-gradient-to-br from-gray-300 to-gray-300 animate-pulse" />
                   <div className="absolute inset-0 bg-black bg-opacity-30" />
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <Skeleton className="h-8 w-3/4 mb-2 rounded-lg bg-white bg-opacity-30 animate-pulse" />

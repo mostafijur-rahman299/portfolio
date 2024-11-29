@@ -21,15 +21,15 @@ export default function RootLoading() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-100 via-emerald-200 to-teal-300 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white flex flex-col items-center justify-center">
       <motion.div
-        className="w-64 h-64 rounded-full border-8 border-emerald-200 flex items-center justify-center overflow-hidden"
+        className="w-64 h-64 rounded-full border-8 border-gray-200 flex items-center justify-center overflow-hidden"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
         <motion.div
-          className="text-4xl font-bold text-emerald-600"
+          className="text-4xl font-bold text-gray-200"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -38,19 +38,19 @@ export default function RootLoading() {
         </motion.div>
       </motion.div>
       <motion.div
-        className="w-64 h-2 bg-emerald-200 rounded-full mt-8 overflow-hidden"
+        className="w-64 h-2 bg-gray-200 rounded-full mt-8 overflow-hidden"
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: 256, opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         <motion.div
-          className="h-full bg-emerald-600 rounded-full"
+          className="h-full bg-gray-600 rounded-full"
           style={{ width: `${progress}%` }}
           transition={{ duration: 0.2 }}
         />
       </motion.div>
       <motion.p
-        className="mt-4 text-emerald-700 text-lg"
+        className="mt-4 text-gray-200 text-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.5 }}
