@@ -1,278 +1,345 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/Card";
-import {
-    Code,
-    GraduationCap,
-    Server,
-    Database,
-    Globe,
-    Cloud,
-    Cpu,
-    GitBranch,
-    Layers,
-    Paintbrush,
-    Smartphone,
-    Briefcase,
-} from "lucide-react";
-import Footer from "@/components/Footer";
-import profilePic from "@/public/assets/images/profile-image.jpeg";
+import React, { useState, useEffect } from "react"
+import { motion, AnimatePresence, useAnimation } from "framer-motion"
+import { Code, GraduationCap, Server, Database, Globe, Cloud, Cpu, GitBranch, Layers, Paintbrush, Smartphone, Briefcase, ChevronDown, ChevronRight } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/Card"
+import { Button } from "@/components/Button"
+import { Badge } from "@/components/Badge"
+// import { Progress } from "@/components/Progress"
 
-
-export default function About() {
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    const skills = {
-        backend: [
-            { name: "Python, Django", icon: Server, level: "Advanced" },
-            { name: "Django Rest Framework", icon: Server, level: "Intermediate" },
-            { name: "PostgreSQL", icon: Database, level: "Intermediate" },
-            { name: "MySQL", icon: Database, level: "Intermediate" },
-            { name: "GraphQL", icon: Globe, level: "Beginner" },
-        ],
-        frontend: [
-            { name: "React", icon: Code, level: "Advanced" },
-            { name: "Next.js", icon: Server, level: "Advanced" },
-            { name: "Tailwind CSS", icon: Code, level: "Intermediate" },
-            { name: "CSS/SASS", icon: Paintbrush, level: "Advanced" },
-            { name: "jQuery", icon: Smartphone, level: "Advanced" },
-        ],
-        devops: [
-            { name: "Docker", icon: Cloud, level: "Intermediate" },
-            { name: "CI/CD", icon: GitBranch, level: "Intermediate" },
-            { name: "Kubernetes", icon: Layers, level: "Beginner" },
-        ],
-        other: [
-            { name: "Git", icon: GitBranch, level: "Advanced" },
-            { name: "Agile", icon: Cpu, level: "Advanced" },
-        ],
-    };
-
-    const education = [
-        {
-            degree: "Bachelor of Science in Computer Science",
-            school: "European University Of Bangladesh",
-            year: "2020 - 2024",
-            description:
-                "Focused on algorithms, data structures, and software engineering principles.",
-        },
-        {
-            degree: "Diploma in Computer Science",
-            school: "Thakurgaon Polytechnic Institute",
-            year: "2016 - 2020",
-            description:
-                "Specialized in computer hardware and software.",
-        },
-    ];
-
-    const services = [
-        { name: "Full-Stack Development", icon: Code, description: "I develop full-stack applications using the latest technologies, ensuring seamless integration and functionality across all parts of the stack." },
-        { name: "Frontend Development", icon: Code, description: "I create responsive and dynamic user interfaces with modern JavaScript frameworks and CSS pre-processors." },
-        { name: "API Integration", icon: Globe, description: "I integrate APIs to enhance the functionality of applications, focusing on seamless data exchange and system interoperability." },
-        { name: "DevOps & Deployment", icon: Cloud, description: "I deploy applications using Docker, Kubernetes, and CI/CD pipelines, emphasizing automation, scalability, and maintainability." },
-        { name: "Performance Optimization", icon: Cpu, description: "I optimize applications for performance and scalability, reducing load times and improving user experience." },
-        { name: "Consulting", icon: Briefcase, description: "I provide expert consulting services to help businesses strategize, implement, and manage their technology solutions effectively." },
-    ];
-
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white">
-            <div className="container mx-auto px-4 pt-32 pb-16 max-w-7xl">
-                <motion.h1
-                    id="about"
-                    className="text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-gray-300 to-gray-500"
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    Explore the Craft of Coding
-                </motion.h1>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-                    <motion.div
-                        className="md:col-span-1"
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <Image
-                            src={profilePic}
-                            alt="Profile Picture"
-                            width={600}
-                            height={600}
-                            className="rounded-lg shadow-xl"
-                        />
-                    </motion.div>
-
-                    <motion.div
-                        className="md:col-span-2"
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <div className="bg-black bg-opacity-80 backdrop-blur-md rounded-lg p-8 shadow-xl relative overflow-hidden border border-gray-700">
-                            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-700/30 to-gray-900/30"></div>
-                            <div className="relative z-10">
-                                <div className="space-y-4 text-gray-300">
-                                    <p className="text-lg relative pl-6">
-                                        Passionate about technology and innovation, I am dedicated to building solutions that not only solve problems but also push the boundaries of what is possible with modern software development.
-                                    </p>
-                                    <p className="text-lg">
-                                        My expertise spans across full-stack development, with a keen interest in both front-end and back-end technologies. I am constantly exploring new frameworks and tools to stay at the forefront of the industry.
-                                    </p>
-                                    <p className="text-lg relative pr-6">
-                                        Outside of work, I enjoy contributing to open-source projects and engaging with the developer community to share knowledge and learn from others. My hobbies include photography and exploring the great outdoors.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    id="skills"
-                    className="mb-16"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                    <h2 className="text-3xl font-semibold mb-6 text-center text-gray-400">
-                        Technical Skills
-                    </h2>
-                    <div className="bg-gray-800 bg-opacity-70 backdrop-blur-lg rounded-lg p-6 shadow-xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-600/20 to-gray-800/20"></div>
-                        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {Object.entries(skills).map(
-                                ([category, categorySkills]) => (
-                                    <div key={category} className="space-y-4">
-                                        <h3 className="text-xl font-semibold text-gray-400 capitalize">
-                                            {category}
-                                        </h3>
-                                        {categorySkills.map((skill, index) => (
-                                            <motion.div
-                                                key={skill.name}
-                                                className="flex items-center space-x-2"
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{
-                                                    duration: 0.5,
-                                                    delay: index * 0.1,
-                                                }}
-                                            >
-                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center shadow-lg">
-                                                    <skill.icon className="w-5 h-5 text-white" />
-                                                </div>
-                                                <div>
-                                                    <span className="text-gray-400 font-medium">
-                                                        {skill.name}
-                                                    </span>
-                                                </div>
-                                            </motion.div>
-                                        ))}
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    id="education"
-                    className="mb-16"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                    <h2 className="text-3xl font-semibold mb-6 text-center text-gray-400">
-                        Educational Background
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {education.map((edu, index) => (
-                            <motion.div
-                                key={edu.degree}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.2,
-                                }}
-                            >
-                                <Card className="bg-gray-800 bg-opacity-70 backdrop-blur-lg overflow-hidden">
-                                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gray-600 to-gray-800"></div>
-                                    <CardHeader className="relative">
-                                        <div className="absolute top-0 right-0 w-16 h-16 bg-gray-600 rounded-bl-full flex items-center justify-center">
-                                            <GraduationCap className="text-white w-8 h-8" />
-                                        </div>
-                                        <CardTitle className="text-2xl text-gray-400">
-                                            {edu.degree}
-                                        </CardTitle>
-                                        <CardDescription className="text-gray-300 text-lg">
-                                            {edu.school} | {edu.year}
-                                        </CardDescription>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-gray-300">
-                                            {edu.description}
-                                        </p>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    id="services"
-                    className="mb-16"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                    <h2 className="text-3xl font-semibold mb-6 text-center text-gray-400">
-                        Professional Services
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {services.map((service, index) => (
-                            <motion.div
-                                key={service.name}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.2,
-                                }}
-                            >
-                                <Card className="bg-gray-800 bg-opacity-70 backdrop-blur-lg overflow-hidden">
-                                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gray-600 to-gray-800"></div>
-                                    <CardHeader className="relative">
-                                        <div className="absolute top-5 right-4 w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center">
-                                            <service.icon className="w-5 h-5 text-white" />
-                                        </div>
-                                        <CardTitle className="text-2xl text-gray-400">
-                                            {service.name}
-                                        </CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="text-gray-300">
-                                            {service.description}
-                                        </p>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-            </div>
-            <Footer />
-        </div>
-    );
+const skills = {
+  backend: [
+    { name: "Python, Django", icon: Server, level: "Advanced", progress: 90 },
+    { name: "Django Rest Framework", icon: Server, level: "Intermediate", progress: 75 },
+    { name: "PostgreSQL", icon: Database, level: "Intermediate", progress: 70 },
+    { name: "MySQL", icon: Database, level: "Intermediate", progress: 65 },
+    { name: "GraphQL", icon: Globe, level: "Beginner", progress: 40 },
+  ],
+  frontend: [
+    { name: "React", icon: Code, level: "Advanced", progress: 95 },
+    { name: "Next.js", icon: Server, level: "Advanced", progress: 90 },
+    { name: "Tailwind CSS", icon: Code, level: "Intermediate", progress: 80 },
+    { name: "CSS/SASS", icon: Paintbrush, level: "Advanced", progress: 85 },
+    { name: "jQuery", icon: Smartphone, level: "Advanced", progress: 85 },
+  ],
+  devops: [
+    { name: "Docker", icon: Cloud, level: "Intermediate", progress: 70 },
+    { name: "CI/CD", icon: GitBranch, level: "Intermediate", progress: 75 },
+    { name: "Kubernetes", icon: Layers, level: "Beginner", progress: 45 },
+  ],
+  other: [
+    { name: "Git", icon: GitBranch, level: "Advanced", progress: 90 },
+    { name: "Agile", icon: Cpu, level: "Advanced", progress: 85 },
+  ],
 }
+
+const education = [
+  {
+    degree: "Bachelor of Science in Computer Science",
+    school: "European University Of Bangladesh",
+    year: "2020 - 2024",
+    description: "Focused on algorithms, data structures, and software engineering principles.",
+    courses: ["Advanced Algorithms", "Machine Learning", "Database Systems", "Web Development"],
+  },
+  {
+    degree: "Diploma in Computer Science",
+    school: "Thakurgaon Polytechnic Institute",
+    year: "2016 - 2020",
+    description: "Specialized in computer hardware and software.",
+    courses: ["Computer Architecture", "Networking", "Programming Fundamentals", "Operating Systems"],
+  },
+]
+
+const services = [
+  { 
+    name: "Full-Stack Development", 
+    icon: Code, 
+    description: "I develop full-stack applications using the latest technologies, ensuring seamless integration and functionality across all parts of the stack.",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "PostgreSQL"],
+  },
+  { 
+    name: "Frontend Development", 
+    icon: Paintbrush, 
+    description: "I create responsive and dynamic user interfaces with modern JavaScript frameworks and CSS pre-processors.",
+    technologies: ["React", "Next.js", "Tailwind CSS", "SASS", "TypeScript"],
+  },
+  { 
+    name: "API Integration", 
+    icon: Globe, 
+    description: "I integrate APIs to enhance the functionality of applications, focusing on seamless data exchange and system interoperability.",
+    technologies: ["RESTful APIs", "GraphQL", "Axios", "Fetch API"],
+  },
+  { 
+    name: "DevOps & Deployment", 
+    icon: Cloud, 
+    description: "I deploy applications using Docker, Kubernetes, and CI/CD pipelines, emphasizing automation, scalability, and maintainability.",
+    technologies: ["Docker", "Kubernetes", "Jenkins", "GitHub Actions", "AWS"],
+  },
+  { 
+    name: "Performance Optimization", 
+    icon: Cpu, 
+    description: "I optimize applications for performance and scalability, reducing load times and improving user experience.",
+    technologies: ["Lazy Loading", "Code Splitting", "Caching", "Database Indexing"],
+  },
+  { 
+    name: "Consulting", 
+    icon: Briefcase, 
+    description: "I provide expert consulting services to help businesses strategize, implement, and manage their technology solutions effectively.",
+    technologies: ["Technical Architecture", "Code Review", "Best Practices", "Team Training"],
+  },
+]
+
+function AboutComponent() {
+  const [activeTab, setActiveTab] = useState("skills")
+  const [expandedService, setExpandedService] = useState(null)
+  const [hoveredSkill, setHoveredSkill] = useState(null)
+  const controls = useAnimation()
+
+  useEffect(() => {
+    controls.start({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, staggerChildren: 0.1 }
+    })
+  }, [activeTab, controls])
+
+  const tabVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden">
+      <div className="container mx-auto px-4 py-16 max-w-6xl relative z-10">
+        <motion.h1
+          className="text-5xl sm:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          About Mostafijur Rahman
+        </motion.h1>
+
+        <motion.div
+          className="mb-12 text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <p className="text-xl sm:text-2xl text-indigo-200 mb-6">
+            Passionate Full-Stack Developer | Tech Innovator | Problem Solver
+          </p>
+          <Card className="bg-white/10 backdrop-blur-md overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardContent className="p-6 sm:p-8">
+              <p className="text-lg sm:text-xl text-gray-300 mb-4">
+                With over 5 years of experience in the tech industry, I specialize in creating robust, scalable, and user-friendly applications. My expertise spans across the entire development stack, from crafting intuitive front-end interfaces to architecting efficient back-end systems.
+              </p>
+              <p className="text-lg sm:text-xl text-gray-300">
+                I'm driven by the challenge of turning complex problems into elegant solutions, always staying at the forefront of emerging technologies and best practices in software development.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <div className="mb-12">
+          <div className="flex justify-center space-x-4 mb-8">
+            {["skills", "education", "services"].map((tab) => (
+              <Button
+                key={tab}
+                variant={activeTab === tab ? "default" : "outline"}
+                onClick={() => setActiveTab(tab)}
+                className="text-lg capitalize transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              >
+                {tab}
+              </Button>
+            ))}
+          </div>
+
+          <AnimatePresence mode="wait">
+            {activeTab === "skills" && (
+              <motion.div
+                key="skills"
+                variants={tabVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {Object.entries(skills).map(([category, categorySkills]) => (
+                    <Card key={category} className="bg-white/10 backdrop-blur-md overflow-hidden border-none transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/20">
+                      <CardHeader>
+                        <CardTitle className="text-2xl font-semibold text-pink-300 capitalize">
+                          {category}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          {categorySkills.map((skill, index) => (
+                            <motion.div
+                              key={skill.name}
+                              variants={itemVariants}
+                              className="relative"
+                              onHoverStart={() => setHoveredSkill(skill.name)}
+                              onHoverEnd={() => setHoveredSkill(null)}
+                            >
+                              <div className="flex items-center space-x-3 mb-2">
+                                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center transform transition-all duration-300 hover:scale-110">
+                                  <skill.icon className="w-5 h-5 text-white" />
+                                </div>
+                                <div>
+                                  <p className="text-sm font-medium text-gray-200">{skill.name}</p>
+                                  <Badge variant="secondary" className="mt-1">
+                                    {skill.level}
+                                  </Badge>
+                                </div>
+                              </div>
+                              {/* <Progress value={skill.progress} className="h-2 bg-gray-700" indicatorClassName="bg-gradient-to-r from-pink-500 to-purple-600" /> */}
+                              {hoveredSkill === skill.name && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: 10 }}
+                                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs py-1 px-2 rounded"
+                                >
+                                  {skill.progress}%
+                                </motion.div>
+                              )}
+                            </motion.div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === "education" && (
+              <motion.div
+                key="education"
+                variants={tabVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {education.map((edu, index) => (
+                    <Card key={edu.degree} className="bg-white/10 backdrop-blur-md overflow-hidden border-none transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/20">
+                      <CardHeader className="relative pb-0">
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-bl-full flex items-center justify-center transform transition-all duration-300 hover:scale-110">
+                          <GraduationCap className="text-white w-8 h-8" />
+                        </div>
+                        <CardTitle className="text-2xl text-gray-200">{edu.degree}</CardTitle>
+                        <CardDescription className="text-gray-300 text-lg">
+                          {edu.school} | {edu.year}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-300 mb-4">{edu.description}</p>
+                        <h4 className="text-lg font-semibold text-pink-300 mb-2">Key Courses:</h4>
+                        <ul className="list-disc list-inside text-gray-300">
+                          {edu.courses.map((course, idx) => (
+                            <motion.li
+                              key={idx}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.1 }}
+                            >
+                              {course}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === "services" && (
+              <motion.div
+                key="services"
+                variants={tabVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {services.map((service, index) => (
+                    <Card 
+                      key={service.name} 
+                      className="bg-white/10 backdrop-blur-md overflow-hidden border-none transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/20"
+                    >
+                      <CardHeader className="relative pb-0">
+                        <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center transform transition-all duration-300 hover:scale-110">
+                          <service.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <CardTitle className="text-2xl text-gray-200">{service.name}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: expandedService === service.name ? "auto" : "80px" }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-gray-300 mb-4">{service.description}</p>
+                          {expandedService === service.name && (
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                            >
+                              <h4 className="text-lg font-semibold text-pink-300 mb-2">Technologies:</h4>
+                              <ul className="list-disc list-inside text-gray-300">
+                                {service.technologies.map((tech, idx) => (
+                                  <motion.li
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                  >
+                                    {tech}
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          )}
+                        </motion.div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="mt-2"
+                          onClick={() => setExpandedService(expandedService === service.name ? null : service.name)}
+                        >
+                          {expandedService === service.name ? "Read Less" : "Read More"}
+                          <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${expandedService === service.name ? "rotate-180" : ""}`} />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-64 h-64 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute top-3/4 right-0 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-0 left-1/2 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+    </div>
+  )
+}
+
+export default AboutComponent;

@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Button } from "./Button";
+import { Menu, X } from 'lucide-react';
+import { Button } from "@/components/Button";
 import Link from "next/link";
 
 const NavItem = ({ href, children, isActive, onClick }) => {
@@ -15,7 +15,7 @@ const NavItem = ({ href, children, isActive, onClick }) => {
         }}
         className={`text-sm font-medium transition-colors duration-300 px-3 py-3 rounded-md ${
             isActive
-                ? "text-gray-900 font-bold bg-gray-100 border-gray-700 hover:bg-gray-200" // Enhanced color scheme for better visibility
+                ? "text-gray-900 font-bold bg-gray-100 border-gray-700 hover:bg-gray-200"
                 : "text-gray-800 hover:text-black border-transparent hover:border-gray-700 hover:bg-gray-100"
         }`}
     >
@@ -46,7 +46,7 @@ export function Navbar() {
 
     const handleNavItemClick = (section) => {
         setActiveSection(section);
-        setIsMenuOpen(false); // Ensures the menu closes upon item selection
+        setIsMenuOpen(false);
     };
 
     return (
@@ -186,3 +186,4 @@ export function Navbar() {
         </motion.header>
     );
 }
+

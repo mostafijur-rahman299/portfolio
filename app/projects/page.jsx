@@ -1,4 +1,4 @@
-import { Projects } from "@/app/projects/components/Projects"
+import ProjectsComponent from "@/app/projects/components/Projects"
 import Telemedicine from "@/public/assets/images/projects/telemedicine/banner.webp";
 import Crinf from "@/public/assets/images/projects/crinf/banner.webp";
 import WhatsappIntegration from "@/public/assets/images/projects/whatsapp-integration/banner.webp";
@@ -59,5 +59,5 @@ export const allProjects = [
 ];
 
 export default function Page() {
-  return <Projects />
+  return <ProjectsComponent />
 }
