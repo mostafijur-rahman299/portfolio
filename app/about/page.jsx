@@ -6,7 +6,6 @@ import { Code, GraduationCap, Server, Database, Globe, Cloud, Cpu, GitBranch, La
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/Card"
 import { Button } from "@/components/Button"
 import { Badge } from "@/components/Badge"
-// import { Progress } from "@/components/Progress"
 
 const skills = {
   backend: [
@@ -116,7 +115,8 @@ function AboutComponent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden">
+    <>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden py-16 px-32">
       <div className="container mx-auto px-4 py-16 max-w-6xl relative z-10">
         <motion.h1
           className="text-5xl sm:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200"
@@ -124,7 +124,7 @@ function AboutComponent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          About Mostafijur Rahman
+          Know More About Me
         </motion.h1>
 
         <motion.div
@@ -139,10 +139,10 @@ function AboutComponent() {
           <Card className="bg-white/10 backdrop-blur-md overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardContent className="p-6 sm:p-8">
               <p className="text-lg sm:text-xl text-gray-300 mb-4">
-                With over 5 years of experience in the tech industry, I specialize in creating robust, scalable, and user-friendly applications. My expertise spans across the entire development stack, from crafting intuitive front-end interfaces to architecting efficient back-end systems.
+                With over 4+ years of experience in the tech industry, I specialize in creating robust, scalable, and user-friendly applications. My expertise spans across the entire development stack, from crafting intuitive front-end interfaces to architecting efficient back-end systems.
               </p>
               <p className="text-lg sm:text-xl text-gray-300">
-                I'm driven by the challenge of turning complex problems into elegant solutions, always staying at the forefront of emerging technologies and best practices in software development.
+                I&apos;m driven by the challenge of turning complex problems into elegant solutions, always staying at the forefront of emerging technologies and best practices in software development.
               </p>
             </CardContent>
           </Card>
@@ -153,9 +153,8 @@ function AboutComponent() {
             {["skills", "education", "services"].map((tab) => (
               <Button
                 key={tab}
-                variant={activeTab === tab ? "default" : "outline"}
                 onClick={() => setActiveTab(tab)}
-                className="text-lg capitalize transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className={`text-lg capitalize transition-all duration-300 transform hover:scale-105  bg-white/10 overflow-hidden hover:shadow-lg hover:bg-pink-500/20 border-none ${activeTab === tab ? "bg-pink-500/50" : ""}`}
               >
                 {tab}
               </Button>
@@ -339,6 +338,7 @@ function AboutComponent() {
         <div className="absolute bottom-0 left-1/2 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
     </div>
+    </>
   )
 }
 

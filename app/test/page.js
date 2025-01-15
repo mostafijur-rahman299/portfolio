@@ -20,7 +20,7 @@ const Test = () => {
     return (
         <div className="flex flex-col items-center justify-center gap-10 mt-20">
             {Images.map((image, index) => (
-                <ImageCard image={image} index={index} />
+                <ImageCard image={image} index={index} key={index} />
             ))}
         </div>
     );

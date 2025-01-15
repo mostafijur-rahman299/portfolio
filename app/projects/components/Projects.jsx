@@ -168,7 +168,7 @@ const ProjectCard = ({ project, isHovered, onHover }) => (
             </Link>
           </Button>
           {project.demoLink && (
-            <Button size="sm" variant="outline" asChild className="border-white/40 text-white hover:bg-white/10 transition-all duration-300 hover:shadow-lg">
+            <Button size="sm" variant="outline" asChild className="border-white/40 text-white bg-white/10 transition-all duration-300 hover:shadow-lg">
               <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
                 Live Demo
                 <ExternalLink className="ml-2 h-4 w-4" />
@@ -176,7 +176,7 @@ const ProjectCard = ({ project, isHovered, onHover }) => (
             </Button>
           )}
           {project.githubLink && (
-            <Button size="sm" variant="outline" asChild className="border-white/40 text-white hover:bg-white/10 transition-all duration-300 hover:shadow-lg">
+            <Button size="sm" variant="outline" asChild className="border-white/40 text-white bg-white/10 transition-all duration-300 hover:shadow-lg">
               <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" />
                 GitHub
@@ -297,7 +297,7 @@ function ProjectsComponent() {
           </motion.div>
 
           <motion.div
-            className="flex flex-wrap justify-center gap-2 mb-16"
+            className="flex justify-center gap-2 mb-8 flex-wrap px-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -379,24 +379,7 @@ function ProjectsComponent() {
             }}
           />
         ))}
-      </div>
-
-      {/* Interactive cursor effect */}
-      <div className="fixed inset-0 pointer-events-none z-50">
-        <motion.div
-          className="w-6 h-6 rounded-full bg-white/30 backdrop-blur-sm"
-          animate={{
-            x: scrollY,
-            y: scrollY,
-          }}
-          transition={{
-            type: "spring",
-            damping: 10,
-            stiffness: 50,
-            restDelta: 0.001
-          }}
-        />
-      </div>
+      </div>      
     </div>
   )
 }

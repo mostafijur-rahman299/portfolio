@@ -8,14 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/Card";
 
 export default function ResumePage() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden flex flex-col items-center justify-center relative py-16">
-            {/* Fancy background elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/images/circuit-pattern.svg')] opacity-10"></div>
-                <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-                <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-            </div>
+        <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden flex flex-col items-center justify-center relative py-32 px-32">
+            
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -77,9 +71,6 @@ export default function ResumePage() {
                     </CardContent>
                 </Card>
             </motion.div>
-
-            {/* Floating particles */}
-            <Particles />
         </div>
     );
 }
@@ -186,32 +177,4 @@ const SkillCard = ({ title, skills }) => (
     </Card>
 );
 
-function Particles() {
-    return (
-        <div className="absolute inset-0 pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white rounded-full"
-                    initial={{
-                        x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                        y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                        scale: Math.random() * 0.5 + 0.5,
-                    }}
-                    animate={{
-                        y: [null, Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)],
-                    }}
-                    transition={{
-                        duration: Math.random() * 10 + 20,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    style={{
-                        opacity: Math.random() * 0.5 + 0.25,
-                    }}
-                />
-            ))}
-        </div>
-    );
-}
 

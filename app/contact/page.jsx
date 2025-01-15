@@ -1,14 +1,22 @@
 "use client"
 
-import React from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/Card"
+import React, { useRef, useState, useEffect } from "react"
 import { Button } from "@/components/Button"
-import { Input } from "@/components/Input"
-import { Textarea } from "@/components/Textarea"
-import { User, Mail, Send, Loader, Phone, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Send, Loader, Phone, MapPin } from 'lucide-react'
+import { Input } from "@/components/Input";
+import { Textarea } from "@/components/Textarea";
+import {
+  motion,
+  useAnimation,
+  useInView,
+  AnimatePresence,
+} from "framer-motion";
 
-export default function Contact() {
+export default function ContactSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const controls = useAnimation();
+
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -62,31 +70,68 @@ export default function Contact() {
     }
   };
 
+
+  useEffect(() => {
+      if (isInView) {
+          controls.start("visible");
+      }
+  }, [isInView, controls]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white overflow-hidden flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl w-full space-y-12 mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full"
-        >
-          <h2 className="text-center mt-16 text-5xl font-extrabold text-white mb-6">
-            Contact Me
-          </h2>
-          <p className="text-center text-md text-gray-300 mb-4">
-            Have a question or want to work together?
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col lg:flex-row gap-12 w-full"
-        >
-          <Card className="bg-white/10 backdrop-blur-lg border-gray-600 flex-1">
-            <CardContent className="pt-8">
-              {successMessage && (
+      <section
+          ref={ref}
+          className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-900 to-purple-800"
+      >
+          <motion.div
+              initial="hidden"
+              animate={controls}
+              variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, staggerChildren: 0.1 },
+                  },
+              }}
+              className="max-w-4xl mx-auto"
+          >
+              <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-indigo-300">
+                  Get in Touch
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <motion.div
+                      variants={{
+                          hidden: { opacity: 0, x: -50 },
+                          visible: { opacity: 1, x: 0 },
+                      }}
+                  >
+                      <h3 className="text-2xl font-semibold mb-4 text-pink-300">
+                          Contact Information
+                      </h3>
+                      <div className="space-y-4">
+                          <div className="flex items-center space-x-3">
+                              <Mail className="w-6 h-6 text-indigo-300" />
+                              <span>hello.mostafijur@gmail.com</span>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                              <Phone className="w-6 h-6 text-indigo-300" />
+                              <span>+88 (017) 89-929182</span>
+                          </div>
+                          <div className="flex items-center space-x-3">
+                              <MapPin className="w-6 h-6 text-indigo-300" />
+                              <span>B-Block, Mirpur-01, Dhaka, Bangladesh</span>
+                          </div>
+                      </div>
+                  </motion.div>
+                  <motion.form
+                      variants={{
+                          hidden: { opacity: 0, x: 50 },
+                          visible: { opacity: 1, x: 0 },
+                      }}
+                      className="space-y-4"
+                      onSubmit={handleSubmit}
+                  >
+                    {successMessage && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -98,86 +143,45 @@ export default function Contact() {
                   <p>{successMessage}</p>
                 </motion.div>
               )}
-              <form className="space-y-8" onSubmit={handleSubmit}>
-                <div className="space-y-4">
-                  <label htmlFor="name" className="sr-only">Name</label>
-                  <div className="relative">
-                    <Input
-                      id="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={(e) => handleInputChange("name", e.target.value)}
-                      className={`pl-12 bg-white/5 border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-gray-400 ${errors.name ? "border-red-500" : ""}`}
-                    />
-                    <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
-                  </div>
-                  {errors.name && <p className="text-red-500 text-sm mt-2">{errors.name}</p>}
-                </div>
-                <div className="space-y-4">
-                  <label htmlFor="email" className="sr-only">Email</label>
-                  <div className="relative">
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
-                      className={`pl-12 bg-white/5 border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-gray-400 ${errors.email ? "border-red-500" : ""}`}
-                    />
-                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
-                  </div>
-                  {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
-                </div>
-                <div className="space-y-4">
-                  <label htmlFor="message" className="sr-only">Message</label>
-                  <div className="relative">
-                    <Textarea
-                      id="message"
-                      placeholder="Your Message..."
-                      value={formData.message}
-                      onChange={(e) => handleInputChange("message", e.target.value)}
-                      className={`bg-white/5 border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-gray-400 ${errors.message ? "border-red-500" : ""}`}
-                      rows={6}
-                    />
-                  </div>
-                  {errors.message && <p className="text-red-500 text-sm mt-2">{errors.message}</p>}
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-300"
-                  disabled={isLoading}
-                >
-                  {isLoading ? <Loader className="w-6 h-6 animate-spin" /> : <Send className="w-6 h-6 mr-3" />}
-                  <span>{isLoading ? "Sending..." : "Send Message"}</span>
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-          <Card className="bg-white/20 backdrop-blur-xl border-gray-500 flex-1 shadow-lg">
-            <CardContent className="p-10 text-center">
-              <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
-              <div className="space-y-4">
-                <p className="flex items-center justify-center">
-                  <Mail className="text-gray-300 w-6 h-6 mr-2" />
-                  <span className="text-gray-300">hello.mostafij@gmail.com</span>
-                </p>
-                <p className="flex items-center justify-center">
-                  <Phone className="text-gray-300 w-6 h-6 mr-2" />
-                  <span className="text-gray-300">+8801789929182</span>
-                </p>
-                <p className="flex items-center justify-center">
-                  <Linkedin className="text-gray-300 w-6 h-6 mr-2" />
-                  <span className="text-gray-300">linkedin.com/in/hello-mostafij/</span>
-                </p>
-                <p className="flex items-center justify-center">
-                  <Twitter className="text-gray-300 w-6 h-6 mr-2" />
-                  <span className="text-gray-300">@mostafijur_</span>
-                </p>
+                      
+                      <Input
+                          type="text"
+                          placeholder="Your Name"
+                          value={formData.name}
+                          name="name"
+                          onChange={(e) => handleInputChange("name", e.target.value)}
+                          className={`bg-white/10 border-white/20 text-white placeholder-white/5 ${errors?.name ? "border-red-500" : ""}`}
+                      />
+                      {errors.name && <p className="text-red-500 text-sm mt-2">{errors.name}</p>}
+                      <Input
+                          type="email"
+                          placeholder="Your Email"
+                          value={formData.email}
+                          name="email"
+                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          className={`bg-white/10 border-white/20 text-white placeholder-white/50 ${errors?.email ? "border-red-500" : ""}`}
+                      />
+                      {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
+                      <Textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={(e) => handleInputChange("message", e.target.value)}
+                          placeholder="Your Message"
+                          className={`bg-white/10 border-white/20 text-white placeholder-white/50 ${errors?.name ? "border-red-500" : ""}`}
+                          rows={4}
+                      />
+                      {errors.message && <p className="text-red-500 text-sm mt-2">{errors.message}</p>}
+                      <Button
+                          type="submit"
+                          disabled={isLoading}
+                          className="w-full bg-gradient-to-r from-pink-500 to-indigo-500 hover:from-pink-600 hover:to-indigo-600 transition-all duration-300"
+                      >
+                          {isLoading ? <Loader className="w-6 h-6 animate-spin" /> : <Send className="w-6 h-6 mr-3" />}
+                          Send Message
+                      </Button>
+                  </motion.form>
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </div>
-  )
+          </motion.div>
+      </section>
+  );
 }

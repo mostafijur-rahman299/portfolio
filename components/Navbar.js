@@ -15,7 +15,7 @@ const NavItem = ({ href, children, icon: Icon, isActive, onClick }) => {
             className={`flex items-center text-sm font-medium transition-all duration-300 px-4 py-3 rounded-full ${
                 isActive
                     ? "text-white bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg"
-                    : "text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-pink-400 dark:hover:bg-gray-800"
             }`}
         >
             <Icon size={18} />
@@ -62,8 +62,7 @@ export function Navbar() {
         { href: "/projects", label: "Projects", icon: Briefcase },
         { href: "/about", label: "About Me", icon: User },
         { href: "/resume", label: "Resume", icon: FileText },
-        { href: "/blogs", label: "Blogs", icon: BookOpen },
-        { href: "/contact", label: "Contact", icon: Mail },
+        { href: "/blogs", label: "Blogs", icon: BookOpen }
     ];
 
     return (
