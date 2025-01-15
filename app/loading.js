@@ -21,7 +21,7 @@ export default function RootLoading() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white overflow-hidden flex flex-col items-center justify-center">
       <motion.div
         className="w-64 h-64 rounded-full border-8 border-gray-200 flex items-center justify-center overflow-hidden"
         initial={{ scale: 0.8, opacity: 0 }}

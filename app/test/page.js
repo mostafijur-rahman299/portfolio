@@ -4,12 +4,8 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import * as cv from "@techstark/opencv-js";
 import { DocumentScanner } from "./components/DocumentScanner";
-import DocumentImage from "../../public/test-images/test.png";
-import Test2Image from "../../public/test-images/test2.jpeg";
-import Test3Image from "../../public/test-images/test3.jpg";
-import Test4Image from "../../public/test-images/test4.webp";
-import Test5Image from "../../public/test-images/test5.jpeg";
-import Test6Image from "../../public/test-images/test6.jpeg";
+import Image1 from "../../public/TestImages/image1.png";
+import Image2 from "../../public/TestImages/image2.png";
 
 const Test = () => {
     const [points, setPoints] = useState({});
@@ -112,15 +108,11 @@ const Test = () => {
 
     const Images = [
         {
-            element: DocumentImage,
+            element: Image1,
             name: "Document Image",
             id: "document-image",
         },
-        { element: Test2Image, name: "Test 2 Image", id: "test2-image" },
-        { element: Test3Image, name: "Test 3 Image", id: "test3-image" },
-        { element: Test4Image, name: "Test 4 Image", id: "test4-image" },
-        { element: Test5Image, name: "Test 5 Image", id: "test5-image" },
-        { element: Test6Image, name: "Test 6 Image", id: "test6-image" },
+        { element: Image2, name: "Test 2 Image", id: "test2-image" },
     ];
 
     return (
