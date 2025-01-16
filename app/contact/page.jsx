@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import { Button } from "@/components/Button"
 import { Mail, Send, Loader, Phone, MapPin } from 'lucide-react'
 import { Input } from "@/components/Input";
@@ -9,7 +9,6 @@ import {
   motion,
   useAnimation,
   useInView,
-  AnimatePresence,
 } from "framer-motion";
 
 export default function ContactSection() {
@@ -81,6 +80,7 @@ export default function ContactSection() {
       <section
           ref={ref}
           className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-900 to-purple-800"
+          id="contact"
       >
           <motion.div
               initial="hidden"
@@ -95,9 +95,12 @@ export default function ContactSection() {
               }}
               className="max-w-4xl mx-auto"
           >
-              <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-indigo-300">
+              <h2 className="text-4xl font-bold text-center mb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-indigo-300">
                   Get in Touch
               </h2>
+              <p className="text-xl font-semibold text-pink-300 text-center mb-12">
+                Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <motion.div
                       variants={{

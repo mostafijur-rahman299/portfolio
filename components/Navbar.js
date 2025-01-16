@@ -2,10 +2,17 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, Briefcase, User, FileText, BookOpen, Mail, ChevronRight } from 'lucide-react';
-import { Button } from "@/components/Button";
+import {
+    Home,
+    Briefcase,
+    User,
+    FileText,
+    BookOpen,
+    Menu,
+    X,
+} from "lucide-react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 const NavItem = ({ href, children, icon: Icon, isActive, onClick }) => {
     return (
@@ -18,28 +25,20 @@ const NavItem = ({ href, children, icon: Icon, isActive, onClick }) => {
                     : "text-gray-700 dark:text-gray-300 hover:bg-pink-400 dark:hover:bg-gray-800"
             }`}
         >
-            <Icon size={18} />
+            <Icon size={18} className="mr-2" />
             <span>{children}</span>
-            {isActive && (
-                <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full z-[-1]"
-                    layoutId="active-pill"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-            )}
         </Link>
     );
 };
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            setIsScrolled(scrollPosition > 50);
+            setIsScrolled(window.scrollY > 50);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -48,12 +47,7 @@ export function Navbar() {
         };
     }, []);
 
-    useEffect(() => {
-        setActiveSection(window.location.pathname.split("/")[1] || "home");
-    }, []);
-
-    const handleNavItemClick = (section) => {
-        setActiveSection(section);
+    const handleNavItemClick = () => {
         setIsMenuOpen(false);
     };
 
@@ -62,57 +56,62 @@ export function Navbar() {
         { href: "/projects", label: "Projects", icon: Briefcase },
         { href: "/about", label: "About Me", icon: User },
         { href: "/resume", label: "Resume", icon: FileText },
-        { href: "/blogs", label: "Blogs", icon: BookOpen }
+        { href: "/blogs", label: "Blogs", icon: BookOpen },
     ];
 
     return (
         <motion.header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                 "bg-transparent"
-            }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
         >
-            <nav className="container mx-auto px-6 py-4">
-                <div className="flex justify-between items-center">
-                    <motion.div
-                        className="flex items-center space-x-4"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
+            <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+                {/* Logo */}
+                <motion.div
+                    className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <Link href="/">MR</Link>
+                </motion.div>
+
+                {/* Centered Nav Items */}
+                <motion.div
+                    className={`hidden md:flex space-x-6 ${
+                        isScrolled ? "shadow-md" : ""
+                    }`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    {navItems.map((item) => (
+                        <NavItem
+                            key={item.href}
+                            href={item.href}
+                            icon={item.icon}
+                            isActive={pathname === item.href}
+                            onClick={handleNavItemClick}
+                        >
+                            {item.label}
+                        </NavItem>
+                    ))}
+                </motion.div>
+
+                {/* Mobile Menu Toggle */}
+                <div className="md:hidden">
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors duration-300"
+                        aria-label="Toggle menu"
                     >
-                        <Link href="/">
-                            <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
-                                MR
-                            </span>
-                        </Link>
-                    </motion.div>
-                    <motion.div
-                        className={`hidden md:flex space-x-1 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md p-1 rounded-full transition-all duration-300 ${
-                            isScrolled ? "shadow-md" : ""
-                        }`}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        {navItems.map((item) => (
-                            <NavItem
-                                key={item.href}
-                                href={item.href}
-                                icon={item.icon}
-                                isActive={activeSection === item.href.slice(1) || (item.href === "/" && activeSection === "home")}
-                                onClick={() => handleNavItemClick(item.href.slice(1) || "home")}
-                            >
-                                {item.label}
-                            </NavItem>
-                        ))}
-                    </motion.div>
-                    <div className="flex items-center space-x-4">
-                        
-                    </div>
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
             </nav>
+
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
@@ -122,20 +121,19 @@ export function Navbar() {
                         transition={{ duration: 0.3 }}
                         className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"
                     >
-                        <div className="container mx-auto px-6 py-4">
+                        <div className="container mx-auto px-6 py-4 space-y-2">
                             {navItems.map((item) => (
                                 <motion.div
                                     key={item.href}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="py-2"
                                 >
                                     <NavItem
                                         href={item.href}
                                         icon={item.icon}
-                                        isActive={activeSection === item.href.slice(1) || (item.href === "/" && activeSection === "home")}
-                                        onClick={() => handleNavItemClick(item.href.slice(1) || "home")}
+                                        isActive={pathname === item.href}
+                                        onClick={handleNavItemClick}
                                     >
                                         {item.label}
                                     </NavItem>
@@ -148,4 +146,3 @@ export function Navbar() {
         </motion.header>
     );
 }
-

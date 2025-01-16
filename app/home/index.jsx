@@ -18,14 +18,10 @@ import {
     Smartphone,
     Briefcase,
     ChevronDown,
-    ChevronRight,
     Zap,
     ExternalLink,
     ArrowRight,
     Mouse,
-    Mail,
-    Phone,
-    MapPin,
 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/Button";
@@ -44,17 +40,12 @@ import {
     useInView,
     AnimatePresence,
 } from "framer-motion";
-import { Badge } from "@/components/Badge";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/Tooltip";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import ContactSection from "@/app/contact/page";
+import { allProjects } from "@/app/projects/page";
+import { Badge } from "@/components/Badge";
 
 const skills = {
     backend: [
@@ -132,79 +123,13 @@ const education = [
     },
 ];
 
-const allProjects = [
-    {
-        id: 1,
-        title: "AI-Powered Chat Application",
-        description:
-            "A real-time chat application with AI-generated responses.",
-        skills: ["React", "Django", "OpenAI API", "WebSocket"],
-        demoLink: "https://ai-chat.example.com",
-        githubLink: "https://github.com/yourusername/ai-chat",
-        icon: Globe,
-        color: "from-blue-400 to-indigo-600",
-    },
-    {
-        id: 2,
-        title: "E-commerce Platform",
-        description:
-            "A full-featured e-commerce platform with payment integration.",
-        skills: ["Django", "React", "PostgreSQL", "Stripe API"],
-        demoLink: "https://ecommerce.example.com",
-        githubLink: "https://github.com/yourusername/ecommerce",
-        icon: Server,
-        color: "from-pink-400 to-rose-600",
-    },
-    {
-        id: 3,
-        title: "Task Management System",
-        description: "A collaborative task management system for teams.",
-        skills: ["Django Rest Framework", "React", "Redis", "Docker"],
-        demoLink: "https://tasks.example.com",
-        githubLink: "https://github.com/yourusername/task-manager",
-        icon: Database,
-        color: "from-cyan-400 to-blue-600",
-    },
-    {
-        id: 4,
-        title: "Real-time Analytics Dashboard",
-        description: "A dashboard for visualizing real-time data analytics.",
-        skills: ["React", "Django Channels", "PostgreSQL", "WebSocket"],
-        demoLink: "https://analytics.example.com",
-        githubLink: "https://github.com/yourusername/analytics-dashboard",
-        icon: Cloud,
-        color: "from-emerald-400 to-teal-600",
-    },
-    {
-        id: 5,
-        title: "Machine Learning Pipeline",
-        description:
-            "An end-to-end ML pipeline for data processing and model training.",
-        skills: ["Python", "TensorFlow", "Docker", "Kubernetes"],
-        demoLink: "https://ml-pipeline.example.com",
-        githubLink: "https://github.com/yourusername/ml-pipeline",
-        icon: Cpu,
-        color: "from-amber-400 to-orange-600",
-    },
-    {
-        id: 6,
-        title: "Microservices Architecture",
-        description: "A scalable microservices-based application architecture.",
-        skills: ["Docker", "Kubernetes", "gRPC", "Redis"],
-        demoLink: "https://microservices.example.com",
-        githubLink: "https://github.com/yourusername/microservices-arch",
-        icon: Layers,
-        color: "from-violet-400 to-purple-600",
-    },
-];
-
 const services = [
     {
         name: "Full-Stack Development",
         icon: Code,
         description:
             "I develop full-stack applications using the latest technologies, ensuring seamless integration and functionality across all parts of the stack.",
-        technologies: ["React", "Node.js", "Express", "MongoDB", "PostgreSQL"],
+        technologies: ["Python", "Django", "Next.js", "React", "MongoDB", "PostgreSQL", "Docker", "Kubernetes", "AWS", "CI/CD"],
     },
     {
         name: "Frontend Development",
@@ -224,7 +149,7 @@ const services = [
         icon: Globe,
         description:
             "I integrate APIs to enhance the functionality of applications, focusing on seamless data exchange and system interoperability.",
-        technologies: ["RESTful APIs", "GraphQL", "Axios", "Fetch API"],
+        technologies: ["RESTful APIs", "GraphQL", "Axios", "Fetch API", "Postman", "Insomnia", "Swagger", "OpenAPI"],
     },
     {
         name: "DevOps & Deployment",
@@ -445,7 +370,7 @@ const ProjectCard = ({ project, isHovered, onHover }) => (
         transition={{ duration: 0.5 }}
     >
         <Card
-            className={`relative overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br ${project.color}`}
+            className={`h-full w-full relative overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br ${project.color}`}
             onMouseEnter={() => onHover(project.id)}
             onMouseLeave={() => onHover(null)}
         >
@@ -819,7 +744,7 @@ function HomeContent() {
     }, []);
 
     return (
-        <main className="relative z-10 container mx-auto px-4 py-20 sm:py-24 md:py-28 lg:py-32 max-w-6xl">
+        <main className="relative z-10 container mx-auto px-4 py-20 sm:py-24 md:py-28 lg:py-32 max-w-6xl ">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
                 <motion.div
                     className="w-full lg:w-1/2 sm:w-1/2 md:w-1/2"
@@ -899,7 +824,7 @@ function HomeContent() {
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mt-4">
-                        <Link href="/contact">
+                        <Link href="#contact">
                             <Button
                                 variant="secondary"
                                 className="flex items-center text-indigo-900 font-bold bg-white hover:bg-indigo-100 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -920,7 +845,7 @@ function HomeContent() {
                     </div>
                     <div className="mt-8 flex justify-center lg:justify-start space-x-4">
                         <motion.a
-                            href="https://github.com/yourusername"
+                            href="https://github.com/mostafijur-rahman299"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.1 }}
@@ -930,7 +855,7 @@ function HomeContent() {
                             <Github className="h-8 w-8" />
                         </motion.a>
                         <motion.a
-                            href="https://linkedin.com/in/yourusername"
+                            href="https://www.linkedin.com/in/hello-mostafij"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.1 }}
@@ -940,7 +865,7 @@ function HomeContent() {
                             <Linkedin className="h-8 w-8" />
                         </motion.a>
                         <motion.a
-                            href="https://twitter.com/yourusername"
+                            href="https://x.com/mostafijur_"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.1 }}

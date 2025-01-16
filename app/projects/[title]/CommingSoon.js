@@ -13,8 +13,8 @@ export default function ComingSoon({ projectTitle }) {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-600 to-black text-white flex items-center justify-center">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white flex items-center justify-center">
+      <div className="container mx-auto px-4 max-w-3xl mt-16">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}

@@ -1,6 +1,3 @@
-import { DocumentScanner } from "./DocumentScanner";
-
-
 const canvas = document.createElement('canvas');
 
 
@@ -45,7 +42,6 @@ export class OpenCVDocumentDetectHandler {
         });
       }
     } catch (error) {
-      console.log(error);
       quad.push([0, 0]);
       quad.push([0, 0]);
       quad.push([0, 0]);

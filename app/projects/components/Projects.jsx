@@ -2,12 +2,13 @@
 
 import React, { useState, useRef, useEffect } from "react"
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion"
-import { Zap, ExternalLink, Github, ArrowRight, Code, Server, Database, Globe, Cloud, Cpu, Layers } from 'lucide-react'
+import { Zap, ExternalLink, Github, ArrowRight } from 'lucide-react'
 import { Badge } from "@/components/Badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/Tooltip"
 import { Button } from "@/components/Button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/Card"
 import Link from "next/link"
+import { allProjects } from "../page"
 
 const allTags = [
   "All",
@@ -27,69 +28,6 @@ const allTags = [
   "RabbitMQ",
   "Celery",
   "Redis",
-]
-
-const allProjects = [
-  {
-    id: 1,
-    title: "AI-Powered Chat Application",
-    description: "A real-time chat application with AI-generated responses.",
-    skills: ["React", "Django", "OpenAI API", "WebSocket"],
-    demoLink: "https://ai-chat.example.com",
-    githubLink: "https://github.com/yourusername/ai-chat",
-    icon: Globe,
-    color: "from-blue-400 to-indigo-600",
-  },
-  {
-    id: 2,
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce platform with payment integration.",
-    skills: ["Django", "React", "PostgreSQL", "Stripe API"],
-    demoLink: "https://ecommerce.example.com",
-    githubLink: "https://github.com/yourusername/ecommerce",
-    icon: Server,
-    color: "from-pink-400 to-rose-600",
-  },
-  {
-    id: 3,
-    title: "Task Management System",
-    description: "A collaborative task management system for teams.",
-    skills: ["Django Rest Framework", "React", "Redis", "Docker"],
-    demoLink: "https://tasks.example.com",
-    githubLink: "https://github.com/yourusername/task-manager",
-    icon: Database,
-    color: "from-cyan-400 to-blue-600",
-  },
-  {
-    id: 4,
-    title: "Real-time Analytics Dashboard",
-    description: "A dashboard for visualizing real-time data analytics.",
-    skills: ["React", "Django Channels", "PostgreSQL", "WebSocket"],
-    demoLink: "https://analytics.example.com",
-    githubLink: "https://github.com/yourusername/analytics-dashboard",
-    icon: Cloud,
-    color: "from-emerald-400 to-teal-600",
-  },
-  {
-    id: 5,
-    title: "Machine Learning Pipeline",
-    description: "An end-to-end ML pipeline for data processing and model training.",
-    skills: ["Python", "TensorFlow", "Docker", "Kubernetes"],
-    demoLink: "https://ml-pipeline.example.com",
-    githubLink: "https://github.com/yourusername/ml-pipeline",
-    icon: Cpu,
-    color: "from-amber-400 to-orange-600",
-  },
-  {
-    id: 6,
-    title: "Microservices Architecture",
-    description: "A scalable microservices-based application architecture.",
-    skills: ["Docker", "Kubernetes", "gRPC", "Redis"],
-    demoLink: "https://microservices.example.com",
-    githubLink: "https://github.com/yourusername/microservices-arch",
-    icon: Layers,
-    color: "from-violet-400 to-purple-600",
-  },
 ]
 
 const SkillBadge = ({ skill, onClick, isActive }) => (
@@ -129,7 +67,7 @@ const ProjectCard = ({ project, isHovered, onHover }) => (
     transition={{ duration: 0.5 }}
   >
     <Card 
-      className={`relative overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br ${project.color}`}
+      className={`w-full h-full relative overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br ${project.color}`}
       onMouseEnter={() => onHover(project.id)}
       onMouseLeave={() => onHover(null)}
     >

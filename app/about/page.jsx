@@ -55,7 +55,7 @@ const services = [
     name: "Full-Stack Development", 
     icon: Code, 
     description: "I develop full-stack applications using the latest technologies, ensuring seamless integration and functionality across all parts of the stack.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "PostgreSQL"],
+    technologies: ["Python, Django", "React", "Next.js", "MySQL", "PostgreSQL", "Docker", "Kubernetes", "Redis", "WebSocket", "TailwindCSS", "Django Channels"],
   },
   { 
     name: "Frontend Development", 
@@ -116,7 +116,7 @@ function AboutComponent() {
 
   return (
     <>
-    <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden py-16 px-32">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 text-white overflow-hidden py-16">
       <div className="container mx-auto px-4 py-16 max-w-6xl relative z-10">
         <motion.h1
           className="text-5xl sm:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200"

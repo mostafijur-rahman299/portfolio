@@ -16,25 +16,28 @@ export function Footer() {
                     </div>
                     <div className="w-full md:w-1/3 text-center mb-4 md:mb-0">
                         <p className="text-sm text-gray-400">
-                            &copy; 2023 All Rights Reserved
+                            &copy; 2025 All Rights Reserved
                         </p>
                     </div>
                     <div className="w-full md:w-1/3 flex justify-center md:justify-end space-x-4">
                         <a
-                            href="#"
+                            href="https://github.com/mostafijur-rahman299"
                             className="text-gray-400 hover:text-white transition-colors duration-300"
+                            target="_blank"
                         >
                             <Github className="w-6 h-6" />
                         </a>
                         <a
-                            href="#"
+                            href="https://www.linkedin.com/in/hello-mostafij"
                             className="text-gray-400 hover:text-white transition-colors duration-300"
+                            target="_blank"
                         >
                             <Linkedin className="w-6 h-6" />
                         </a>
                         <a
-                            href="#"
+                            href="https://x.com/mostafijur_"
                             className="text-gray-400 hover:text-white transition-colors duration-300"
+                            target="_blank"
                         >
                             <Twitter className="w-6 h-6" />
                         </a>
