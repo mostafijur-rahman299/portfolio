@@ -114,7 +114,7 @@ export default function ContactSection() {
                       <div className="space-y-4">
                           <div className="flex items-center space-x-3">
                               <Mail className="w-6 h-6 text-indigo-300" />
-                              <span>hello.mostafijur@gmail.com</span>
+                              <span>hello.mostafij@gmail.com</span>
                           </div>
                           <div className="flex items-center space-x-3">
                               <Phone className="w-6 h-6 text-indigo-300" />
