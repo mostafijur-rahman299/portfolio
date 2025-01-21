@@ -685,9 +685,9 @@ function HomeContent() {
           <p className="text-lg sm:text-xl md:text-2xl text-indigo-200 mb-4 sm:mb-6">Full-Stack Software Engineer</p>
           <div className="text-base sm:text-lg md:text-xl text-indigo-100 mb-6 sm:mb-8">
             <p className="mb-4">
-              Hi, I'm Mostafijur Rahman, full-stack software developer with 4+ years of experience delivering scalable,
+              Hi, I&apos;m Mostafijur Rahman, full-stack software developer with 4+ years of experience delivering scalable,
               high-impact web and mobile solutions. I specialize in crafting innovative, user-focused products that
-              exceed client expectations. Let's collaborate to turn your ideas into exceptional results.
+              exceed client expectations. Let&apos;s collaborate to turn your ideas into exceptional results.
             </p>
             <div className="flex items-center justify-center lg:justify-start space-x-2">
               <span className="font-semibold">Skills:</span>
