@@ -19,10 +19,10 @@ const NavItem = ({ href, children, icon: Icon, isActive, onClick }) => {
         <Link
             href={href}
             onClick={onClick}
-            className={`flex items-center text-sm font-medium transition-all duration-300 px-4 py-3 rounded-full ${
+            className={`flex items-center text-sm font-medium transition-all duration-300 px-4 py-3 ${
                 isActive
-                    ? "text-white bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg"
-                    : "text-gray-700 dark:text-gray-300 hover:bg-pink-400 dark:hover:bg-gray-800"
+                    ? "text-pink-500"
+                    : "text-gray-500"
             }`}
         >
             <Icon size={18} className="mr-2" />
@@ -61,7 +61,7 @@ export function Navbar() {
 
     return (
         <motion.header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
@@ -79,9 +79,7 @@ export function Navbar() {
 
                 {/* Centered Nav Items */}
                 <motion.div
-                    className={`hidden md:flex space-x-6 ${
-                        isScrolled ? "shadow-md" : ""
-                    }`}
+                    className={`hidden md:flex space-x-6`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
@@ -103,7 +101,7 @@ export function Navbar() {
                 <div className="md:hidden">
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors duration-300"
+                        className="text-gray-500 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors duration-300"
                         aria-label="Toggle menu"
                     >
                         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
