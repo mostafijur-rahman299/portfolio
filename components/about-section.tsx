@@ -17,7 +17,7 @@ export function AboutSection() {
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">
             Hi, I'm
             <br />
-            Ali Abdaal
+            Mostafijur Rahman
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "8rem" }}
@@ -27,7 +27,7 @@ export function AboutSection() {
           </h2>
           <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
             <p>
-              I'm an ex-doctor turned YouTuber, Podcaster, entrepreneur and author. I've been creating YouTube videos
+              I'm a software engineer, entrepreneur and author. I've been creating YouTube videos
               for over 7 years and have a following of over 4 million over on my main channel.
             </p>
             <p>
