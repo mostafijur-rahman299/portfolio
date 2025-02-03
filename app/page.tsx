@@ -18,8 +18,8 @@ export default function Home() {
         <HelpSection />
         <ProjectSection />
         <AboutSection />
-        <ProductsSection />
-        <PodcastSection />
+        {/* <ProductsSection />
+        <PodcastSection /> */}
       </main>
       <Footer />
     </div>
