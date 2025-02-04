@@ -60,7 +60,7 @@ export function Hero() {
             </p>
             <div className="pt-4">
               <a
-                href="#connect"
+                href="#about"
                 className="inline-flex items-center px-8 py-4 text-lg font-medium rounded-full text-white bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 transition-colors duration-300 ease-in-out shadow-lg hover:shadow-xl"
               >
                 Let's Connect
