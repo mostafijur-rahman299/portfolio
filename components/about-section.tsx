@@ -4,6 +4,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRight, Twitter, Youtube, Linkedin } from "lucide-react"
+import BackImage from "@/public/back03.jpg"
+import FrontImage from "@/public/front01.jpg"
+import FrontImage2 from "@/public/front02.jpg"
 
 export function AboutSection() {
   return (
@@ -120,7 +123,7 @@ export function AboutSection() {
               >
                 <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white p-2 sm:p-3 shadow-lg">
                   <Image
-                    src="/mostafijur.jpg"
+                    src={BackImage}
                     alt="Mostafijur working at desk"
                     width={600}
                     height={400}
@@ -139,7 +142,7 @@ export function AboutSection() {
               >
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-white p-1.5 sm:p-2 shadow-lg">
                   <Image
-                    src="/coding.jpg"
+                    src={FrontImage}
                     alt="Mostafijur coding"
                     width={180}
                     height={180}
@@ -157,7 +160,7 @@ export function AboutSection() {
               >
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-white p-1.5 sm:p-2 shadow-lg ml-12">
                   <Image
-                    src="/project.jpg"
+                    src={FrontImage2}
                     alt="Featured project showcase"
                     width={180}
                     height={180}
