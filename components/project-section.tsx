@@ -137,7 +137,7 @@ export function ProjectSection() {
   return (
     <>
       <style>{styles}</style>
-      <section className="content-section py-16 sm:py-24 md:py-32">
+      <section className="content-section py-16 sm:py-24 md:py-32" id="projects">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

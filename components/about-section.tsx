@@ -7,8 +7,10 @@ import { ArrowRight, Twitter, Youtube, Linkedin } from "lucide-react"
 import BackImage from "@/public/back03.jpg"
 import FrontImage from "@/public/front01.jpg"
 import FrontImage2 from "@/public/front02.jpg"
+import { useRouter } from "next/navigation"
 
 export function AboutSection() {
+  const router = useRouter()
   return (
     <section className="w-full bg-[#FAF9F6] relative overflow-hidden" id="about">
       {/* Background decorative elements */}
@@ -61,18 +63,30 @@ export function AboutSection() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-2 sm:gap-3">
-              {["View Projects", "Read My Blog", "Contact Me"].map((text, index) => (
                 <Button
-                  key={text}
+                  onClick={() => window.scrollTo({
+                    top: document.getElementById('projects')?.offsetTop,
+                    behavior: 'smooth'
+                  })}
                   className={`
                     rounded-full px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 
                     shadow-sm hover:shadow-md hover:-translate-y-0.5
-                    ${index === 0 ? "bg-yellow-400 hover:bg-[#yellow-500] text-white" : "bg-white text-[#4A4A4A] hover:bg-gray-50"}
+                    ${"bg-yellow-400 hover:bg-[#yellow-500] text-white"}
                   `}
                 >
-                  {text}
+                  View Projects
                 </Button>
-              ))}
+
+                <Button
+                  onClick={() => router.push('/articles')}
+                  className={`
+                    rounded-full px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 
+                    shadow-sm hover:shadow-md hover:-translate-y-0.5
+                    ${"bg-white text-[#4A4A4A] hover:bg-gray-50"}
+                  `}
+                >
+                  Read My Blog
+                </Button>
             </div>
 
             {/* Social Icons */}

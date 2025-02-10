@@ -43,7 +43,7 @@ export default function BlogDetail() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#FAF9F6]">
       <main className="container mx-auto px-4 py-8 md:py-12">
         <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto">
           {/* Left Sidebar - Table of Contents */}

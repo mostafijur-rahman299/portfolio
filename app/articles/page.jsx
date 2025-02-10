@@ -12,6 +12,7 @@ export default function BlogList() {
   const blogPosts = [
     {
       title: "10 Productivity Hacks for Content Creators",
+      slug: "10-productivity-hacks-for-content-creators",
       excerpt: "Boost your content creation workflow with these game-changing productivity tips.",
       category: "Productivity",
       color: "#FF9500",
@@ -19,6 +20,7 @@ export default function BlogList() {
     },
     {
       title: "The Ultimate Guide to YouTube SEO",
+      slug: "the-ultimate-guide-to-youtube-seo",
       excerpt: "Learn how to optimize your videos for maximum visibility and growth on YouTube.",
       category: "YouTube",
       color: "#FF6B6B",
@@ -26,6 +28,7 @@ export default function BlogList() {
     },
     {
       title: "5 Effective Study Techniques Backed by Science",
+      slug: "5-effective-study-techniques-backed-by-science",
       excerpt: "Discover research-proven methods to enhance your learning and retention.",
       category: "Education",
       color: "#9747FF",
@@ -33,6 +36,7 @@ export default function BlogList() {
     },
     {
       title: "Building a Successful Online Business: From Idea to Launch",
+      slug: "building-a-successful-online-business-from-idea-to-launch",
       excerpt: "A step-by-step guide to turning your passion into a thriving online venture.",
       category: "Business",
       color: "#40C1EA",
@@ -40,6 +44,7 @@ export default function BlogList() {
     },
     {
       title: "The Power of Personal Branding in the Digital Age",
+      slug: "the-power-of-personal-branding-in-the-digital-age",
       excerpt: "Learn how to build and leverage your personal brand for career success.",
       category: "Marketing",
       color: "#FF4D4D",
@@ -47,6 +52,7 @@ export default function BlogList() {
     },
     {
       title: "Mastering the Art of Public Speaking",
+      slug: "mastering-the-art-of-public-speaking",
       excerpt: "Overcome your fear and become a confident, persuasive speaker.",
       category: "Self-Improvement",
       color: "#4CAF50",
@@ -54,6 +60,7 @@ export default function BlogList() {
     },
     {
       title: "The Future of AI in Content Creation",
+      slug: "the-future-of-ai-in-content-creation",
       excerpt: "Explore how artificial intelligence is revolutionizing the content industry.",
       category: "Technology",
       color: "#5C6BC0",
@@ -61,6 +68,7 @@ export default function BlogList() {
     },
     {
       title: "Financial Planning for Freelancers and Entrepreneurs",
+      slug: "financial-planning-for-freelancers-and-entrepreneurs",
       excerpt: "Essential tips for managing your finances when you're self-employed.",
       category: "Finance",
       color: "#9C27B0",
@@ -118,7 +126,7 @@ export default function BlogList() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3 line-clamp-2">{post.title}</h2>
                 <p className="text-gray-600 mb-4 text-sm sm:text-base flex-grow">{post.excerpt}</p>
                 <Link
-                  href="#"
+                  href={`/articles/${post.slug}`}
                   className={`text-sm sm:text-base font-medium hover:underline transition-all duration-200 flex items-center mt-auto`}
                   style={{ color: post.color }}
                 >

@@ -29,7 +29,7 @@ export function ProductsSection() {
   ]
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50" id="products">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((product, index) => (
