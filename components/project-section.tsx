@@ -1,9 +1,20 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import {
+  ChevronLeft,
+  ChevronRight,
+  Layers,
+  Globe,
+  Server,
+  Database,
+  Cloud,
+  Cpu,
+  ExternalLink,
+  Github,
+} from "lucide-react"
 import { motion, useAnimation, useMotionValue } from "framer-motion"
 
 const swipeConfidenceThreshold = 10000
@@ -32,7 +43,115 @@ const styles = `
     border-color: #FFD700;
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
   }
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  }
 `
+
+const projectsData = [
+  {
+    id: 6,
+    title: "Anonymous Chat App",
+    description:
+      "A chat app that allows users to chat anonymously with each other. It's end-to-end encrypted and secure app.",
+    skills: [
+      "Django",
+      "Next.js",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "Redis",
+      "WebSocket",
+      "TailwindCSS",
+      "Django Channels",
+    ],
+    demoLink: null,
+    githubLink: "https://github.com/mostafijur-rahman299/annonymous-chat",
+    icon: Layers,
+    color: "from-violet-400 to-purple-600",
+    image: "/placeholder.svg?height=300&width=400",
+  },
+  {
+    id: 0,
+    title: "WhatsApp API Integration & Customer Management",
+    description: "A system that integrates WhatsApp API for customer communication and management.",
+    skills: [
+      "Django",
+      "Django Rest Framework",
+      "React",
+      "Redux",
+      "WhatsApp API",
+      "PostgreSQL",
+      "Docker",
+      "Celery",
+      "Django Channels",
+      "RabbitMQ",
+    ],
+    demoLink: "https://app.whatsupseller.com/",
+    githubLink: null,
+    icon: Globe,
+    color: "from-blue-400 to-indigo-600",
+    image: "/placeholder.svg?height=300&width=400",
+  },
+  {
+    id: 1,
+    title: "Telemedicine Consultation App",
+    description: "A platform where patients can consult with doctors using AI-driven medical suggestions.",
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "OpenAI API", "Celery", "Redis"],
+    demoLink: "https://9jatelemedicine.com/",
+    githubLink: null,
+    icon: Server,
+    color: "from-pink-400 to-rose-600",
+    image: "/placeholder.svg?height=300&width=400",
+  },
+  {
+    id: 2,
+    title: "Poll & PTC Earn Platform",
+    description: "A platform where users can earn by participating in polls, PTC, and surveys.",
+    skills: [
+      "Django",
+      "Django Rest Framework",
+      "PostgreSQL",
+      "VanillaJS",
+      "jQuery",
+      "Third Party API Integration",
+      "Celery",
+      "Redis",
+    ],
+    demoLink: "https://crinf.net/",
+    githubLink: null,
+    icon: Database,
+    color: "from-cyan-400 to-blue-600",
+    image: "/placeholder.svg?height=300&width=400",
+  },
+  {
+    id: 4,
+    title: "Property Management System",
+    description:
+      "A platform for property owners and managers to oversee real estate listings, manage tenants, and track rent payments.",
+    skills: ["Django", "React", "Docker", "MySQL", "Stripe API", "Google Map", "Google Place API"],
+    demoLink: "https://wizerproperties.com/",
+    githubLink: null,
+    icon: Cloud,
+    color: "from-purple-500 to-blue-400",
+    image: "/placeholder.svg?height=300&width=400",
+  },
+  {
+    id: 5,
+    title: "Enterprise Resource Planning (ERP)",
+    description:
+      "It's designed to streamline business processes, including finance, inventory, human resources, and sales, within a single, integrated platform.",
+    skills: ["Python", "Django", "Django Rest Framework", "Docker", "PostgreSQL", "Celery", "Redis"],
+    demoLink: "https://ml-pipeline.example.com",
+    githubLink: "https://github.com/yourusername/ml-pipeline",
+    icon: Cpu,
+    color: "from-amber-400 to-orange-600",
+    image: "/placeholder.svg?height=300&width=400",
+  },
+]
 
 export function ProjectSection() {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -42,18 +161,22 @@ export function ProjectSection() {
   const controls = useAnimation()
   const x = useMotionValue(0)
 
-  const checkScroll = () => {
-    if (scrollRef.current) {
-      setCanScrollLeft(currentIndex > 0)
-      setCanScrollRight(currentIndex < projects.length - 3) // Show 3 items at a time
+  const projects = useMemo(() => projectsData, [])
+
+  const checkScroll = useMemo(() => {
+    return () => {
+      if (scrollRef.current) {
+        setCanScrollLeft(currentIndex > 0)
+        setCanScrollRight(currentIndex < projects.length - 3) // Show 3 items at a time
+      }
     }
-  }
+  }, [currentIndex, projects])
 
   useEffect(() => {
     checkScroll()
     window.addEventListener("resize", checkScroll)
     return () => window.removeEventListener("resize", checkScroll)
-  }, [currentIndex])
+  }, [checkScroll])
 
   const scroll = (direction: "left" | "right") => {
     const newIndex =
@@ -66,78 +189,10 @@ export function ProjectSection() {
     })
   }
 
-  const projects = [
-    {
-      title: "How to Change Your Life with Deep Work (My System)",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20at%209.28.27%E2%80%AFAM-eKDPMbd1tY2tVzzhhZqMSiq5m2Edi0.png",
-      date: "December 17, 2024",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Productivity",
-      tags: ["Deep Work", "Time Management", "Focus"],
-      description: "A comprehensive guide to implementing deep work practices in your daily routine.",
-    },
-    {
-      title: "My Honest Advice to Someone Who Wants to Start a YouTube Channel in 2025",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-03%20at%209.28.27%E2%80%AFAM-eKDPMbd1tY2tVzzhhZqMSiq5m2Edi0.png",
-      date: "January 10, 2025",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Content Creation",
-      tags: ["YouTube", "Social Media", "Marketing"],
-      description: "Real insights and strategies for building a successful YouTube presence.",
-    },
-    {
-      title: "The Ultimate Guide to Building a Personal Brand",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/personal-brand.png",
-      date: "February 5, 2025",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Personal Development",
-      tags: ["Branding", "Career Growth", "Online Presence"],
-      description: "Step-by-step guide to creating and growing your personal brand online.",
-    },
-    {
-      title: "Mastering React: Advanced Patterns and Best Practices",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/react-patterns.png",
-      date: "March 1, 2025",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Programming",
-      tags: ["React", "JavaScript", "Web Development"],
-      description: "Deep dive into advanced React patterns for building scalable applications.",
-    },
-    {
-      title: "The Future of AI in Content Creation",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ai-content.png",
-      date: "March 15, 2025",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Technology",
-      tags: ["AI", "Content", "Future Tech"],
-      description: "Exploring how AI is revolutionizing the content creation landscape.",
-    },
-    {
-      title: "Mastering React: Advanced Patterns and Best Practices",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/react-patterns.png",
-      date: "March 1, 2025",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Programming",
-      tags: ["React", "JavaScript", "Web Development"],
-      description: "Deep dive into advanced React patterns for building scalable applications.",
-    },
-    {
-      title: "The Future of AI in Content Creation",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ai-content.png",
-      date: "March 15, 2025",
-      backgroundColor: "bg-[#f9f6f3]",
-      category: "Technology",
-      tags: ["AI", "Content", "Future Tech"],
-      description: "Exploring how AI is revolutionizing the content creation landscape.",
-    },
-  ]
-
   return (
     <>
       <style>{styles}</style>
-      <section className="content-section py-16 sm:py-24 md:py-32" id="projects">
+      <section className="content-section py-16 sm:py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white" id="projects">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -152,16 +207,19 @@ export function ProjectSection() {
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight"
               >
-                <span className="text-[#40C1EA] bg-clip-text">
-                  My Latest
-                </span>
+                <span className="gradient-text">My Latest</span>
                 <br />
                 <span className="relative inline-block">
-                  Products
-                  <span className="absolute -bottom-2 left-0 h-2 w-full bg-yellow-400/40 -rotate-1 rounded-full"></span>
+                  Projects
+                  <motion.span
+                    className="absolute -bottom-2 left-0 h-2 w-full bg-yellow-400/40 rounded-full"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                  ></motion.span>
                 </span>
               </motion.h2>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -172,7 +230,6 @@ export function ProjectSection() {
               </motion.p>
             </div>
 
-            
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -235,49 +292,68 @@ export function ProjectSection() {
                   damping: 20,
                   delay: index * 0.08,
                 }}
-                className={`flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] overflow-hidden rounded-xl shadow-lg ${project.backgroundColor} hover:shadow-xl card-hover`}
+                className={`flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] overflow-hidden rounded-xl shadow-lg bg-white hover:shadow-xl card-hover`}
               >
                 <div className="p-6 group">
-                  <h3 className="text-lg font-semibold mb-3 leading-snug transition-colors duration-300 group-hover:text-black line-clamp-2 tracking-tight">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-2 transition-colors duration-300 group-hover:text-gray-700 font-medium">
-                    {project.date}
-                  </p>
-                  <div className="relative h-48 sm:h-52 mt-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold leading-snug transition-colors duration-300 group-hover:text-black line-clamp-2 tracking-tight">
+                      {project.title}
+                    </h3>
+                    <div className={`p-2 rounded-full bg-gradient-to-br ${project.color}`}>
+                      {project.icon && <project.icon className="w-6 h-6 text-white" />}
+                    </div>
+                  </div>
+                  <div className="relative h-48 sm:h-52 mt-4 mb-4 overflow-hidden rounded-lg">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       layout="fill"
                       objectFit="cover"
-                      className="transition-transform duration-300 hover:scale-105 rounded-lg"
+                      className="transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1.5 bg-yellow-400 text-black rounded-full text-xs font-semibold tracking-wide">
-                        {project.category}
-                      </span>
+                    <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <p className="text-white text-center px-4">{project.description}</p>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 mt-4 line-clamp-2 group-hover:text-gray-700 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.skills.slice(0, 3).map((skill, skillIndex) => (
                       <span
-                        key={tagIndex}
-                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs transition-colors duration-300 group-hover:bg-yellow-100 font-medium tag-text"
+                        key={skillIndex}
+                        className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs transition-colors duration-300 group-hover:bg-yellow-100 font-medium tag-text"
                       >
-                        {tag}
+                        {skill}
                       </span>
                     ))}
+                    {project.skills.length > 3 && (
+                      <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs transition-colors duration-300 group-hover:bg-yellow-100 font-medium tag-text">
+                        +{project.skills.length - 3} more
+                      </span>
+                    )}
                   </div>
-                  <Button
-                    variant="link"
-                    className="px-0 font-medium group flex items-center gap-2 text-sm text-black transition-colors duration-300 hover:text-yellow-600"
-                  >
-                    Learn more
-                    <span className="group-hover:translate-x-0.5 transition-transform duration-300">→</span>
-                  </Button>
+                  <div className="flex justify-between items-center">
+                    {project.demoLink && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-full font-medium text-sm text-black transition-colors duration-300 hover:bg-yellow-400 hover:text-black"
+                        onClick={() => window.open(project.demoLink, "_blank")}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        View Demo
+                      </Button>
+                    )}
+                    {project.githubLink && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-full font-medium text-sm text-black transition-colors duration-300 hover:bg-yellow-400 hover:text-black"
+                        onClick={() => window.open(project.githubLink, "_blank")}
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        GitHub
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -296,7 +372,7 @@ export function ProjectSection() {
               size="lg"
               className="rounded-full px-8 py-3 text-lg font-semibold border-2 border-yellow-400 text-black hover:bg-yellow-400 hover:text-black transition-all duration-300 button-text"
             >
-              View All Products
+              View All Projects
             </Button>
           </motion.div>
         </div>
@@ -304,3 +380,4 @@ export function ProjectSection() {
     </>
   )
 }
+
