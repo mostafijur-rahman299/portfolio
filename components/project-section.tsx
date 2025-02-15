@@ -16,7 +16,7 @@ import {
   Github,
 } from "lucide-react"
 import { motion, useAnimation, useMotionValue } from "framer-motion"
-
+import { useRouter } from "next/navigation"
 const swipeConfidenceThreshold = 10000
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
@@ -160,7 +160,7 @@ export function ProjectSection() {
   const [canScrollRight, setCanScrollRight] = useState(true)
   const controls = useAnimation()
   const x = useMotionValue(0)
-
+  const router = useRouter()
   const projects = useMemo(() => projectsData, [])
 
   const checkScroll = useMemo(() => {
@@ -371,6 +371,7 @@ export function ProjectSection() {
               variant="outline"
               size="lg"
               className="rounded-full px-8 py-3 text-lg font-semibold border-2 border-yellow-400 text-black hover:bg-yellow-400 hover:text-black transition-all duration-300 button-text"
+              onClick={() => router.push("/projects")}
             >
               View All Projects
             </Button>
