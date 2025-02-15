@@ -17,6 +17,8 @@ import {
 } from "lucide-react"
 import { motion, useAnimation, useMotionValue } from "framer-motion"
 import { useRouter } from "next/navigation"
+import TelemedicineBanner from "@/public/projects/telemedicine/banner.webp"
+
 const swipeConfidenceThreshold = 10000
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
@@ -55,6 +57,7 @@ const projectsData = [
   {
     id: 6,
     title: "Anonymous Chat App",
+    slug: "anonymous-chat",
     description:
       "A chat app that allows users to chat anonymously with each other. It's end-to-end encrypted and secure app.",
     skills: [
@@ -72,11 +75,12 @@ const projectsData = [
     githubLink: "https://github.com/mostafijur-rahman299/annonymous-chat",
     icon: Layers,
     color: "from-violet-400 to-purple-600",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/projects/anonymous-chat/banner.jpg",
   },
   {
     id: 0,
     title: "WhatsApp API Integration & Customer Management",
+    slug: "whatsapp-integration",
     description: "A system that integrates WhatsApp API for customer communication and management.",
     skills: [
       "Django",
@@ -94,22 +98,24 @@ const projectsData = [
     githubLink: null,
     icon: Globe,
     color: "from-blue-400 to-indigo-600",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/projects/whatsapp-integration/banner.webp",
   },
   {
     id: 1,
     title: "Telemedicine Consultation App",
+    slug: "telemedicine",
     description: "A platform where patients can consult with doctors using AI-driven medical suggestions.",
     skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "OpenAI API", "Celery", "Redis"],
     demoLink: "https://9jatelemedicine.com/",
     githubLink: null,
     icon: Server,
     color: "from-pink-400 to-rose-600",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/projects/telemedicine/banner.webp",
   },
   {
     id: 2,
     title: "Poll & PTC Earn Platform",
+    slug: "poll-ptc-earn",
     description: "A platform where users can earn by participating in polls, PTC, and surveys.",
     skills: [
       "Django",
@@ -125,11 +131,12 @@ const projectsData = [
     githubLink: null,
     icon: Database,
     color: "from-cyan-400 to-blue-600",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/projects/crinf/banner.webp",
   },
   {
     id: 4,
     title: "Property Management System",
+    slug: "property-management",
     description:
       "A platform for property owners and managers to oversee real estate listings, manage tenants, and track rent payments.",
     skills: ["Django", "React", "Docker", "MySQL", "Stripe API", "Google Map", "Google Place API"],
@@ -137,11 +144,12 @@ const projectsData = [
     githubLink: null,
     icon: Cloud,
     color: "from-purple-500 to-blue-400",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/projects/property-management/banner.jpeg",
   },
   {
     id: 5,
     title: "Enterprise Resource Planning (ERP)",
+    slug: "erp",
     description:
       "It's designed to streamline business processes, including finance, inventory, human resources, and sales, within a single, integrated platform.",
     skills: ["Python", "Django", "Django Rest Framework", "Docker", "PostgreSQL", "Celery", "Redis"],
@@ -149,7 +157,7 @@ const projectsData = [
     githubLink: "https://github.com/yourusername/ml-pipeline",
     icon: Cpu,
     color: "from-amber-400 to-orange-600",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/projects/erp/banner.jpeg",
   },
 ]
 
@@ -353,6 +361,15 @@ export function ProjectSection() {
                         GitHub
                       </Button>
                     )}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="rounded-full font-medium text-sm text-black transition-colors duration-300 hover:bg-yellow-400 hover:text-black"
+                      onClick={() => router.push(`/projects/${project.slug}`)}
+                    >
+                      View Details
+                    </Button>
+                    
                   </div>
                 </div>
               </motion.div>

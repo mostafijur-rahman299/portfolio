@@ -40,7 +40,7 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <Activity className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-semibold">M Rahman</span>
+              <span className="text-xl font-semibold">@Mostafij</span>
             </Link>
           </div>
 

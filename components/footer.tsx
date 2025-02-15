@@ -6,15 +6,13 @@ import { Youtube, Instagram, Linkedin, Twitter, Facebook } from "lucide-react"
 export function Footer() {
   const moreLinks = [
     { name: "About", href: "/about" },
-    { name: "Jobs", href: "/jobs" },
-    { name: "Contact", href: "/contact" },
-    { name: "My Account", href: "/account" },
+    { name: "Projects", href: "/projects" },
+    { name: "Blog", href: "/blog" },
   ]
 
   const freeContent = [
     { name: "Newsletter", href: "/newsletter" },
     { name: "Articles & Guides", href: "/articles" },
-    { name: "Podcast", href: "/podcast" },
     { name: "Videos", href: "/videos" },
     { name: "Book Notes", href: "/book-notes" },
   ]
@@ -26,11 +24,11 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Youtube, href: "#" },
-    { icon: Instagram, href: "#" },
-    { icon: Linkedin, href: "#" },
-    { icon: Twitter, href: "#" },
-    { icon: Facebook, href: "#" },
+    { icon: Youtube, href: "https://www.youtube.com/@mostafijur-r-sajib" },
+    { icon: Instagram, href: "https://www.instagram.com/mostafijur_rahman" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/hello-mostafij/" },
+    { icon: Twitter, href: "https://x.com/mostafijur_" },
+    { icon: Facebook, href: "https://www.facebook.com/hey.mostafij/" },
   ]
 
   const container = {
@@ -61,9 +59,9 @@ export function Footer() {
           >
             <div className="flex items-center space-x-2">
               <Activity className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-semibold">Ali Abdaal</span>
+              <span className="text-xl font-semibold">Mostafijur Rahman</span>
             </div>
-            <p className="text-gray-600">© Ali Abdaal 2025. All rights reserved.</p>
+            <p className="text-gray-600">© Mostafijur Rahman 2025. All rights reserved.</p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -104,7 +102,7 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          {/* <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Products</h3>
             <ul className="space-y-3">
               {products.map((link, index) => (
@@ -115,10 +113,10 @@ export function Footer() {
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
+          </motion.div> */}
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -138,7 +136,7 @@ export function Footer() {
               Cookie Policy
             </a>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </footer>
   )
