@@ -68,6 +68,7 @@ export function Footer() {
                   key={index}
                   variants={item}
                   href={social.href}
+                  target="_blank"
                   className="text-gray-400 hover:text-gray-600 transition-colors"
                 >
                   <social.icon className="h-5 w-5" />
@@ -81,7 +82,7 @@ export function Footer() {
             <ul className="space-y-3">
               {moreLinks.map((link, index) => (
                 <motion.li key={link.name} variants={item}>
-                  <a href={link.href} className="text-gray-600 hover:text-gray-900 transition-colors">
+                  <a href={link.href} target="_blank" className="text-gray-600 hover:text-gray-900 transition-colors">
                     {link.name}
                   </a>
                 </motion.li>
@@ -94,7 +95,7 @@ export function Footer() {
             <ul className="space-y-3">
               {freeContent.map((link, index) => (
                 <motion.li key={link.name} variants={item}>
-                  <a href={link.href} className="text-gray-600 hover:text-gray-900 transition-colors">
+                  <a href={link.href} target="_blank" className="text-gray-600 hover:text-gray-900 transition-colors">
                     {link.name}
                   </a>
                 </motion.li>

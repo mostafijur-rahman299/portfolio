@@ -60,15 +60,16 @@ export function Hero() {
             </p>
             <div className="pt-4">
               <a
-                href="#about"
-                className="inline-flex items-center px-8 py-4 text-lg font-medium rounded-full text-white bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 transition-colors duration-300 ease-in-out shadow-lg hover:shadow-xl"
+                href="/about"
+                className="inline-flex items-center text-lg font-medium text-yellow-600 hover:text-orange-600 transition-colors duration-300"
               >
-                Let's Connect
-                <svg className="ml-2 -mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                Know more about me
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
-                    fillRule="evenodd"
-                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
+                    strokeLinecap="round"
+                    strokeLinejoin="round" 
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
               </a>
