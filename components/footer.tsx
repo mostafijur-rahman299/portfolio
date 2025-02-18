@@ -1,7 +1,7 @@
 "use client"
 import { Activity } from "lucide-react"
 import { motion } from "framer-motion"
-import { Youtube, Instagram, Linkedin, Twitter, Facebook } from "lucide-react"
+import { Youtube, Instagram, Linkedin, Twitter, Facebook, Github } from "lucide-react"
 
 export function Footer() {
   const moreLinks = [
@@ -29,6 +29,7 @@ export function Footer() {
     { icon: Linkedin, href: "https://www.linkedin.com/in/hello-mostafij/" },
     { icon: Twitter, href: "https://x.com/mostafijur_" },
     { icon: Facebook, href: "https://www.facebook.com/hey.mostafij/" },
+    { icon: Github, href: "https://github.com/mostafijur-rahman299" },
   ]
 
   const container = {

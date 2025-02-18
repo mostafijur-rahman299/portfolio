@@ -146,9 +146,11 @@ export default function AboutPage() {
                     View Projects
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
-                  <Button variant="outline" className="border-2 border-yellow-400 text-yellow-600 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-amber-50 transition-all duration-300 text-base py-5 px-6 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1">
-                    Download CV
-                  </Button>
+                  <a href="/resume/mostafijur.pdf" download>
+                    <Button variant="outline" className="border-2 border-yellow-400 text-yellow-600 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-amber-50 transition-all duration-300 text-base py-5 px-6 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1">
+                      Download CV
+                    </Button>
+                  </a>
                 </div>
                 <div className="flex gap-4 justify-center md:justify-start pt-4">
                   <a
@@ -352,7 +354,7 @@ export default function AboutPage() {
             </p>
 
             <a href="mailto:hello@mostafijur.com" className="inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 py-4 rounded-full text-white font-medium hover:shadow-lg transition-all duration-300">
-              hello@mostafijur.com
+              hello.mostafij@gmail.com
             </a>
           </div>
         </div>
