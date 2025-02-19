@@ -67,7 +67,7 @@ export const projectData = [
     color: "from-pink-400 to-rose-600",
     image: "/projects/telemedicine/banner.webp",
     category: "web-app",
-  },
+  },  
   {
     id: 2,
     title: "Poll & PTC Earn Platform",

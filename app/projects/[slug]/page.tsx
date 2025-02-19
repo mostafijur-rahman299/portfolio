@@ -1,231 +1,132 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { ArrowLeft, ExternalLink, CheckCircle2, Code, Zap, Clock, GitBranch } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import React from 'react'
+import { useParams } from 'next/navigation';
+import ProjectDetails from './ProjectDetails';
 
-// This would typically come from a CMS or API
-const projectDetails = {
-  "api-development": {
-    title: "RESTful API Development",
-    description: "A scalable and secure API solution for a fintech application",
-    overview:
-      "We developed a high-performance RESTful API to power a next-generation fintech platform. The API was designed with scalability, security, and developer experience in mind, leveraging modern architectural patterns and best practices in API design.",
-    color: "#0EA5E9",
-    gradient: "from-sky-50 via-white to-sky-50",
-    images: ["/api-architecture.png", "/api-documentation.png", "/api-testing.png"],
-    features: [
-      "RESTful endpoints following OpenAPI 3.0 specification",
-      "OAuth2 and JWT for secure authentication",
-      "Rate limiting and request throttling",
-      "Comprehensive logging and monitoring",
-      "Automated testing suite with 95% code coverage",
-      "Containerized deployment for easy scaling",
+const projectData = [
+  {
+    id: 1,
+    title: "WhatsApp API Integration & Customer Management",
+    slug: "whatsapp-integration",
+    description: "A system that integrates WhatsApp API for customer communication and management.",
+    longDescription: "The WhatsApp API Integration & Customer Management System is a streamlined solution that empowers businesses to enhance customer communication through WhatsApp. Developed with Django and React, it enables users to send messages, create and manage message templates, and set reminders for timely follow-ups, ensuring no customer interaction is missed. The platform’s Customer Management module stores detailed profiles, allowing for personalized interactions based on customer history and preferences. A scheduling feature automates communication workflows, saving time and improving efficiency. The React-based interface offers a user-friendly experience, while Django ensures robust backend performance for scalability. This system ultimately strengthens customer relationships and optimizes communication, making it ideal for businesses aiming to enhance engagement.",
+    myRole: "As the lead full-stack developer, I designed and built the WhatsApp API Integration & Customer Management System to streamline customer communication for businesses. Focusing on the backend, I implemented the chat feature using Django, enabling seamless message sending and real-time interactions through WhatsApp. In addition, I developed a Customer Management module for storing detailed profiles, supporting personalized communications based on customer history and preferences.",
+    images: [
+      "/projects/whatsapp-integration/appears/dashboard.gif",
+      "/projects/whatsapp-integration/appears/templates.gif",
+      "/projects/whatsapp-integration/appears/chat.gif",
+      "/projects/whatsapp-integration/appears/marketing.gif",
+      "/projects/whatsapp-integration/appears/reminder.gif",
+      "/projects/whatsapp-integration/appears/meta.gif",
+      "/projects/whatsapp-integration/appears/tag.gif",
+      "/projects/whatsapp-integration/appears/customer.gif",
+      "/projects/whatsapp-integration/appears/kanban-board.gif",
     ],
-    techStack: [
-      { name: "Node.js", icon: "nodejs.svg" },
-      { name: "Express", icon: "express.svg" },
-      { name: "PostgreSQL", icon: "postgresql.svg" },
-      { name: "Redis", icon: "redis.svg" },
-      { name: "Docker", icon: "docker.svg" },
-      { name: "Kubernetes", icon: "kubernetes.svg" },
-      { name: "Jest", icon: "jest.svg" },
-      { name: "Swagger", icon: "swagger.svg" },
-    ],
-    challenges: [
-      "Ensuring high availability and low latency for global users",
-      "Implementing robust security measures for sensitive financial data",
-      "Designing a flexible architecture to accommodate future feature additions",
-      "Optimizing database queries for large datasets",
-    ],
-    timeline: [
-      { month: 1, milestone: "Requirements gathering and API design" },
-      { month: 2, milestone: "Core API development and security implementation" },
-      { month: 3, milestone: "Integration with existing systems and testing" },
-      { month: 4, milestone: "Performance optimization and documentation" },
-      { month: 5, milestone: "User acceptance testing and refinements" },
-      { month: 6, milestone: "Deployment and monitoring setup" },
-    ],
-    projectDuration: "6 months",
-    teamSize: "5 developers",
-    clientIndustry: "FinTech",
+    link: "https://app.whatsupseller.com/",
+    // github: "#",
+    teamSize: "4",
+    startDate: "February 2023",
+    endDate: "Still Running",
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "WhatsApp API", "Celery", "Django Channels", "RabbitMQ"]
   },
-  // Add other projects here
-}
-
-export default function ProjectDetail({ params }: { params: { slug: string } }) {
-  const project = projectDetails["api-development" as keyof typeof projectDetails]
-  const [activeTab, setActiveTab] = useState("overview")
-
-  if (!project) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <Link href="/projects" className="text-blue-600 hover:underline">
-            Return to Projects
-          </Link>
-        </div>
-      </div>
-    )
+  {
+    id: 2,
+    title: "Telemedicine Consultation System",
+    slug: "telemedicine",
+    description: "A digital platform enabling patients to connect with licensed doctors for convenient, secure online consultations, access personalized medical advice, and manage their health records.",
+    longDescription: "Patients can submit detailed consultation requests that accurately convey their symptoms and medical histories, ensuring thorough communication with healthcare professionals. Powered by a robust Django backend and a dynamic React frontend, the system allows doctors to review requests, provide accurate diagnoses, and recommend treatment plans. Key features include secure messaging for direct communication, appointment scheduling for convenient follow-ups, and a streamlined user interface that ensures easy navigation. Integration with the OpenAI API enhances the consultation experience by generating tailored responses based on patient symptoms, offering valuable insights and personalized suggestions. This innovative system bridges the gap between patients and providers, transforming healthcare delivery through advanced technology to ensure quality care and improved patient engagement.",
+    myRole: "As a full-stack developer, I spearheaded the development of the Telemedicine Consultation System, ensuring a smooth and secure patient-doctor interaction through a Django backend and React frontend. I implemented essential features such as one time messaging, appointment scheduling, and secure data management, focusing on reliability and ease of use. Additionally, I integrated the OpenAI API for tailored, symptom-based responses, enhancing the accuracy and value of each consultation.",
+    images: [
+      "/projects/telemedicine/appears/home-page.gif",
+      "/projects/telemedicine/appears/patient.gif",
+      "/projects/telemedicine/appears/doctor-response.gif",
+      "/projects/telemedicine/appears/post-advice-query.gif",
+      "/projects/telemedicine/appears/doctor-response-to-post-query.gif",
+      "/projects/telemedicine/appears/patient-rating.gif",
+    ],
+    link: "https://9jatelemedicine.com/",
+    // github: "#",
+    teamSize: "5",
+    startDate: "June 2022",
+    endDate: "Still Running",
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "OpenAI API", "Celery", "Redis"]
+  },
+  {
+    id: 3,
+    title: "Poll & PTC Earn Platform",
+    slug: "poll-ptc-earn",
+    description: "A versatile online platform that enables users to earn money by participating in polls, pay-to-click (PTC) ads, and third-party surveys, with options for ad creation and personalized earnings management.",
+    longDescription: "The Poll & PTC Earn Platform is an interactive earning platform that empowers users to earn money by engaging in activities such as polls, pay-to-click (PTC) advertisements, and third-party surveys. Users can participate in various polls and complete PTC ads to generate earnings directly from the platform. Additionally, the system allows users to create their own ads, enabling a dual opportunity for both ad creators and participants to benefit. Designed with a user-centric interface and built using a robust Django backend, the platform ensures efficient management of user activities, secure transactions, and accurate tracking of earnings. The seamless integration of these features makes it easy for users to navigate, participate in activities, and manage their earnings, creating a straightforward and rewarding experience.",
+    myRole: "As the dedicated backend developer for the Poll & PTC Earn Platform, I focused on building a secure and efficient system using Django, implementing essential features for managing polls, PTC ads, and user earnings. I prioritized security by implementing measures against XSS, clickjacking, and other vulnerabilities, ensuring a safe experience for all users. Additionally, I optimized the backend for scalability and reliability, allowing the platform to handle high volumes of user activity seamlessly.",
+    images: [
+      "/projects/crinf/crinf-net.gif",
+    ],
+    link: "https://crinf.net/",
+    // github: "#",
+    teamSize: "5",
+    startDate: "March 2020",
+    endDate: "Still Running",
+    skills: ["Django", "Django Rest Framework", "PostgreSQL", "VanillaJS", "jQuery", "Third Party API Integration", "Celery", "Redis"]
+  },
+  {
+    id: 4,
+    title: "Property Management System",
+    slug: "property-management",
+    description: "An advanced platform that streamlines property management, allowing users to manage rentals, while enabling buyers to explore listings, view 360-degree property tours, and search with Google Maps integration.",
+    longDescription: "The Property Management System is a powerful platform designed to simplify property management and property purchasing. It caters to property owners, managers, and prospective buyers by offering comprehensive tools for managing rentals, leases, and tenant requests. For buyers, the system provides an interactive experience with advanced search options, Google Maps integration for location-based searches, and immersive 360-degree property tours, allowing users to explore properties virtually. Developed with a secure Django backend and a vanilla JS frontend, the platform allows seamless property data handling, automated notifications, and secure transaction processing. Property managers benefit from tools to track tenant details, maintenance requests, and occupancy rates, while buyers can explore and assess properties with ease. By bridging property management and purchasing in one unified system, this platform transforms the property experience for all stakeholders.",
+    myRole: "As the dedicated full-stack developer for the Property Management System, I built a secure and scalable Django backend that supports property listings, rental management, and buyer engagement features. Additionally, I worked closely on implementing features for buyers, including search with Google Maps integration, 360-degree video tours, and seamless data flow for property exploration, ensuring a reliable and user-friendly experience across the platform.",
+    images: [
+      "/projects/property-management/wz.gif",
+    ],
+    link: "https://wizerproperties.com/",
+    // github: "#",
+    teamSize: "5",
+    startDate: "July 2023",
+    endDate: "Still Running",
+    skills: ["Django", "React", "Docker", "MySQL", "Stripe API", "Google Map", "Google Place API"]
+  },
+  {
+    id: 5,
+    title: "Enterprise Resource Planning (ERP)",
+    slug: "erp",
+    description: "It's designed to streamline business processes, including finance, inventory, human resources, and sales, within a single, integrated platform.",
+    longDescription: "The ERP system project is a comprehensive solution aimed at centralizing and optimizing various operational functions such as finance, inventory management, human resources, and sales. The system is designed to automate processes and enable seamless information flow across departments, leading to enhanced productivity and reduced redundancies. This ERP solution facilitates real-time data insights, allowing the company to make data-driven decisions that align with strategic goals. The project involved phases of requirement gathering, design, development, testing, and deployment to ensure robust functionality and user satisfaction. Key features include custom dashboards, role-based access, automated reporting, and integration with third-party services for extended capabilities.",
+    myRole: "I joined the team at the beginning of my journey in this company, contributing to the ERP project from its initial stages. My responsibilities included collaborating with stakeholders to define requirements, designing and implementing key modules, and ensuring data security and integrity within the system. I played an instrumental role in the back-end development, ensuring the ERP system’s scalability and smooth integration across various departments.",
+    images: [
+      "/projects/erp/erp-system-demo.gif",
+    ],
+    link: "",
+    // github: "#",
+    teamSize: "5",
+    startDate: "April 2020",
+    endDate: "November 2021",
+    skills: ["Django", "Django Rest Framework", "PostgreSQL", "jQuery"]
+  },
+  {
+    id: 6,
+    title: "Anonymous Chat App",
+    slug: "anonymous-chat",
+    description: "A chat app that allows users to chat anonymously with each other. It's end-to-end encrypted and secure app.",
+    longDescription: "",
+    myRole: "",
+    images: [],
+    link: "",
+    // github: "#",
+    teamSize: "5",
+    startDate: "April 2020",
+    endDate: "November 2021",
+    skills: ["Django", "Django Rest Framework", "PostgreSQL", "jQuery", "End-to-End Encryption"]
   }
+]
+
+
+export default function Details() {
+  const { slug } = useParams();
+
+  const project = projectData.find(project => project.slug === decodeURIComponent(slug as string));
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${project.gradient}`}>
-      <div className="container mx-auto px-4 py-16">
-        {/* Back Button */}
-        <Button variant="ghost" asChild className="mb-8 hover:bg-sky-100">
-          <Link href="/projects">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
-          </Link>
-        </Button>
-
-        {/* Project Header */}
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-sky-700 to-sky-500 bg-clip-text text-transparent">
-            {project.title}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">{project.description}</p>
-        </div>
-
-        {/* Project Details Tabs */}
-        <Tabs defaultValue="overview" className="mb-12">
-          <TabsList className="grid w-full grid-cols-4 lg:w-[600px] lg:mx-auto">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="tech">Tech Stack</TabsTrigger>
-            <TabsTrigger value="timeline">Timeline</TabsTrigger>
-          </TabsList>
-          <TabsContent value="overview">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">Project Overview</h2>
-                <p className="text-gray-700 mb-6">{project.overview}</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="flex items-center">
-                    <Clock className="w-5 h-5 mr-2 text-sky-600" />
-                    <span>Duration: {project.projectDuration}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <GitBranch className="w-5 h-5 mr-2 text-sky-600" />
-                    <span>Team Size: {project.teamSize}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Zap className="w-5 h-5 mr-2 text-sky-600" />
-                    <span>Industry: {project.clientIndustry}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="features">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {project.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <CheckCircle2 className="w-5 h-5 mr-2 text-green-500 flex-shrink-0 mt-1" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="tech">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                  {project.techStack.map((tech, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                      <div className="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center mb-2">
-                        <Image src={`/${tech.icon}`} alt={tech.name} width={32} height={32} />
-                      </div>
-                      <span className="text-sm text-center">{tech.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="timeline">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">Project Timeline</h2>
-                <div className="space-y-4">
-                  {project.timeline.map((item, index) => (
-                    <div key={index} className="flex">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold">
-                        {item.month}
-                      </div>
-                      <div className="ml-4">
-                        <p className="text-lg font-medium">{item.milestone}</p>
-                        <p className="text-gray-600">Month {item.month}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* Challenges Section */}
-        <Card className="mb-12">
-          <CardContent className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Project Challenges</h2>
-            <ul className="space-y-2">
-              {project.challenges.map((challenge, index) => (
-                <li key={index} className="flex items-start">
-                  <Code className="w-5 h-5 mr-2 text-sky-600 flex-shrink-0 mt-1" />
-                  <span>{challenge}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-
-        {/* Project Images */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Project Visuals</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {project.images.map((image, index) => (
-              <div key={index} className="relative aspect-video rounded-lg overflow-hidden">
-                <Image
-                  src={image || "/placeholder.svg"}
-                  alt={`Project visual ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <Card className="bg-sky-600 text-white">
-          <CardContent className="p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Build Your Next API?</h2>
-            <p className="mb-6 text-lg">
-              Let's collaborate on creating a robust and scalable API solution for your project.
-            </p>
-            <Button asChild size="lg" variant="secondary" className="bg-white text-sky-600 hover:bg-sky-100">
-              <Link href="/contact">
-                Start Your Project
-                <ExternalLink className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <ProjectDetails projectData={project} />
   )
 }
-
