@@ -15,22 +15,17 @@ import {
 } from "@/components/ui/navigation-menu"
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
 
   const resourceTypes = [
     { icon: "📝", name: "Articles", href: "/articles" },
     { icon: "📚", name: "Book Notes", href: "/book-notes" },
     { icon: "🎥", name: "Videos", href: "/videos" },
-    { icon: "🎙️", name: "Podcast", href: "/podcast" },
     { icon: "📧", name: "Newsletter", href: "/newsletter" },
   ]
 
   const topics = [
-    { icon: "⚡", name: "Productivity", href: "/topic/productivity" },
-    { icon: "📹", name: "YouTube", href: "/topic/youtube" },
-    { icon: "📚", name: "Studying", href: "/topic/studying" },
-    { icon: "💼", name: "Online Business", href: "/topic/business" },
-    { icon: "🛠️", name: "Tools & Tech", href: "/topic/tools" },
+    { icon: "💼", name: "Business", href: "/business" },
+    { icon: "🛠️", name: "Tools & Tech", href: "/tools" }
   ]
 
   return (
