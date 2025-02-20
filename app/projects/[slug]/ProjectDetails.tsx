@@ -1,406 +1,263 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Calendar, Users, Code, ChevronDown, Star, Link as LinkIcon } from "lucide-react"
+import {
+  ExternalLink,
+  Github,
+  Calendar,
+  Users,
+  Code,
+  Target,
+  Lightbulb,
+  Award,
+  Rocket,
+  CheckCircle
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Progress } from "@/components/ui/progress"
 
 export default function ProjectDetails({ projectData }: { projectData: any }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % projectData.images.length)
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + projectData.images.length) % projectData.images.length)
-  }
-
-  // Auto-advance images every 5 seconds
-  useEffect(() => {
-    if (!isHovered) {
-      const timer = setInterval(nextImage, 5000)
-      return () => clearInterval(timer)
-    }
-  }, [isHovered])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
-      {/* Enhanced Background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/images/circuit-pattern.svg')] opacity-5"></div>
-        <motion.div
-          className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-          }}
-        />
-        <motion.div
-          className="absolute top-3/4 right-0 w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -100, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-32 pb-16 max-w-6xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <motion.h1 
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300"
-            whileHover={{ scale: 1.02 }}
-          >
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-16 max-w-7xl">
+        {/* Project Header */}
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-700 to-yellow-900">
             {projectData.title}
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl mb-8 text-indigo-200 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
+          </h1>
+          <p className="text-base sm:text-lg text-yellow-700 max-w-3xl mx-auto leading-relaxed">
             {projectData.description}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
-          <motion.div
-            className="lg:col-span-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-          >
-            <Card className="bg-white/5 backdrop-blur-md overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-              <CardContent className="p-0">
-                <div className="relative overflow-hidden rounded-lg">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentImageIndex}
-                      initial={{ opacity: 0, scale: 1.1 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Image
-                        src={projectData.images[currentImageIndex] || "/placeholder.svg"}
-                        alt={`Project image ${currentImageIndex + 1}`}
-                        width={1200}
-                        height={800}
-                        className="w-full h-[500px] object-cover transform hover:scale-105 transition-transform duration-500"
-                        priority
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                  <Button
-                    variant="secondary"
-                    size="icon"
-                    className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 backdrop-blur-sm"
-                    onClick={prevImage}
-                  >
-                    <ArrowLeft className="h-6 w-6" />
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    size="icon"
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 backdrop-blur-sm"
-                    onClick={nextImage}
-                  >
-                    <ArrowRight className="h-6 w-6" />
-                  </Button>
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 mb-12">
+          {/* Project Images */}
+          <div className="lg:col-span-8">
+            <Card className="border-2 border-yellow-200 shadow-lg bg-white">
+              <CardContent className="p-4 sm:p-6">
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src={projectData.images[currentImageIndex] || "/placeholder.svg"}
+                    alt={`Project image ${currentImageIndex + 1}`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-              </CardContent>
-            </Card>
-            <div className="flex justify-center mt-4 space-x-2">
-              {projectData.images.map((_, index: number) => (
-                <motion.button
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                    index === currentImageIndex ? "bg-purple-500" : "bg-white/30"
-                  }`}
-                  onClick={() => setCurrentImageIndex(index)}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Card className="bg-white/5 backdrop-blur-md overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                  Project Overview
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <motion.div 
-                  className="flex items-center text-indigo-200"
-                  whileHover={{ x: 5 }}
-                >
-                  <Calendar className="mr-2 h-5 w-5 text-purple-400" />
-                  <span>
-                    {projectData.startDate} - {projectData.endDate}
-                  </span>
-                </motion.div>
-                <motion.div 
-                  className="flex items-center text-indigo-200"
-                  whileHover={{ x: 5 }}
-                >
-                  <Users className="mr-2 h-5 w-5 text-purple-400" />
-                  <span>{projectData.teamSize} Team Members</span>
-                </motion.div>
-                <motion.div 
-                  className="flex items-center text-indigo-200"
-                  whileHover={{ x: 5 }}
-                >
-                  <Code className="mr-2 h-5 w-5 text-purple-400" />
-                  <span>{projectData.skills.length} Technologies Used</span>
-                </motion.div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/5 backdrop-blur-md overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                  Tech Stack
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {projectData.skills.map((skill: string, index: number) => (
-                    <motion.div 
-                      key={index} 
-                      whileHover={{ scale: 1.1, rotate: [-1, 1, -1, 0] }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Badge 
-                        variant="secondary" 
-                        className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-white border border-white/10 backdrop-blur-sm"
-                      >
-                        {skill}
-                      </Badge>
-                    </motion.div>
+                <div className="flex justify-center mt-4 gap-3">
+                  {projectData.images.map((image: string, index: number) => (
+                    <button
+                      key={index}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentImageIndex 
+                          ? "bg-yellow-500 ring-2 ring-yellow-300"
+                          : "bg-yellow-200 hover:bg-yellow-300"
+                      }`}
+                      onClick={() => setCurrentImageIndex(index)}
+                      aria-label={`View image ${index + 1}`}
+                    />
                   ))}
                 </div>
               </CardContent>
             </Card>
 
-            <div className="flex flex-col space-y-4">
-              {projectData.demoLink && (
-                <Button
-                  asChild
-                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 group"
-                >
-                  <a href={projectData.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                    Live Demo 
-                    <motion.span
-                      className="ml-2"
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+            {/* Project Goals Card */}
+            <Card className="border-2 border-yellow-200 shadow-lg bg-white mt-6">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xl text-yellow-800 flex items-center">
+                  <Target className="mr-2 h-6 w-6" />
+                  Project Goals
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {projectData.project_goals?.map((goal: string, index: number) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-yellow-600 mt-1" />
+                    <p className="text-yellow-700">{goal}</p>
+                  </div>
+                )) || (
+                  <p className="text-yellow-600">Project goals not specified</p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Project Details Sidebar */}
+          <div className="lg:col-span-4 space-y-6">
+            {/* Overview Card */}
+            <Card className="border-2 border-yellow-200 shadow-lg bg-white">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xl text-yellow-800">Project Overview</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                <div className="flex items-center text-yellow-700 hover:bg-yellow-50 p-2 rounded-lg transition-colors">
+                  <Calendar className="mr-3 h-5 w-5 flex-shrink-0" />
+                  <span className="text-sm">{projectData.startDate} - {projectData.endDate}</span>
+                </div>
+                <div className="flex items-center text-yellow-700 hover:bg-yellow-50 p-2 rounded-lg transition-colors">
+                  <Users className="mr-3 h-5 w-5 flex-shrink-0" />
+                  <span className="text-sm">{projectData.teamSize} Team Members</span>
+                </div>
+                <div className="flex items-center text-yellow-700 hover:bg-yellow-50 p-2 rounded-lg transition-colors">
+                  <Code className="mr-3 h-5 w-5 flex-shrink-0" />
+                  <span className="text-sm">{projectData.skills.length} Technologies Used</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Tech Stack Card */}
+            <Card className="border-2 border-yellow-200 shadow-lg bg-white">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xl text-yellow-800">Technologies Used</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {projectData.skills.map((skill: string, index: number) => (
+                    <Badge 
+                      key={index} 
+                      className="bg-yellow-100 text-yellow-800 hover:bg-yellow-200 transition-colors px-3 py-1"
                     >
-                      <ExternalLink className="h-4 w-4" />
-                    </motion.span>
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Key Features Card */}
+            <Card className="border-2 border-yellow-200 shadow-lg bg-white">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xl text-yellow-800 flex items-center">
+                  <Lightbulb className="mr-2 h-6 w-6" />
+                  Key Features
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  {projectData.key_features?.map((feature: string, index: number) => (
+                    <li key={index} className="flex items-center text-yellow-700">
+                      <CheckCircle className="mr-2 h-4 w-4" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  )) || (
+                    <li className="text-yellow-600 text-sm">Features not specified</li>
+                  )}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-4">
+              {projectData.demoLink && (
+                <Button className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white w-full py-6 text-lg shadow-lg">
+                  <a
+                    href={projectData.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-full"
+                  >
+                    View Live Demo
+                    <ExternalLink className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
               )}
+              
               {projectData.githubLink ? (
-                <Button
-                  variant="outline"
-                  asChild
-                  className="w-full border-white/20 text-white bg-white/5 hover:bg-white/10 transition-all duration-300"
+                <Button 
+                  variant="outline" 
+                  className="border-2 border-yellow-500 text-yellow-700 hover:bg-yellow-50 w-full py-6 text-lg"
                 >
-                  <a href={projectData.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                    View Source
-                    <Github className="ml-2 h-4 w-4" />
+                  <a
+                    href={projectData.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-full"
+                  >
+                    Source Code
+                    <Github className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
               ) : (
-                <p className="text-sm text-indigo-200 text-center italic">
-                  Private repository - Code not publicly available
+                <p className="text-sm text-yellow-600 text-center bg-yellow-50 p-3 rounded-lg">
+                  Private Repository - Source code not available
                 </p>
               )}
-              <Button
-                asChild
-                className="w-full bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 transition-all duration-300"
-              >
-                <Link href="/#contact" className="flex items-center justify-center">
-                  Get in Touch
-                  <motion.span
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </motion.span>
-                </Link>
-              </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
+        {/* Project Details Tabs */}
+        <div className="w-full max-w-full overflow-x-hidden">
           <Tabs defaultValue="about" className="w-full">
-            <TabsList className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-1">
-              <TabsTrigger value="about" className="text-white data-[state=active]:bg-white/10">
-                About Project
-              </TabsTrigger>
-              <TabsTrigger value="role" className="text-white data-[state=active]:bg-white/10">
-                My Role
-              </TabsTrigger>
-              <TabsTrigger value="challenges" className="text-white data-[state=active]:bg-white/10">
-                Challenges
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="about">
-              <Card className="bg-white/5 backdrop-blur-md overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-                <CardHeader>
-                  <CardTitle className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                    Project Details
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg leading-relaxed text-indigo-200">
-                    {projectData.longDescription}
-                  </p>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="role">
-              <Card className="bg-white/5 backdrop-blur-md overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-                <CardHeader>
-                  <CardTitle className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                    My Contribution
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg leading-relaxed text-indigo-200">
-                    {projectData.myRole}
-                  </p>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="challenges">
-              <Card className="bg-white/5 backdrop-blur-md overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
-                <CardHeader>
-                  <CardTitle className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                    Technical Challenges
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg leading-relaxed text-indigo-200">
-                    {projectData.challenges || "No specific challenges were documented for this project."}
-                  </p>
-                </CardContent>
-              </Card>
-            </TabsContent>
+            <div className="overflow-x-auto">
+              <TabsList className="w-full flex flex-nowrap md:flex-wrap gap-1 md:gap-2 justify-start border-b-2 border-yellow-200 mb-6 bg-transparent p-1 min-w-max md:min-w-0">
+                <TabsTrigger 
+                  value="about" 
+                  className="whitespace-nowrap flex-shrink-0 md:flex-1 w-[120px] md:min-w-[100px] md:max-w-[150px] data-[state=active]:bg-yellow-500 data-[state=active]:text-white data-[state=active]:shadow-md px-3 py-2.5 text-xs md:text-sm lg:text-base rounded-md transition-all duration-200 hover:bg-yellow-100"
+                >
+                  About Project
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="role"
+                  className="whitespace-nowrap flex-shrink-0 md:flex-1 w-[120px] md:min-w-[100px] md:max-w-[150px] data-[state=active]:bg-yellow-500 data-[state=active]:text-white data-[state=active]:shadow-md px-3 py-2.5 text-xs md:text-sm lg:text-base rounded-md transition-all duration-200 hover:bg-yellow-100"
+                >
+                  My Role
+                </TabsTrigger>
+              </TabsList>
+            </div>
+            
+            <div className="mt-4 space-y-4">
+              <TabsContent value="about" className="focus-visible:outline-none">
+                <Card className="border-2 border-yellow-200 shadow-lg bg-white transform transition-all duration-300 hover:shadow-xl">
+                  <CardContent className="p-3 sm:p-4 md:p-6 lg:p-8">
+                    <p className="text-yellow-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                      {projectData.longDescription}
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="role" className="focus-visible:outline-none">
+                <Card className="border-2 border-yellow-200 shadow-lg bg-white transform transition-all duration-300 hover:shadow-xl">
+                  <CardContent className="p-3 sm:p-4 md:p-6 lg:p-8">
+                    <p className="text-yellow-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                      {projectData.myRole}
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="challenges" className="focus-visible:outline-none">
+                <Card className="border-2 border-yellow-200 shadow-lg bg-white transform transition-all duration-300 hover:shadow-xl">
+                  <CardContent className="p-3 sm:p-4 md:p-6 lg:p-8">
+                    <p className="text-yellow-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                      {projectData.challenges || "No specific challenges were documented for this project."}
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="learnings" className="focus-visible:outline-none">
+                <Card className="border-2 border-yellow-200 shadow-lg bg-white transform transition-all duration-300 hover:shadow-xl">
+                  <CardContent className="p-3 sm:p-4 md:p-6 lg:p-8">
+                    <p className="text-yellow-800 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                      {projectData.keyLearnings || "Key learnings for this project are not available."}
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </div>
           </Tabs>
-        </motion.div>
-
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          <Button
-            variant="ghost"
-            size="lg"
-            className="text-white hover:text-purple-300 transition-colors duration-300 group"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            Back to Top 
-            <motion.span
-              className="ml-2 group-hover:-translate-y-1 transition-transform duration-300"
-            >
-              <ChevronDown className="h-4 w-4 rotate-180" />
-            </motion.span>
-          </Button>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Floating action button for quick navigation */}
-      <AnimatePresence>
-        {isScrolled && (
-          <motion.div
-            className="fixed bottom-8 right-8 z-50"
-            initial={{ opacity: 0, scale: 0.5, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.5, y: 20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Button
-              variant="secondary"
-              size="icon"
-              className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              <motion.span
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ChevronDown className="h-6 w-6 rotate-180" />
-              </motion.span>
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }
