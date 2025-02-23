@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#faf9f6]">
       <main>
         <Hero />
-        {/* <Newsletter /> */}
+        <Newsletter />
         <HelpSection />
         <ProjectSection />
         <TestimonialSection />
