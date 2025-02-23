@@ -95,7 +95,7 @@ export function ProjectSection() {
   return (
     <>
       <style>{styles}</style>
-      <section className="content-section py-16 sm:py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white" id="projects">
+      <section className="content-section py-16 sm:py-24 md:py-32" id="projects">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,8 +210,7 @@ export function ProjectSection() {
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
                       className="transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
