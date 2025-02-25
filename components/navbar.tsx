@@ -28,6 +28,10 @@ export function Navbar() {
     { icon: "🛠️", name: "Tools & Tech", href: "/tools" }
   ]
 
+  const handleSubscribeSubstack = () => {
+    window.open("https://mostafijur.substack.com/subscribe", "_blank")
+  }
+
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +39,7 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <Activity className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-semibold">@Mostafij</span>
+              <span className="text-xl font-semibold">@Mostafijur</span>
             </Link>
           </div>
 
@@ -106,7 +110,7 @@ export function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <Button className="bg-[#ff7f5d] hover:bg-[#ff6b4a]">Join With Me</Button>
+            <Button className="bg-[#ff7f5d] hover:bg-[#ff6b4a]" onClick={handleSubscribeSubstack}>Join With Me</Button>
           </div>
 
           <div className="md:hidden">

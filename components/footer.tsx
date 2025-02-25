@@ -11,7 +11,7 @@ export function Footer() {
   ]
 
   const freeContent = [
-    { name: "Newsletter", href: "/newsletter" },
+    { name: "Newsletter", href: "https://mostafijur.substack.com/subscribe" },
     { name: "Articles & Guides", href: "/articles" },
     { name: "Videos", href: "/videos" },
     { name: "Book Notes", href: "/book-notes" },
@@ -62,7 +62,8 @@ export function Footer() {
               <Activity className="h-8 w-8 text-blue-400" />
               <span className="text-xl font-semibold">Mostafijur Rahman</span>
             </div>
-            <p className="text-gray-600">© Mostafijur Rahman 2025. All rights reserved.</p>
+              <span className="text-sm text-gray-500">(hello.mostafijur@gmail.com)</span>
+            <p className="text-gray-600">© MRS 2025. All rights reserved.</p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a

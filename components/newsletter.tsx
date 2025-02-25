@@ -1,8 +1,14 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Send } from "lucide-react"
 
 export function Newsletter() {
+  const handleSubscribeSubstack = () => {
+    window.open("https://mostafijur.substack.com/subscribe", "_blank")
+  }
+  
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
       <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm">
@@ -24,8 +30,7 @@ export function Newsletter() {
               web, directly to your inbox.
             </p>
             <div className="flex gap-2">
-              <Input type="email" placeholder="Your email" className="flex-1" />
-              <Button className="bg-blue-400 hover:bg-blue-500">Subscribe</Button>
+              <Button className="bg-blue-400 hover:bg-blue-500" onClick={handleSubscribeSubstack}>Subscribe</Button>
             </div>
           </div>
         </div>
