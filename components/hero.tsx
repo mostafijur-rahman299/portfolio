@@ -46,7 +46,7 @@ export function Hero() {
               <span className="block w-32 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 mt-4 rounded-full"></span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-              I'm <span className="font-semibold">Mostafij</span>, a
+              I'm <span className="font-semibold">Mostafijur Rahman</span>, a
               <span className="font-semibold text-yellow-600"> Software Engineer</span> passionate about
               <span className="font-semibold text-yellow-600"> AI</span>,
               <span className="font-semibold text-yellow-600"> Cloud Computing</span>, and

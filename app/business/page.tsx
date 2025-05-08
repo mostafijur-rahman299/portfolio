@@ -9,24 +9,7 @@ import Link from "next/link"
 export default function BusinessPage() {
   const [searchQuery, setSearchQuery] = useState("")
 
-  const articles = [
-    {
-      title: "Building a Successful SaaS Business",
-      description: "Learn the key strategies and best practices for launching and scaling a SaaS company.",
-      image: "/placeholder.svg?height=200&width=350",
-      date: "Dec 5, 2023",
-      readTime: "8 min read",
-      link: "/business/saas-guide"
-    },
-    {
-      title: "Startup Funding Guide",
-      description: "A comprehensive guide to raising capital and managing startup finances.",
-      image: "/placeholder.svg?height=200&width=350",
-      date: "Dec 1, 2023", 
-      readTime: "12 min read",
-      link: "/business/startup-funding"
-    }
-  ]
+  const articles = []
 
   const filteredArticles = articles.filter(article =>
     article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -77,6 +60,13 @@ export default function BusinessPage() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
+
+          {filteredArticles.length === 0 && (
+            <div className="text-center text-slate-600 text-2xl font-bold">
+              <p>We are working on it. Articles will be available soon.</p>
+            </div>
+          )}
+
           {filteredArticles.map((article, index) => (
             <motion.div
               key={article.title}

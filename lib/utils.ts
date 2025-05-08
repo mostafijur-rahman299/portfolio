@@ -6,6 +6,37 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
+const apps = [
+  {
+    id: 7,
+    title: "Shipper-Carrier Logistics Platform",
+    slug: "shipper-carrier-logistics-platform",
+    description:
+      "A platform for shippers and carriers to manage logistics and transportation.",
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "Celery", "Redis", "React Native", "React Native CLI"],
+    demoLink: null,
+    githubLink: null,
+    icon: Globe,
+    color: "from-blue-400 to-indigo-600",
+    image: "/projects/poncore/banner.png",
+    category: ["web-app", "mobile-app"],
+  },
+  {
+    id: 8,
+    title: "Todo App",
+    slug: "todo-app",
+    description:
+      "A todo app that allows users to manage their tasks and projects.",
+    skills: ["Django", "Django Rest Framework", "Docker", "PostgreSQL", "React Native", "Expo"],
+    demoLink: null,
+    githubLink: null,
+    icon: Globe,
+    color: "from-blue-400 to-indigo-600",
+    image: "/projects/todox/banner.jpeg",
+    category: ["mobile-app"],
+  }
+]
+
 export const projectData = [
   {
     id: 6,
@@ -29,7 +60,7 @@ export const projectData = [
     icon: Layers,
     color: "from-violet-400 to-purple-600",
     image: "/projects/anonymous-chat/banner.jpg",
-    category: "web-app",  
+    category: ["web-app"],  
   },
   {
     id: 0,
@@ -53,7 +84,7 @@ export const projectData = [
     icon: Globe,
     color: "from-blue-400 to-indigo-600",
     image: "/projects/whatsapp-integration/banner.webp",
-    category: "web-app",
+    category: ["web-app"],
   },
   {
     id: 1,
@@ -66,7 +97,7 @@ export const projectData = [
     icon: Server,
     color: "from-pink-400 to-rose-600",
     image: "/projects/telemedicine/banner.webp",
-    category: "web-app",
+    category: ["web-app"],
   },  
   {
     id: 2,
@@ -88,7 +119,7 @@ export const projectData = [
     icon: Database,
     color: "from-cyan-400 to-blue-600",
     image: "/projects/crinf/banner.webp",
-    category: "web-app",
+    category: ["web-app"],
   },
   {
     id: 4,
@@ -102,7 +133,7 @@ export const projectData = [
     icon: Cloud,
     color: "from-purple-500 to-blue-400",
     image: "/projects/property-management/banner.jpeg",
-    category: "web-app",
+    category: ["web-app"],
   },
   {
     id: 5,
@@ -110,12 +141,16 @@ export const projectData = [
     slug: "erp",
     description:
       "It's designed to streamline business processes, including finance, inventory, human resources, and sales, within a single, integrated platform.",
-    skills: ["Python", "Django", "Django Rest Framework", "Docker", "PostgreSQL", "Celery", "Redis"],
+    skills: ["Python", "Django", "Django Rest Framework", "Docker", "PostgreSQL", "Celery", "Redis", "React", "React Native"],
     demoLink: null,
     githubLink: null,
     icon: Cpu,
     color: "from-amber-400 to-orange-600",
     image: "/projects/erp/banner.jpeg",
-    category: "web-app",
+    category: ["web-app"],
   },
+
+  ...apps,
 ]
+
+

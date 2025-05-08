@@ -57,7 +57,7 @@ export default function TestimonialSection() {
     <section className="py-8 sm:py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-center text-slate-900 mb-6 sm:mb-8 font-semibold">
-          What Clients Say
+          What my clients say
         </h2>
 
         <div className="relative max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">

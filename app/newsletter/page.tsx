@@ -59,8 +59,8 @@ export default function NewsletterPage() {
         transition={{ duration: 0.6 }}
         className="max-w-4xl w-full"
       >
-        <Card className="overflow-hidden border-blue-200 shadow-xl">
-          <div className="bg-blue-400 p-8 text-white relative">
+        <Card className="overflow-hidden border-pink-200 shadow-xl">
+          <div className="bg-red-400 p-8 text-white relative">
             
             <h1 className="text-4xl font-bold mb-2">Join My Weekly Newsletter</h1>
             <p className="text-xl text-white">You'll get a weekly email with the latest tech news, tips, and resources.</p>
@@ -81,10 +81,10 @@ export default function NewsletterPage() {
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pr-10 border-blue-300 focus:border-blue-500 focus:ring-blue-500"
+                      className="pr-10 border-pink-300 focus:border-pink-500 focus:ring-pink-500"
                       required
                     />
-                    <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500" />
+                    <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-pink-500" />
                   </div>
 
                   <AnimatePresence mode="wait">
@@ -92,7 +92,7 @@ export default function NewsletterPage() {
                       <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                         <Button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-blue-400 to-blue-500 text-white hover:from-blue-500 hover:to-blue-600"
+                          className="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white hover:from-pink-500 hover:to-pink-600"
                         >
                           Subscribe Now <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
@@ -101,7 +101,7 @@ export default function NewsletterPage() {
 
                     {status === "loading" && (
                       <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                        <Button disabled className="w-full bg-blue-100 text-blue-700">
+                        <Button disabled className="w-full bg-pink-100 text-pink-700">
                           <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
@@ -151,10 +151,10 @@ export default function NewsletterPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="bg-white p-4 rounded-lg shadow-md border border-blue-200"
+                      className="bg-white p-4 rounded-lg shadow-md border border-pink-200"
                     >
-                      <benefit.icon className="w-6 h-6 text-blue-500 mb-2" />
-                      <h3 className="font-semibold text-blue-700 mb-2">{benefit.title}</h3>
+                      <benefit.icon className="w-6 h-6 text-pink-500 mb-2" />
+                      <h3 className="font-semibold text-pink-700 mb-2">{benefit.title}</h3>
                       <p className="text-sm text-gray-600">{benefit.description}</p>
                     </motion.div>
                   ))}

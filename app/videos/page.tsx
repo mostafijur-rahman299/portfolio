@@ -9,24 +9,7 @@ import { Play, ExternalLink, Search, Sparkles } from "lucide-react"
 export default function VideosSection() {
   const [searchQuery, setSearchQuery] = useState("")
 
-  const videos = [
-    {
-      title: "Getting Started with AWS Cloud",
-      description: "Learn the fundamentals of AWS cloud services and architecture.",
-      thumbnail: "/placeholder.svg?height=200&width=350",
-      duration: "15:24",
-      date: "Nov 27, 2023",
-      link: "https://youtube.com/watch?v=example1"
-    },
-    {
-      title: "Building Modern Web Apps",
-      description: "Step-by-step guide to building web applications with Next.js and React.",
-      thumbnail: "/placeholder.svg?height=200&width=350", 
-      duration: "22:15",
-      date: "Dec 3, 2023",
-      link: "https://youtube.com/watch?v=example2"
-    }
-  ]
+  const videos = []
 
   const filteredVideos = videos.filter(video =>
     video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -77,6 +60,13 @@ export default function VideosSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
+
+          {filteredVideos.length === 0 && (
+            <div className="text-center text-slate-600 text-2xl font-bold">
+              <p>We are working on it. Videos will be available soon.</p>
+            </div>
+          )}
+
           {filteredVideos.map((video, index) => (
             <motion.div
               key={video.title}

@@ -19,12 +19,12 @@ export default function ProjectsSection() {
     { label: "All Projects", value: "all", gradient: "from-amber-400 to-amber-500", icon: "✨" },
     { label: "Web Apps", value: "web-app", gradient: "from-blue-400 to-blue-500", icon: "🌐" },
     { label: "Mobile Apps", value: "mobile-app", gradient: "from-emerald-400 to-emerald-500", icon: "📱" },
-    { label: "AI & ML", value: "ai-ml", gradient: "from-purple-400 to-purple-500", icon: "🤖" }
+    // { label: "AI & ML", value: "ai-ml", gradient: "from-purple-400 to-purple-500", icon: "🤖" }
   ]
 
   const filteredProjects = projects
     .filter(p => 
-      (selectedFilter === "all" || p.category === selectedFilter) &&
+      (selectedFilter === "all" || p.category.includes(selectedFilter)) &&
       (searchQuery === "" ? true : 
         p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||

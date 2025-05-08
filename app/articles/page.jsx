@@ -11,69 +11,29 @@ export default function BlogList() {
 
   const blogPosts = [
     {
-      title: "10 Productivity Hacks for Content Creators",
-      slug: "10-productivity-hacks-for-content-creators",
-      excerpt: "Boost your content creation workflow with these game-changing productivity tips.",
-      category: "Productivity",
-      color: "#FF9500",
-      image: "/placeholder.svg?height=400&width=600",
+      id: 1,
+      title: "Securing Your Django Application: Best Practices for Preventing XSS, CSRF, and More",
+      excerpt: "Security should always be at the forefront of any web development project. With Django, you get a framework that provides a lot of built-in security features, but there are ...",
+      image: "/blog-posts/1.webp",
+      category: ["Django", "Security"],
+      slug: "securing-your-django-application"
     },
     {
-      title: "The Ultimate Guide to YouTube SEO",
-      slug: "the-ultimate-guide-to-youtube-seo",
-      excerpt: "Learn how to optimize your videos for maximum visibility and growth on YouTube.",
-      category: "YouTube",
-      color: "#FF6B6B",
-      image: "/placeholder.svg?height=400&width=600",
+      id: 2,
+      title: "Introduction to Cloud Computing: A Friendly Guide for Beginners",
+      excerpt: "When you type a website address (like www.netflix.com) into your browser, it’s like dialing a phone number. Your computer asks a special phone book (called DNS) for Netflix’s “number” (IP address)... ",
+      image: "/blog-posts/2.webp",
+      category: ["Cloud Computing", "AWS"],
+      slug: "introduction-to-cloud-computing"
     },
     {
-      title: "5 Effective Study Techniques Backed by Science",
-      slug: "5-effective-study-techniques-backed-by-science",
-      excerpt: "Discover research-proven methods to enhance your learning and retention.",
-      category: "Education",
-      color: "#9747FF",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "Building a Successful Online Business: From Idea to Launch",
-      slug: "building-a-successful-online-business-from-idea-to-launch",
-      excerpt: "A step-by-step guide to turning your passion into a thriving online venture.",
-      category: "Business",
-      color: "#40C1EA",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "The Power of Personal Branding in the Digital Age",
-      slug: "the-power-of-personal-branding-in-the-digital-age",
-      excerpt: "Learn how to build and leverage your personal brand for career success.",
-      category: "Marketing",
-      color: "#FF4D4D",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "Mastering the Art of Public Speaking",
-      slug: "mastering-the-art-of-public-speaking",
-      excerpt: "Overcome your fear and become a confident, persuasive speaker.",
-      category: "Self-Improvement",
-      color: "#4CAF50",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "The Future of AI in Content Creation",
-      slug: "the-future-of-ai-in-content-creation",
-      excerpt: "Explore how artificial intelligence is revolutionizing the content industry.",
-      category: "Technology",
-      color: "#5C6BC0",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "Financial Planning for Freelancers and Entrepreneurs",
-      slug: "financial-planning-for-freelancers-and-entrepreneurs",
-      excerpt: "Essential tips for managing your finances when you're self-employed.",
-      category: "Finance",
-      color: "#9C27B0",
-      image: "/placeholder.svg?height=400&width=600",
-    },
+      id: 3,
+      title: "A Comprehensive Guide to Top Programming Languages for Career Success",
+      excerpt: "As we step into the dynamic landscape of 2024, the key to a successful career in software development lies in making informed choices, and one of the crucial decisions is selecting the right programming language. In this guide, we’ll navigate through ... ",
+      image: "/blog-posts/3.webp",
+      category: ["Programming", "Languages"],
+      slug: "a-comprehensive-guide-to-top-programming-languages-for-career-success"
+    }
   ]
 
   const indexOfLastPost = currentPage * postsPerPage
@@ -118,7 +78,9 @@ export default function BlogList() {
                     className={`text-xs sm:text-sm font-medium px-3 py-1 rounded-full text-white`}
                     style={{ backgroundColor: post.color }}
                   >
-                    {post.category}
+                    {post.category.map((cat, index) => (
+                      <span key={index} className="mr-2 bg-gray-200 text-gray-600 hover:bg-gray-300 rounded-full px-2 py-1">{cat}</span> 
+                    ))}
                   </span>
                 </div>
               </div>

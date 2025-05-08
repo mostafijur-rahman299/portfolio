@@ -45,7 +45,7 @@ export default function AboutPage() {
     },
     {
       category: "Backend Development",
-      items: ["Node.js", "Python", "Django", "Java", "GraphQL", "REST API"],
+      items: ["Python", "Django", "GraphQL", "REST API", "Celery"],
       icon: <Database className="w-6 h-6 text-amber-500" />,
       gradient: "from-amber-400/20 to-amber-500/20"
     },
@@ -61,12 +61,12 @@ export default function AboutPage() {
       icon: <Cloud className="w-6 h-6 text-blue-500" />,
       gradient: "from-blue-400/20 to-blue-500/20"
     },
-    {
-      category: "AI & Machine Learning",
-      items: ["TensorFlow", "PyTorch", "Computer Vision", "NLP"],
-      icon: <Cpu className="w-6 h-6 text-violet-500" />,
-      gradient: "from-violet-400/20 to-violet-500/20"
-    }
+    // {
+    //   category: "AI & Machine Learning",
+    //   items: ["TensorFlow", "PyTorch", "NLP"],
+    //   icon: <Cpu className="w-6 h-6 text-violet-500" />,
+    //   gradient: "from-violet-400/20 to-violet-500/20"
+    // }
   ];
 
   const experiences = [

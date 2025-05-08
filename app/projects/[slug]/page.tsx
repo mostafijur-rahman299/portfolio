@@ -188,7 +188,70 @@ const projectData = [
     startDate: "April 2020",
     endDate: "November 2021",
     skills: ["Django", "Django Rest Framework", "PostgreSQL", "jQuery", "End-to-End Encryption"]
-  }
+  },
+  {
+    id: 7,
+    title: "Shipper-Carrier Logistics Platform",
+    slug: "shipper-carrier-logistics-platform",
+    description: "A platform for shippers and carriers to manage logistics and transportation.",
+    longDescription: "The Shipper-Carrier Logistics Platform is a comprehensive solution designed to streamline the logistics and transportation process for shippers and carriers. This platform provides a seamless interface for managing shipments, tracking deliveries, and optimizing transportation routes, all in one centralized system.",
+    myRole: "I was responsible for the development of the backend of the app. I also worked on the integration of the end-to-end encryption library and the database.",
+    key_features: [
+      "Shipment Management",
+      "Tracking and Monitoring",
+      "Route Optimization",
+      "Payment Integration",
+      "User Authentication",
+      "Admin Dashboard",
+      "Real-Time Notifications",
+      "Analytics and Reporting",
+    ],
+    project_goals: [
+      "To streamline the logistics and transportation process for shippers and carriers.",
+      "To provide a seamless interface for managing shipments, tracking deliveries, and optimizing transportation routes.",
+      "To optimize transportation routes and reduce costs.",
+      "To provide a user-friendly interface for shippers and carriers.",
+    ],
+    images: [
+      "/projects/poncore/banner.png",
+    ],
+    link: "",
+    // github: "#",
+    teamSize: "5",
+    startDate: "April 2020",
+    endDate: "November 2021",
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "Celery", "Redis", "React Native", "React Native CLI"]
+  },
+  {
+    id: 8,
+    title: "Todo App",
+    slug: "todo-app",
+    description: "A todo app that allows users to manage their tasks and projects.",
+    longDescription: "The Todo App is a simple and intuitive platform designed to help users manage their tasks and projects efficiently. With a clean and user-friendly interface, the app allows users to create, edit, and delete tasks, set reminders, and track their progress. The app is built with React Native and Expo, and uses a SQLite database for storage.",
+    myRole: "I was responsible for the development of the backend of the app. I also worked on the integration of the database and the frontend.",
+    key_features: [
+      "Task Management",
+      "Reminder",
+      "User Authentication",
+      "Real-Time Notifications",
+      "Analytics and Reporting",
+    ],
+    project_goals: [
+      "To help users manage their tasks and projects efficiently.",
+      "To provide a clean and user-friendly interface.",
+      "To use a SQLite database for storage.",
+      "To use React Native and Expo for the frontend.",
+    ],
+    images: [
+      "/projects/todox/banner.jpeg",
+    ],
+    link: "",
+    // github: "#",
+    teamSize: "5",
+    startDate: "April 2020",
+    endDate: "November 2021",
+    skills: ["Django", "Django Rest Framework", "React", "Docker", "PostgreSQL", "React Native", "Expo"]
+  } 
 ]
 
 

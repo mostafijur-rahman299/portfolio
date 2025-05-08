@@ -30,7 +30,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">API Development</h2>
                 <p className="text-gray-600 text-sm">Custom API development with modern standards and best practices.</p>
               </div>
-              <Link href="#" className="text-[#FF6B6B] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#FF6B6B] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -49,7 +49,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">Website Development</h2>
                 <p className="text-gray-900 text-sm">Full-stack web development with modern frameworks and tools.</p>
               </div>
-              <Link href="#" className="text-[#FF9500] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#FF9500] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -66,7 +66,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">Bug Fixing</h2>
                 <p className="text-gray-600 text-sm">Expert debugging and problem-solving for your applications.</p>
               </div>
-              <Link href="#" className="text-[#9747FF] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#9747FF] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -83,7 +83,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">Technical Consultation</h2>
                 <p className="text-gray-600 text-sm">Expert advice on architecture, tech stack, and best practices.</p>
               </div>
-              <Link href="#" className="text-[#40C1EA] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#40C1EA] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -101,7 +101,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">API Design</h2>
                 <p className="text-gray-600 text-sm">RESTful and GraphQL API design with scalability in mind.</p>
               </div>
-              <Link href="#" className="text-[#FF4D4D] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#FF4D4D] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -118,7 +118,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">Performance Optimization</h2>
                 <p className="text-gray-600 text-sm">Speed up your applications and improve user experience.</p>
               </div>
-              <Link href="#" className="text-[#4CAF50] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#4CAF50] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -135,7 +135,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">Database Design</h2>
                 <p className="text-gray-600 text-sm">Efficient database architecture and optimization.</p>
               </div>
-              <Link href="#" className="text-[#5C6BC0] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#5C6BC0] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 
@@ -158,7 +158,7 @@ export function HelpSection() {
                 <h2 className="text-xl sm:text-2xl font-serif mb-3">Cloud Solutions</h2>
                 <p className="text-gray-600 text-sm">AWS, Azure, and GCP deployment and management.</p>
               </div>
-              <Link href="#" className="text-[#9C27B0] font-medium hover:underline transition-all duration-200">Learn more</Link>
+              {/* <Link href="#" className="text-[#9C27B0] font-medium hover:underline transition-all duration-200">Learn more</Link> */}
             </div>
           </div>
 

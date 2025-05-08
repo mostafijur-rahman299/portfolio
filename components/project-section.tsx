@@ -6,12 +6,6 @@ import { Button } from "@/components/ui/button"
 import {
   ChevronLeft,
   ChevronRight,
-  Layers,
-  Globe,
-  Server,
-  Database,
-  Cloud,
-  Cpu,
   ExternalLink,
   Github,
 } from "lucide-react"
@@ -50,7 +44,7 @@ const styles = `
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    background-image: linear-gradient(45deg,rgba(248, 220, 81, 0.45),rgb(254, 199, 69));
   }
 `
 
@@ -129,7 +123,7 @@ export function ProjectSection() {
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                 className="mt-6 text-gray-600 text-lg sm:text-xl font-medium"
               >
-                Discover my carefully crafted digital solutions that make a difference
+                Discover my carefully crafted digital solutions that make a difference in the world.
               </motion.p>
             </div>
 
