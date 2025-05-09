@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, Sparkles, Check, AlertCircle, ArrowRight, Zap } from "lucide-react"
@@ -16,21 +15,6 @@ const benefits = [
   { title: "Community Access", description: "Join our vibrant community of tech enthusiasts", icon: Mail },
 ]
 
-const testimonials = [
-  {
-    name: "Alex Johnson",
-    role: "Senior Developer",
-    content: "This newsletter has been a game-changer for my career. The insights are invaluable!",
-    avatar: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    name: "Sarah Lee",
-    role: "Cloud Architect",
-    content: "I've learned so much about cloud computing. It's my go-to resource now.",
-    avatar: "/placeholder.svg?height=40&width=40",
-  },
-]
-
 export default function NewsletterPage() {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
@@ -38,8 +22,6 @@ export default function NewsletterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus("loading")
-
-    // Simulate API call
     setTimeout(() => {
       if (Math.random() > 0.1) {
         setStatus("success")
@@ -55,51 +37,72 @@ export default function NewsletterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white px-4 py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl w-full"
+        className="max-w-5xl w-full"
       >
-        <Card className="overflow-hidden border-blue-300 shadow-xl">
-          <div className="bg-blue-300 p-8 text-white relative">
-            
+        <Card className="overflow-hidden shadow-2xl border border-gray-200">
+          <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-8 text-white">
             <h1 className="text-4xl font-bold mb-2">Join My Weekly Newsletter</h1>
-            <p className="text-xl text-white">You'll get a weekly email with the latest tech news, tips, and resources.</p>
+            <p className="text-lg opacity-90">Get curated tech news, tutorials, and resources straight to your inbox.</p>
           </div>
 
           <CardContent className="p-8">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-10">
+              {/* Left Column */}
               <div>
-                <h2 className="text-2xl font-semibold mb-4">Stay Ahead of the Curve</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">Stay Ahead of the Curve</h2>
                 <p className="text-gray-600 mb-6">
-                  Join thousands of tech professionals who receive our weekly newsletter packed with insider knowledge,
-                  career advice, and exclusive insights.
+                  Join thousands of developers and tech professionals who receive our weekly newsletter packed with insider knowledge, career advice, and exclusive insights.
                 </p>
-                
 
-                  <AnimatePresence mode="wait">
-                    {status === "idle" && (
-                      <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                        <Button
-                          type="submit"
-<<<<<<< HEAD
-                          className="w-full bg-gradient-to-r from-pink-400 to-pink-500 text-white hover:from-pink-500 hover:to-pink-600"
-=======
-                          className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-white hover:from-orange-500 hover:to-orange-600"
-                          onClick={handleSubscribeSubstack}
->>>>>>> aeffc035c10ea7e711bb3c642f40024d886a7456
-                        >
-                          Subscribe Now <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </motion.div>
-                    )}
-                    
-                  </AnimatePresence>
+                <AnimatePresence mode="wait">
+                  {status === "idle" && (
+                    <motion.div
+                      key="idle"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Button
+                        type="button"
+                        onClick={handleSubscribeSubstack}
+                        className="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white hover:from-indigo-600 hover:to-indigo-700"
+                      >
+                        Subscribe Now <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </motion.div>
+                  )}
+                  {status === "loading" && (
+                    <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                      <Button disabled className="w-full bg-gray-300 text-gray-700">
+                        Subscribing...
+                      </Button>
+                    </motion.div>
+                  )}
+                  {status === "success" && (
+                    <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                      <div className="w-full bg-green-100 text-green-800 px-4 py-2 rounded-md text-center">
+                        🎉 Subscribed successfully!
+                      </div>
+                    </motion.div>
+                  )}
+                  {status === "error" && (
+                    <motion.div key="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                      <div className="w-full bg-red-100 text-red-800 px-4 py-2 rounded-md text-center">
+                        ❌ Something went wrong. Please try again.
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+
+              {/* Right Column */}
               <div>
-                <h2 className="text-2xl font-semibold mb-4">What You'll Get</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">What You'll Get</h2>
                 <div className="grid grid-cols-2 gap-4">
                   {benefits.map((benefit, index) => (
                     <motion.div
@@ -107,54 +110,19 @@ export default function NewsletterPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="bg-white p-4 rounded-lg shadow-md border border-pink-200"
+                      className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all"
                     >
-                      <benefit.icon className="w-6 h-6 text-gray-500 mb-2" />
-                      <h3 className="font-semibold text-gray-700 mb-2">{benefit.title}</h3>
+                      <benefit.icon className="w-6 h-6 text-blue-500 mb-2" />
+                      <h3 className="font-semibold text-gray-800 mb-1">{benefit.title}</h3>
                       <p className="text-sm text-gray-600">{benefit.description}</p>
                     </motion.div>
                   ))}
                 </div>
               </div>
             </div>
-
-            {/* <div className="mt-12">
-              <h2 className="text-2xl font-semibold mb-6 text-center text-yellow-700">What Our Subscribers Say</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                    className="bg-white p-6 rounded-lg shadow-md border border-yellow-200"
-                  >
-                    <div className="flex items-center mb-4">
-                      <Avatar className="mr-4 border-2 border-yellow-400">
-                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                        <AvatarFallback className="bg-yellow-100 text-yellow-700">
-                          {testimonial.name.charAt(0)}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-semibold text-yellow-700">{testimonial.name}</p>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-700">{testimonial.content}</p>
-                    <div className="mt-2 flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div> */}
           </CardContent>
         </Card>
       </motion.div>
     </div>
   )
 }
-
