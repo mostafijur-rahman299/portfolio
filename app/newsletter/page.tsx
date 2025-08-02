@@ -85,7 +85,7 @@ export default function NewsletterPage() {
                   )}
                   {status === "success" && (
                     <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                      <div className="w-full bg-green-100 text-green-800 px-4 py-2 rounded-md text-center">
+                      <div className="w-full bg-red-100 text-green-800 px-4 py-2 rounded-md text-center">
                         🎉 Subscribed successfully!
                       </div>
                     </motion.div>

@@ -1,24 +1,18 @@
 import { Hero } from "@/components/hero"
-import { Newsletter } from "@/components/newsletter"
-import { HelpSection } from "@/components/help-section"
-import { ProjectSection } from "@/components/project-section"
 import { AboutSection } from "@/components/about-section"
-import { ProductsSection } from "@/components/products-section"
-import { PodcastSection } from "@/components/podcast-section"
-import TestimonialSection from "@/components/testimonials"
+import { ExperienceTimeline } from "@/components/experience-timeline"
 
+/**
+ * Home page component - Premium landing page showcasing 5 years of experience and entrepreneurial journey
+ * Features hero, about, experience timeline, skills, projects, testimonials, and newsletter sections
+ */
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#faf9f6]">
-      <main>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <main className="space-y-0">
         <Hero />
-        <Newsletter />
-        <HelpSection />
-        <ProjectSection />
-        <TestimonialSection />
-        {/* <AboutSection /> */}
-        {/* <ProductsSection />
-        <PodcastSection /> */}
+        <AboutSection />
+        <ExperienceTimeline />
       </main>
     </div>
   )
