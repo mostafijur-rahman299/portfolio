@@ -49,29 +49,29 @@ export function Footer() {
 
   return (
     <footer className="bg-white border-t">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 padding-section">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-spacing-xl">
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-spacing-lg"
           >
-            <div className="flex items-center space-x-2">
-              <Activity className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-semibold">Mostafijur Rahman</span>
+            <div className="flex items-center gap-spacing-sm">
+              <Activity className="h-8 w-8 text-brand-primary" />
+              <span className="text-heading-3 text-primary-body">Mostafijur Rahman</span>
             </div>
-              <span className="text-sm text-gray-500">(hello.mostafijur@gmail.com)</span>
-            <p className="text-gray-600">© MRS 2025. All rights reserved.</p>
-            <div className="flex space-x-4">
+              <span className="text-caption text-muted">(hello.mostafijur@gmail.com)</span>
+            <p className="text-body text-secondary-body">© MRS 2025. All rights reserved.</p>
+            <div className="flex gap-spacing-md">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   variants={item}
                   href={social.href}
                   target="_blank"
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-muted hover:text-secondary-body transition-colors"
                 >
                   <social.icon className="h-5 w-5" />
                 </motion.a>
@@ -80,11 +80,11 @@ export function Footer() {
           </motion.div>
 
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">More</h3>
-            <ul className="space-y-3">
+            <h3 className="text-secondary-heading text-brand-secondary uppercase tracking-wider mb-spacing-md">More</h3>
+            <ul className="space-y-spacing-sm">
               {moreLinks.map((link, index) => (
                 <motion.li key={link.name} variants={item}>
-                  <a href={link.href} target="_blank" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  <a href={link.href} target="_blank" className="text-body text-secondary-body hover:text-primary-body transition-colors">
                     {link.name}
                   </a>
                 </motion.li>
@@ -93,11 +93,11 @@ export function Footer() {
           </motion.div>
 
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Free Content</h3>
-            <ul className="space-y-3">
+            <h3 className="text-secondary-heading text-brand-secondary uppercase tracking-wider mb-spacing-md">Free Content</h3>
+            <ul className="space-y-spacing-sm">
               {freeContent.map((link, index) => (
                 <motion.li key={link.name} variants={item}>
-                  <a href={link.href} target="_blank" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  <a href={link.href} target="_blank" className="text-body text-secondary-body hover:text-primary-body transition-colors">
                     {link.name}
                   </a>
                 </motion.li>

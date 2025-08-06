@@ -4,6 +4,10 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { AnimatedSection } from "@/components/ui/animated-section"
+import { PremiumCard } from "@/components/ui/premium-card"
+import { PageHeader } from "@/components/ui/page-header"
+import { EnhancedButton } from "@/components/ui/enhanced-button"
 
 export default function BlogList() {
   const [currentPage, setCurrentPage] = useState(1)
@@ -44,27 +48,29 @@ export default function BlogList() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-7xl">
-      <div className="space-y-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl leading-[1.1] tracking-tight font-serif mb-6">
-            Latest{" "}
-            <span className="relative inline-block">
-              Blog Posts
-              <span className="absolute -bottom-2 left-0 h-3 w-full bg-[#40C1EA]/40 -rotate-1 rounded-full" />
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Discover insights, tips, and strategies to help you grow personally and professionally.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 relative overflow-hidden">
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-200/30 to-secondary-200/30 rounded-full blur-3xl animate-float" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-secondary-200/30 to-primary-200/30 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-primary-100/20 to-secondary-100/20 rounded-full blur-3xl animate-float" />
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentPosts.map((post, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-2xl overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 relative flex flex-col h-full"
-            >
+      <div className="container mx-auto px-4 py-16 max-w-7xl relative z-10">
+        <div className="space-y-16">
+        <PageHeader
+          title="Latest Articles"
+          subtitle="Discover insights, tips, and strategies to help you grow personally and professionally."
+          highlightWord="Articles"
+        />
+
+        <AnimatedSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentPosts.map((post, index) => (
+              <PremiumCard
+                key={index}
+                className="group overflow-hidden transition-all duration-300 transform hover:-translate-y-1 relative flex flex-col h-full"
+              >
               <div className="relative">
                 <Image
                   src={post.image || "/placeholder.svg"}
@@ -73,59 +79,66 @@ export default function BlogList() {
                   height={400}
                   className="w-full h-48 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4">
-                  <span
-                    className={`text-xs sm:text-sm font-medium px-3 py-1 rounded-full text-white`}
-                    style={{ backgroundColor: post.color }}
-                  >
-                    {post.category.map((cat, index) => (
-                      <span key={index} className="mr-2 bg-gray-200 text-gray-600 hover:bg-gray-300 rounded-full px-2 py-1">{cat}</span> 
-                    ))}
-                  </span>
+                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                  {post.category.map((cat, index) => (
+                    <span key={index} className="text-xs sm:text-sm font-medium px-3 py-1 rounded-full bg-primary-100/90 text-primary-800 backdrop-blur-sm">
+                      {cat}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <h2 className="text-xl sm:text-2xl font-serif mb-3 line-clamp-2">{post.title}</h2>
-                <p className="text-gray-600 mb-4 text-sm sm:text-base flex-grow">{post.excerpt}</p>
-                <Link
-                  href={`/articles/${post.slug}`}
-                  className={`text-sm sm:text-base font-medium hover:underline transition-all duration-200 flex items-center mt-auto`}
-                  style={{ color: post.color }}
-                >
-                  Read more
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h2 className="text-xl sm:text-2xl font-serif mb-3 line-clamp-2 text-neutral-800">{post.title}</h2>
+                  <p className="text-neutral-600 mb-4 text-sm sm:text-base flex-grow">{post.excerpt}</p>
+                  <Link href={`/articles/${post.slug}`} className="mt-auto">
+                    <EnhancedButton
+                      variant="outline"
+                      size="sm"
+                      className="w-full group-hover:shadow-glow transition-all duration-300"
+                    >
+                      Read Article
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </EnhancedButton>
+                  </Link>
+                </div>
+              </PremiumCard>
           ))}
         </div>
+        </AnimatedSection>
 
-        <div className="flex justify-center items-center space-x-2 sm:space-x-4 flex-wrap">
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-          >
-            <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => paginate(i + 1)}
-              className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full text-sm sm:text-base transition-colors duration-200 ${
-                currentPage === i + 1 ? "bg-[#40C1EA] text-white" : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-              }`}
+        <AnimatedSection>
+          <div className="flex justify-center items-center space-x-2 sm:space-x-4 flex-wrap">
+            <EnhancedButton
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              variant="outline"
+              size="sm"
+              className="p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {i + 1}
-            </button>
-          ))}
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="p-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-          >
-            <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
+              <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+            </EnhancedButton>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <EnhancedButton
+                key={i}
+                onClick={() => paginate(i + 1)}
+                variant={currentPage === i + 1 ? "primary" : "outline"}
+                size="sm"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full text-sm sm:text-base"
+              >
+                {i + 1}
+              </EnhancedButton>
+            ))}
+            <EnhancedButton
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              variant="outline"
+              size="sm"
+              className="p-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
+            </EnhancedButton>
+          </div>
+         </AnimatedSection>
         </div>
       </div>
     </div>

@@ -73,10 +73,10 @@ export function Navbar() {
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                <span className="text-brand-primary text-heading-3 font-bold">
                   Mostafijur
                 </span>
-                <span className="text-xs text-gray-500 -mt-1">Product Builder • Problem Solver</span>
+                <span className="text-muted text-caption -mt-1">Product Builder • Problem Solver</span>
               </div>
             </Link>
           </motion.div>
@@ -89,7 +89,7 @@ export function Navbar() {
                 {/* Products Link */}
                 <NavigationMenuItem>
                   <Link href="/products" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-yellow-50 hover:text-orange-600 focus:bg-yellow-50 focus:text-orange-600 focus:outline-none">
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-full padding-button text-body font-medium transition-all duration-300 hover:bg-yellow-50 hover:text-orange-600 focus:bg-yellow-50 focus:text-orange-600 focus:outline-none">
                       Products
                     </NavigationMenuLink>
                   </Link>
@@ -98,7 +98,7 @@ export function Navbar() {
                 {/* Projects Link */}
                 <NavigationMenuItem>
                   <Link href="/projects" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-yellow-50 hover:text-orange-600 focus:bg-yellow-50 focus:text-orange-600 focus:outline-none">
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-full padding-button text-body font-medium transition-all duration-300 hover:bg-yellow-50 hover:text-orange-600 focus:bg-yellow-50 focus:text-orange-600 focus:outline-none">
                       Ventures & Projects
                     </NavigationMenuLink>
                   </Link>
@@ -110,9 +110,9 @@ export function Navbar() {
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid gap-3 p-6 w-[600px] grid-cols-2 bg-white/95 backdrop-blur-sm border border-yellow-200">
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-orange-600 mb-3 flex items-center gap-2">
+                    <div className="grid gap-spacing-md padding-card w-[600px] grid-cols-2 bg-white/95 backdrop-blur-sm border border-yellow-200">
+                      <div className="space-y-spacing-xs">
+                        <h4 className="text-secondary-heading text-brand-secondary font-semibold mb-spacing-sm flex items-center gap-2">
                           <Code className="w-4 h-4" />
                           Content & Learning
                         </h4>
@@ -124,10 +124,10 @@ export function Navbar() {
                           >
                             <span className="text-2xl">{resource.icon}</span>
                             <div>
-                              <div className="text-sm font-medium text-gray-900 group-hover:text-orange-600 transition-colors">
+                              <div className="text-body font-medium text-primary-body group-hover:text-orange-600 transition-colors">
                                 {resource.name}
                               </div>
-                              <div className="text-xs text-gray-500 mt-1">
+                              <div className="text-caption text-secondary-body mt-1">
                                 {resource.description}
                               </div>
                             </div>
@@ -135,7 +135,7 @@ export function Navbar() {
                         ))}
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-yellow-600 mb-3 flex items-center gap-2">
+                        <h4 className="text-secondary-heading text-brand-secondary font-semibold mb-spacing-sm flex items-center gap-2">
                           <Briefcase className="w-4 h-4" />
                           Focus Areas
                         </h4>
@@ -147,10 +147,10 @@ export function Navbar() {
                           >
                             <span className="text-2xl">{topic.icon}</span>
                             <div>
-                              <div className="text-sm font-medium text-gray-900 group-hover:text-yellow-600 transition-colors">
+                              <div className="text-body font-medium text-primary-body group-hover:text-yellow-600 transition-colors">
                                 {topic.name}
                               </div>
-                              <div className="text-xs text-gray-500 mt-1">
+                              <div className="text-caption text-secondary-body mt-1">
                                 {topic.description}
                               </div>
                             </div>
@@ -166,7 +166,7 @@ export function Navbar() {
 
             {/* CTA Button */}
             <Button 
-              className="bg-gradient-primary hover:shadow-xl text-white rounded-full px-6 py-2 font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 border-2 border-transparent hover:border-yellow-300" 
+              className="btn-primary hover:shadow-xl text-white rounded-full padding-button font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 border-2 border-transparent hover:border-yellow-300" 
               onClick={handleSubscribeSubstack}
             >
               Join Community
@@ -190,7 +190,7 @@ export function Navbar() {
                       <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                         <span className="text-white font-bold text-sm">M</span>
                       </div>
-                      <span className="text-lg font-semibold text-gray-900">Menu</span>
+                      <span className="text-heading-3 font-semibold text-primary-body">Menu</span>
                     </div>
                   </div>
 
@@ -201,21 +201,21 @@ export function Navbar() {
                     <div className="space-y-3">
                       <Link 
                         href="/about" 
-                        className="block text-lg font-medium text-gray-900 hover:text-orange-600 transition-colors p-2 rounded-lg hover:bg-yellow-50"
+                        className="block text-body-large font-medium text-primary-body hover:text-orange-600 transition-colors padding-xs rounded-lg hover:bg-yellow-50"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         About Me
                       </Link>
                       <Link 
                         href="/products" 
-                        className="block text-lg font-medium text-gray-900 hover:text-orange-600 transition-colors p-2 rounded-lg hover:bg-yellow-50"
+                        className="block text-body-large font-medium text-primary-body hover:text-orange-600 transition-colors padding-xs rounded-lg hover:bg-yellow-50"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Products
                       </Link>
                       <Link 
                         href="/projects" 
-                        className="block text-lg font-medium text-gray-900 hover:text-orange-600 transition-colors p-2 rounded-lg hover:bg-yellow-50"
+                        className="block text-body-large font-medium text-primary-body hover:text-orange-600 transition-colors padding-xs rounded-lg hover:bg-yellow-50"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Ventures & Projects
@@ -224,7 +224,7 @@ export function Navbar() {
 
                     {/* Resources Section */}
                     <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-orange-600 uppercase tracking-wider flex items-center gap-2">
+                      <h4 className="text-secondary-heading font-semibold text-brand-secondary uppercase tracking-wider flex items-center gap-2">
                         <Code className="w-4 h-4" />
                         Resources
                       </h4>
@@ -232,7 +232,7 @@ export function Navbar() {
                         <Link 
                           key={resource.name} 
                           href={resource.href} 
-                          className="flex items-center space-x-3 text-gray-700 hover:text-orange-600 transition-colors p-2 rounded-lg hover:bg-yellow-50"
+                          className="flex items-center space-x-3 text-primary-body hover:text-orange-600 transition-colors padding-xs rounded-lg hover:bg-yellow-50"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <span className="text-xl">{resource.icon}</span>
@@ -243,7 +243,7 @@ export function Navbar() {
 
                     {/* Topics Section */}
                     <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-yellow-600 uppercase tracking-wider flex items-center gap-2">
+                      <h4 className="text-secondary-heading font-semibold text-brand-secondary uppercase tracking-wider flex items-center gap-2">
                         <Briefcase className="w-4 h-4" />
                         Focus Areas
                       </h4>
@@ -251,7 +251,7 @@ export function Navbar() {
                         <Link 
                           key={topic.name} 
                           href={topic.href} 
-                          className="flex items-center space-x-3 text-gray-700 hover:text-yellow-600 transition-colors p-2 rounded-lg hover:bg-orange-50"
+                          className="flex items-center space-x-3 text-primary-body hover:text-yellow-600 transition-colors padding-xs rounded-lg hover:bg-orange-50"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <span className="text-xl">{topic.icon}</span>
@@ -264,7 +264,7 @@ export function Navbar() {
                   {/* Mobile CTA */}
                   <div className="py-4 border-t border-yellow-200">
                     <Button 
-                      className="w-full bg-gradient-primary hover:shadow-xl text-white rounded-full py-3 font-bold shadow-lg border-2 border-transparent hover:border-yellow-300"
+                      className="w-full btn-primary hover:shadow-xl text-white rounded-full py-3 font-bold shadow-lg border-2 border-transparent hover:border-yellow-300"
                       onClick={() => {
                         handleSubscribeSubstack()
                         setIsMobileMenuOpen(false)

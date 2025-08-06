@@ -1,12 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+// Removed Card and Button imports - using enhanced components instead
 import { useState, useEffect } from "react"
 import { ArrowRight, ExternalLink, Star, Search, Sparkles, Github, Filter, Grid, List, Calendar, Users, Code2, Package } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
+import { AnimatedSection, PremiumCard, PageHeader, EnhancedButton } from "@/components/ui"
 
 /**
  * Products data structure - Contains information about all products
@@ -92,101 +92,76 @@ export default function ProductsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#faf9f6] via-[#f8f7f4] to-[#faf9f6] flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
-        >
-          <div className="w-16 h-16 border-4 border-emerald-200 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600 font-medium">Loading amazing products...</p>
-        </motion.div>
+      <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-neutral-25 to-primary-50/20 flex items-center justify-center">
+        <AnimatedSection animation="fade-in" className="text-center">
+          <div className="w-16 h-16 border-4 border-primary-200 border-t-primary-500 rounded-full animate-spin mx-auto mb-4 shadow-glow"></div>
+          <p className="text-neutral-600 font-medium">Loading amazing products...</p>
+        </AnimatedSection>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#faf9f6] via-[#f8f7f4] to-[#faf9f6]">
-      <section className="container mx-auto px-4 py-6 sm:py-8 lg:py-12 relative">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-neutral-25 to-primary-50/20">
+      <section className="container mx-auto padding-section px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Enhanced gradient backgrounds */}
-        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] bg-gradient-to-br from-yellow-100/20 via-amber-50/10 to-transparent rounded-full -z-10 blur-2xl" />
-        <div className="absolute bottom-0 left-0 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] bg-gradient-to-tr from-emerald-50/20 via-emerald-50/5 to-transparent rounded-full -z-10 blur-2xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] bg-gradient-to-br from-blue-50/10 via-purple-50/5 to-transparent rounded-full -z-10 blur-3xl" />
+        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] bg-gradient-to-br from-primary-100/30 via-accent-50/20 to-transparent rounded-full -z-10 blur-2xl animate-float" />
+        <div className="absolute bottom-0 left-0 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] bg-gradient-to-tr from-accent-100/30 via-primary-50/20 to-transparent rounded-full -z-10 blur-2xl animate-pulse-slow" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] bg-gradient-to-br from-neutral-100/20 via-primary-50/10 to-transparent rounded-full -z-10 blur-3xl animate-float" />
         
         {/* Enhanced Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 mt-32"
-        >
-          <div className="relative inline-block mb-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-slate-900 tracking-tight mb-4 relative">
-              My{" "}
-              <span className="bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 bg-clip-text text-transparent">
-                Products
-              </span>
-              <div className="absolute -top-4 -right-4 w-8 h-8">
-                <Sparkles className="w-full h-full text-yellow-400 opacity-75 animate-pulse" />
-              </div>
-            </h1>
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full"></div>
-          </div>
-          
-          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed px-4 mb-8">
-            Discover the products I've built to solve real-world problems. Each product represents my journey 
-            from idea to implementation, focusing on user experience and practical solutions.
-          </p>
+        <PageHeader
+          title="Products & Solutions"
+          subtitle="Innovative digital products that solve real-world problems and create meaningful impact for users worldwide."
+          className="mb-spacing-3xl"
+        />
 
-          {/* Product Stats */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-6 sm:gap-8 mb-8"
-          >
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-emerald-600 mb-1">{productsData.length}</div>
-              <div className="text-sm text-slate-600 font-medium">Products</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1">{productsData.filter(p => p.category.includes("mobile-app")).length}</div>
-              <div className="text-sm text-slate-600 font-medium">Mobile Apps</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1">{productsData.filter(p => p.status === "Live").length}</div>
-              <div className="text-sm text-slate-600 font-medium">Live Products</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-amber-600 mb-1">{new Set(productsData.flatMap(p => p.skills)).size}+</div>
-              <div className="text-sm text-slate-600 font-medium">Technologies</div>
-            </div>
-          </motion.div>
-        </motion.div>
+        {/* Product Stats */}
+        <AnimatedSection 
+          animation="fade-in-up"
+          delay={200}
+          className="grid grid-cols-1 md:grid-cols-3 gap-spacing-lg mb-spacing-xl"
+        >
+          <PremiumCard variant="glass" hover className="text-center padding-card">
+            <div className="text-heading-1 text-brand-primary mb-spacing-sm">{productsData.length}</div>
+            <div className="text-body text-secondary-body">Products</div>
+          </PremiumCard>
+          <PremiumCard variant="glass" hover className="text-center padding-card">
+            <div className="text-heading-1 text-brand-primary mb-spacing-sm">{productsData.filter(p => p.category.includes("mobile-app")).length}</div>
+            <div className="text-body text-secondary-body">Mobile Apps</div>
+          </PremiumCard>
+          <PremiumCard variant="glass" hover className="text-center padding-card">
+            <div className="text-heading-1 text-brand-primary mb-spacing-sm">{productsData.filter(p => p.status === "Live").length}</div>
+            <div className="text-body text-secondary-body">Live Products</div>
+          </PremiumCard>
+          <PremiumCard variant="glass" hover className="text-center padding-card">
+            <div className="text-heading-1 text-brand-primary mb-spacing-sm">{new Set(productsData.flatMap(p => p.skills)).size}+</div>
+            <div className="text-body text-secondary-body">Technologies</div>
+          </PremiumCard>
+        </AnimatedSection>
 
         {/* Enhanced Controls Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        <AnimatedSection 
+          animation="fade-in-up"
+          delay={400}
           className="mb-8 sm:mb-12"
         >
           {/* Search and View Controls */}
-          <div className="flex flex-col lg:flex-row gap-4 mb-6">
+          <div className="flex flex-col lg:flex-row gap-spacing-md mb-spacing-lg">
             {/* Search Bar */}
             <div className="flex-1 max-w-2xl mx-auto lg:mx-0 relative">
               <input
                 type="text"
                 placeholder="Search products by name, description, or technology..."
-                className="w-full px-5 py-3 rounded-xl bg-white/80 backdrop-blur-sm border-2 border-slate-200 focus:border-emerald-400 focus:ring-4 focus:ring-emerald-400/20 outline-none text-slate-700 shadow-lg transition-all duration-300 placeholder:text-slate-400"
+                className="w-full px-5 py-3 rounded-xl glass border-2 border-primary-200 focus:border-primary-400 focus:ring-4 focus:ring-primary-400/20 outline-none text-body text-secondary-body shadow-premium transition-all duration-300 placeholder:text-neutral-400"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-12 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 hover:text-slate-600 transition-colors"
+                  className="absolute right-12 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400 hover:text-neutral-600 transition-colors"
                 >
                   ×
                 </button>
@@ -194,37 +169,37 @@ export default function ProductsPage() {
             </div>
 
             {/* View Mode and Sort Controls */}
-            <div className="flex gap-2 justify-center lg:justify-end">
+            <div className="flex gap-spacing-sm justify-center lg:justify-end">
               {/* View Mode Toggle */}
-              <div className="flex bg-white/80 backdrop-blur-sm rounded-lg p-1 shadow-md border border-slate-200">
+              <PremiumCard variant="glass" className="flex padding-xs">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded-md transition-all duration-200 ${
+                  className={`padding-button rounded-md transition-all duration-200 ${
                     viewMode === "grid" 
-                      ? "bg-emerald-500 text-white shadow-md" 
-                      : "text-slate-600 hover:bg-slate-100"
+                      ? "btn-primary" 
+                      : "text-secondary-body hover:bg-neutral-100"
                   }`}
                 >
                   <Grid className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 rounded-md transition-all duration-200 ${
+                  className={`padding-button rounded-md transition-all duration-200 ${
                     viewMode === "list" 
-                      ? "bg-emerald-500 text-white shadow-md" 
-                      : "text-slate-600 hover:bg-slate-100"
+                      ? "btn-primary" 
+                      : "text-secondary-body hover:bg-neutral-100"
                   }`}
                 >
                   <List className="w-4 h-4" />
                 </button>
-              </div>
+              </PremiumCard>
 
               {/* Sort Dropdown */}
               <div className="relative">
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-slate-700 shadow-md focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 outline-none transition-all duration-200"
+                  className="appearance-none glass border-2 border-primary-200 rounded-lg padding-input pr-8 text-body text-secondary-body shadow-premium focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition-all duration-200"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -237,43 +212,41 @@ export default function ProductsPage() {
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {filters.map((filter) => (
-              <motion.button
-                key={filter.value}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setSelectedFilter(filter.value)}
-                className={`relative px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl ${
-                  selectedFilter === filter.value
-                    ? `bg-gradient-to-r ${filter.gradient} text-white shadow-2xl`
-                    : "bg-white/80 backdrop-blur-sm text-slate-700 hover:bg-white border border-slate-200"
-                }`}
-              >
-                <span className="mr-2">{filter.icon}</span>
-                {filter.label}
-                <span className="ml-2 px-2 py-1 rounded-full text-xs bg-white/20">
-                  {filter.count}
-                </span>
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+          <PremiumCard variant="glass" className="padding-card mb-spacing-lg">
+            <div className="flex flex-wrap justify-center gap-spacing-sm">
+              {filters.map((filter) => (
+                <EnhancedButton
+                  key={filter.value}
+                  variant={selectedFilter === filter.value ? "gradient" : "outline"}
+                  size="sm"
+                  glow={selectedFilter === filter.value}
+                  onClick={() => setSelectedFilter(filter.value)}
+                  className="relative"
+                >
+                  <span className="mr-2">{filter.icon}</span>
+                  {filter.label}
+                  <span className="ml-2 px-2 py-1 rounded-full text-xs bg-white/20">
+                    {filter.count}
+                  </span>
+                </EnhancedButton>
+              ))}
+            </div>
+          </PremiumCard>
+        </AnimatedSection>
 
         {/* Products Grid */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+        <AnimatedSection 
+          animation="fade-in"
+          delay={600}
         >
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-16">
-              <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-2xl font-semibold text-slate-700 mb-2">No products found</h3>
-              <p className="text-slate-500">Try adjusting your search or filter criteria</p>
+            <div className="text-center padding-section">
+              <div className="text-6xl mb-spacing-md">🔍</div>
+              <h3 className="text-heading-2 text-primary-body mb-spacing-sm">No products found</h3>
+              <p className="text-body text-muted">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
-            <div className={`grid gap-6 ${
+            <div className={`grid gap-spacing-lg ${
               viewMode === "grid" 
                 ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
                 : "grid-cols-1 max-w-4xl mx-auto"
@@ -288,11 +261,16 @@ export default function ProductsPage() {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="group"
                   >
-                    <Card className="h-full bg-white/80 backdrop-blur-sm border-2 border-slate-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                    <PremiumCard 
+                      variant="premium" 
+                      hover 
+                      glow
+                      className="h-full group overflow-hidden"
+                    >
                       <div className="relative">
                         {product.isFirstProduct && (
                           <div className="absolute top-4 left-4 z-10">
-                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            <span className="gradient-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-glow">
                               🎉 First Product
                             </span>
                           </div>
@@ -308,34 +286,34 @@ export default function ProductsPage() {
                         </div>
                       </div>
                       
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                      <div className="padding-card">
+                        <div className="flex items-start justify-between mb-spacing-sm">
+                          <h3 className="text-heading-2 text-primary-body group-hover:text-primary-600 transition-colors">
                             {product.title}
                           </h3>
                           <div className="flex items-center gap-2">
                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                               product.status === "Live" 
-                                ? "bg-green-100 text-green-800" 
-                                : "bg-yellow-100 text-yellow-800"
+                                ? "bg-primary-100 text-primary-800" 
+                                : "bg-accent-100 text-accent-800"
                             }`}>
                               {product.status}
                             </span>
                           </div>
                         </div>
                         
-                        <p className="text-slate-600 mb-4 leading-relaxed">
+                        <p className="text-body text-secondary-body mb-spacing-md leading-relaxed text-pretty">
                           {product.description}
                         </p>
 
                         {/* Product Stats */}
-                        <div className="flex items-center gap-4 mb-4 text-sm text-slate-500">
+                        <div className="flex items-center gap-spacing-md mb-spacing-md text-caption text-muted">
                           <div className="flex items-center gap-1">
                             <Users className="w-4 h-4" />
                             <span>{product.users}</span>
                           </div>
                           <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            <Star className="w-4 h-4 fill-accent-400 text-accent-400" />
                             <span>{product.rating}</span>
                           </div>
                           <div className="flex items-center gap-1">
@@ -345,48 +323,54 @@ export default function ProductsPage() {
                         </div>
 
                         {/* Skills */}
-                        <div className="flex flex-wrap gap-2 mb-6">
+                        <div className="flex flex-wrap gap-spacing-xs mb-spacing-lg">
                           {product.skills.slice(0, 3).map((skill) => (
                             <span
                               key={skill}
-                              className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-medium"
+                              className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-caption font-medium"
                             >
                               {skill}
                             </span>
                           ))}
                           {product.skills.length > 3 && (
-                            <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
+                            <span className="px-3 py-1 bg-neutral-100 text-neutral-600 rounded-full text-caption font-medium">
                               +{product.skills.length - 3} more
                             </span>
                           )}
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="flex gap-3">
-                          <Button
+                        <div className="flex gap-spacing-sm">
+                          <EnhancedButton
+                            variant="gradient"
+                            size="sm"
+                            glow
+                            className="flex-1"
                             onClick={() => router.push(`/products/${product.slug}`)}
-                            className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                           >
                             Learn More
                             <ArrowRight className="ml-2 w-4 h-4" />
-                          </Button>
+                          </EnhancedButton>
                           {product.demoLink && (
-                            <Button
+                            <EnhancedButton
                               variant="outline"
-                              className="border-emerald-300 text-emerald-600 hover:bg-emerald-50"
+                              size="sm"
+                              asChild
                             >
-                              <ExternalLink className="w-4 h-4" />
-                            </Button>
+                              <a href={product.demoLink} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
+                            </EnhancedButton>
                           )}
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </PremiumCard>
                   </motion.div>
                 ))}
               </AnimatePresence>
             </div>
           )}
-        </motion.div>
+        </AnimatedSection>
       </section>
     </div>
   )

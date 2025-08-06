@@ -13,7 +13,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Sarah Johnson",
     content:
-      "Mostafijur's expertise in AI and software architecture transformed our project. His innovative solutions and attention to detail exceeded our expectations.",
+      "Mostafijur&apos;s expertise in AI and software architecture transformed our project. His innovative solutions and attention to detail exceeded our expectations.",
     rating: 5,
   },
   {
@@ -25,19 +25,19 @@ const testimonials: Testimonial[] = [
   {
     name: "Emily Chen",
     content:
-      "Mostafijur's ability to translate complex technical concepts into practical solutions is unparalleled. He's not just a developer, but a true problem solver.",
+      "Mostafijur&apos;s ability to translate complex technical concepts into practical solutions is unparalleled. He&apos;s not just a developer, but a true problem solver.",
     rating: 5,
   },
   {
     name: "Michael Brown",
     content:
-      "Mostafijur's contributions to our AI project were invaluable. His expertise and dedication significantly accelerated our development timeline.",
+      "Mostafijur&apos;s contributions to our AI project were invaluable. His expertise and dedication significantly accelerated our development timeline.",
     rating: 5,
   },
   {
     name: "Lisa Wong",
     content:
-      "Mostafijur's insights into cloud architecture helped us optimize our infrastructure, resulting in substantial cost savings and improved performance.",
+      "Mostafijur&apos;s insights into cloud architecture helped us optimize our infrastructure, resulting in substantial cost savings and improved performance.",
     rating: 5,
   },
 ]
