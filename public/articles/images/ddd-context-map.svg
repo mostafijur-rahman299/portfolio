@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <!-- Background -->
+  <rect width="900" height="520" fill="#0f172a" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" font-size="21" font-weight="700" fill="#f1f5f9" letter-spacing="0.5">DDD Context Map — Bounded Contexts</text>
+  <text x="450" y="64" text-anchor="middle" font-size="13" fill="#94a3b8">Each box is a separate model with its own language. Arrows show integration relationships.</text>
+
+  <!-- Arrow marker defs -->
+  <defs>
+    <marker id="arr-blue" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L0,9 L9,4.5 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L0,9 L9,4.5 z" fill="#f97316"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L0,9 L9,4.5 z" fill="#a855f7"/>
+    </marker>
+    <marker id="arr-teal" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+      <path d="M0,0 L0,9 L9,4.5 z" fill="#14b8a6"/>
+    </marker>
+  </defs>
+
+  <!-- Context: Identity (top center) -->
+  <rect x="330" y="88" width="240" height="110" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+  <rect x="330" y="88" width="240" height="32" rx="12" fill="#4338ca"/>
+  <rect x="330" y="108" width="240" height="12" rx="0" fill="#4338ca"/>
+  <text x="450" y="109" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">IDENTITY</text>
+  <text x="450" y="130" text-anchor="middle" font-size="11" fill="#a5b4fc">User · Session · Auth token</text>
+  <text x="450" y="147" text-anchor="middle" font-size="11" fill="#a5b4fc">Role · Permission · Profile</text>
+  <text x="450" y="164" text-anchor="middle" font-size="10" fill="#6366f1">Upstream — others conform to this</text>
+  <text x="450" y="179" text-anchor="middle" font-size="10" fill="#818cf8">[ Shared Kernel ]</text>
+
+  <!-- Context: Catalog (left) -->
+  <rect x="60" y="240" width="210" height="110" rx="12" fill="#1c1917" stroke="#f97316" stroke-width="2"/>
+  <rect x="60" y="240" width="210" height="32" rx="12" fill="#ea580c"/>
+  <rect x="60" y="260" width="210" height="12" rx="0" fill="#ea580c"/>
+  <text x="165" y="261" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">CATALOG</text>
+  <text x="165" y="282" text-anchor="middle" font-size="11" fill="#fed7aa">Product · Category · SKU</text>
+  <text x="165" y="299" text-anchor="middle" font-size="11" fill="#fed7aa">Inventory · Pricing · Tags</text>
+  <text x="165" y="317" text-anchor="middle" font-size="10" fill="#f97316">Owns product definitions</text>
+  <text x="165" y="332" text-anchor="middle" font-size="10" fill="#fb923c">[ Published Language ]</text>
+
+  <!-- Context: Billing (right) -->
+  <rect x="630" y="240" width="210" height="110" rx="12" fill="#1a1f2e" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="630" y="240" width="210" height="32" rx="12" fill="#1d4ed8"/>
+  <rect x="630" y="260" width="210" height="12" rx="0" fill="#1d4ed8"/>
+  <text x="735" y="261" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">BILLING</text>
+  <text x="735" y="282" text-anchor="middle" font-size="11" fill="#bfdbfe">Invoice · Payment · Charge</text>
+  <text x="735" y="299" text-anchor="middle" font-size="11" fill="#bfdbfe">Subscription · Tax · Refund</text>
+  <text x="735" y="317" text-anchor="middle" font-size="10" fill="#3b82f6">Separate Customer model here</text>
+  <text x="735" y="332" text-anchor="middle" font-size="10" fill="#60a5fa">[ Anticorruption Layer ]</text>
+
+  <!-- Context: Orders (bottom center) -->
+  <rect x="330" y="380" width="240" height="110" rx="12" fill="#14201a" stroke="#16a34a" stroke-width="2"/>
+  <rect x="330" y="380" width="240" height="32" rx="12" fill="#15803d"/>
+  <rect x="330" y="400" width="240" height="12" rx="0" fill="#15803d"/>
+  <text x="450" y="401" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">ORDERS</text>
+  <text x="450" y="422" text-anchor="middle" font-size="11" fill="#86efac">Order · LineItem · Shipment</text>
+  <text x="450" y="439" text-anchor="middle" font-size="11" fill="#86efac">Fulfillment · Status · Address</text>
+  <text x="450" y="457" text-anchor="middle" font-size="10" fill="#16a34a">Owns the purchase lifecycle</text>
+  <text x="450" y="472" text-anchor="middle" font-size="10" fill="#4ade80">[ Conformist ]</text>
+
+  <!-- Context: Shipping (bottom-right) -->
+  <rect x="630" y="390" width="210" height="88" rx="12" fill="#161a26" stroke="#14b8a6" stroke-width="2"/>
+  <rect x="630" y="390" width="210" height="30" rx="12" fill="#0d9488"/>
+  <rect x="630" y="408" width="210" height="12" rx="0" fill="#0d9488"/>
+  <text x="735" y="409" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">SHIPPING</text>
+  <text x="735" y="431" text-anchor="middle" font-size="11" fill="#99f6e4">Parcel · Carrier · Route</text>
+  <text x="735" y="447" text-anchor="middle" font-size="11" fill="#99f6e4">TrackingEvent · Delivery</text>
+  <text x="735" y="465" text-anchor="middle" font-size="10" fill="#2dd4bf">[ Separate Team ]</text>
+
+  <!-- Arrow: Identity → Catalog -->
+  <line x1="330" y1="155" x2="215" y2="240" stroke="#f97316" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-orange)"/>
+  <rect x="224" y="183" width="96" height="20" rx="4" fill="#0f172a"/>
+  <text x="272" y="197" text-anchor="middle" font-size="10" fill="#f97316">Conformist</text>
+
+  <!-- Arrow: Identity → Billing -->
+  <line x1="570" y1="155" x2="688" y2="240" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
+  <rect x="578" y="183" width="116" height="20" rx="4" fill="#0f172a"/>
+  <text x="636" y="197" text-anchor="middle" font-size="10" fill="#3b82f6">ACL translation</text>
+
+  <!-- Arrow: Identity → Orders -->
+  <line x1="450" y1="198" x2="450" y2="380" stroke="#6366f1" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-purple)"/>
+  <rect x="460" y="276" width="80" height="20" rx="4" fill="#0f172a"/>
+  <text x="500" y="290" text-anchor="middle" font-size="10" fill="#a78bfa">User lookup</text>
+
+  <!-- Arrow: Catalog → Orders -->
+  <line x1="270" y1="300" x2="330" y2="420" stroke="#f97316" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-orange)"/>
+  <rect x="252" y="348" width="90" height="20" rx="4" fill="#0f172a"/>
+  <text x="297" y="362" text-anchor="middle" font-size="10" fill="#f97316">Product data</text>
+
+  <!-- Arrow: Orders → Billing -->
+  <line x1="570" y1="430" x2="630" y2="300" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
+  <rect x="578" y="352" width="80" height="20" rx="4" fill="#0f172a"/>
+  <text x="618" y="366" text-anchor="middle" font-size="10" fill="#4ade80">OrderPlaced</text>
+
+  <!-- Arrow: Orders → Shipping -->
+  <line x1="570" y1="450" x2="630" y2="430" stroke="#14b8a6" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arr-teal)"/>
+  <rect x="564" y="435" width="90" height="20" rx="4" fill="#0f172a"/>
+  <text x="609" y="449" text-anchor="middle" font-size="10" fill="#2dd4bf">Shipment req.</text>
+
+  <!-- Legend -->
+  <rect x="60" y="460" width="480" height="48" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="80" y="478" font-size="11" font-weight="600" fill="#94a3b8">Legend:</text>
+  <line x1="130" y1="474" x2="170" y2="474" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="178" y="478" font-size="10" fill="#94a3b8">Integration relationship</text>
+  <rect x="310" y="468" width="10" height="10" rx="2" fill="#4338ca"/>
+  <text x="328" y="478" font-size="10" fill="#94a3b8">Shared Kernel</text>
+  <rect x="420" y="468" width="10" height="10" rx="2" fill="#15803d"/>
+  <text x="438" y="478" font-size="10" fill="#94a3b8">Conformist</text>
+  <text x="80" y="498" font-size="10" fill="#64748b">Each context has its own model of "Customer" — no shared mega-object</text>
+</svg>

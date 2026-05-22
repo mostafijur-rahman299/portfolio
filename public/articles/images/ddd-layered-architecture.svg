@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <!-- Background -->
+  <rect width="900" height="520" fill="#0f172a" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#f1f5f9" letter-spacing="0.5">Domain-Driven Design — Layered Architecture</text>
+  <text x="450" y="68" text-anchor="middle" font-size="13" fill="#94a3b8">The domain layer is the core — everything else supports it</text>
+
+  <!-- Layer 4: Infrastructure (outermost) -->
+  <rect x="60" y="100" width="780" height="370" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="128" text-anchor="middle" font-size="14" font-weight="600" fill="#64748b" letter-spacing="1" text-decoration="none">INFRASTRUCTURE LAYER</text>
+  <text x="450" y="147" text-anchor="middle" font-size="11" fill="#475569">Databases · Message brokers · External APIs · File systems · Frameworks</text>
+
+  <!-- Layer 3: Application -->
+  <rect x="110" y="162" width="680" height="278" rx="12" fill="#1e3a5f" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="450" y="188" text-anchor="middle" font-size="14" font-weight="600" fill="#60a5fa" letter-spacing="1">APPLICATION LAYER</text>
+  <text x="450" y="206" text-anchor="middle" font-size="11" fill="#93c5fd">Use cases · Application services · DTOs · Command handlers · Event handlers</text>
+
+  <!-- Layer 2: Domain (emphasized) -->
+  <rect x="170" y="226" width="560" height="178" rx="12" fill="#14532d" stroke="#16a34a" stroke-width="2.5"/>
+  <!-- Glow effect -->
+  <rect x="170" y="226" width="560" height="178" rx="12" fill="none" stroke="#4ade80" stroke-width="1" opacity="0.4"/>
+
+  <!-- Domain label badge -->
+  <rect x="340" y="238" width="220" height="28" rx="14" fill="#16a34a"/>
+  <text x="450" y="257" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="1">★  DOMAIN LAYER  ★</text>
+  <text x="450" y="278" text-anchor="middle" font-size="11" fill="#86efac">The core — business rules live here, isolated from everything external</text>
+
+  <!-- Domain building blocks -->
+  <!-- Entities -->
+  <rect x="188" y="294" width="130" height="90" rx="8" fill="#166534" stroke="#4ade80" stroke-width="1"/>
+  <text x="253" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#4ade80">Entities</text>
+  <line x1="198" y1="320" x2="308" y2="320" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+  <text x="253" y="336" text-anchor="middle" font-size="10" fill="#86efac">Identity over time</text>
+  <text x="253" y="350" text-anchor="middle" font-size="10" fill="#86efac">Order, Customer</text>
+  <text x="253" y="364" text-anchor="middle" font-size="10" fill="#86efac">User, Product</text>
+
+  <!-- Value Objects -->
+  <rect x="332" y="294" width="130" height="90" rx="8" fill="#166534" stroke="#4ade80" stroke-width="1"/>
+  <text x="397" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#4ade80">Value Objects</text>
+  <line x1="342" y1="320" x2="452" y2="320" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+  <text x="397" y="336" text-anchor="middle" font-size="10" fill="#86efac">No identity</text>
+  <text x="397" y="350" text-anchor="middle" font-size="10" fill="#86efac">Money, Address</text>
+  <text x="397" y="364" text-anchor="middle" font-size="10" fill="#86efac">DateRange, Email</text>
+
+  <!-- Aggregates -->
+  <rect x="476" y="294" width="130" height="90" rx="8" fill="#166534" stroke="#4ade80" stroke-width="1"/>
+  <text x="541" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#4ade80">Aggregates</text>
+  <line x1="486" y1="320" x2="596" y2="320" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+  <text x="541" y="336" text-anchor="middle" font-size="10" fill="#86efac">Consistency unit</text>
+  <text x="541" y="350" text-anchor="middle" font-size="10" fill="#86efac">Aggregate root</text>
+  <text x="541" y="364" text-anchor="middle" font-size="10" fill="#86efac">Invariants enforced</text>
+
+  <!-- Domain Events -->
+  <rect x="620" y="294" width="100" height="90" rx="8" fill="#166534" stroke="#4ade80" stroke-width="1"/>
+  <text x="670" y="315" text-anchor="middle" font-size="12" font-weight="600" fill="#4ade80">Events</text>
+  <line x1="630" y1="320" x2="710" y2="320" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+  <text x="670" y="336" text-anchor="middle" font-size="10" fill="#86efac">OrderPlaced</text>
+  <text x="670" y="350" text-anchor="middle" font-size="10" fill="#86efac">PlanSubmitted</text>
+  <text x="670" y="364" text-anchor="middle" font-size="10" fill="#86efac">PaymentFailed</text>
+
+  <!-- UI Layer label at top outside diagram -->
+  <rect x="300" y="448" width="300" height="34" rx="8" fill="#292524" stroke="#78716c" stroke-width="1"/>
+  <text x="450" y="462" text-anchor="middle" font-size="12" font-weight="600" fill="#a8a29e" letter-spacing="0.5">PRESENTATION / UI LAYER</text>
+  <text x="450" y="476" text-anchor="middle" font-size="10" fill="#78716c">REST Controllers · GraphQL resolvers · CLI · React/Vue</text>
+
+  <!-- Arrow from UI down to Application -->
+  <line x1="450" y1="448" x2="450" y2="440" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Arrow definition -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Dependency direction note -->
+  <text x="450" y="510" text-anchor="middle" font-size="11" fill="#475569">Dependencies point inward — the domain layer depends on nothing external</text>
+</svg>

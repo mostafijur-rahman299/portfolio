@@ -8,14 +8,14 @@ import { formatDate } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Articles',
   description:
-    'Thoughts on design, development, building products, and life as a software engineer and founder — by Mostafijur Rahman (MR Sajib).',
+    'Thoughts on design, development, building products, and life as a software engineer — by Mostafijur Rahman (MR Sajib).',
   alternates: {
     canonical: 'https://mrsajib.com/articles',
   },
   openGraph: {
     title: 'Articles | MR Sajib',
     description:
-      'Thoughts on design, development, building products, and life as a software engineer and founder.',
+      'Thoughts on design, development, building products, and life as a software engineer.',
     url: 'https://mrsajib.com/articles',
     type: 'website',
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Articles | MR Sajib',
     description:
-      'Thoughts on design, development, building products, and life as a software engineer and founder.',
+      'Thoughts on design, development, building products, and life as a software engineer.',
   },
 }
 
@@ -63,7 +63,7 @@ export default function ArticlesPage() {
             </h1>
             <p className="text-base sm:text-lg text-secondary max-w-xl leading-relaxed">
               Thoughts on design, development, building products, and life as a
-              software engineer and founder.
+              software engineer.
             </p>
           </div>
 

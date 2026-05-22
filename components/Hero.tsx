@@ -73,8 +73,7 @@ export default function Hero() {
               {...fade(0.08)}
               className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.05] tracking-tight"
             >
-              Software Engineer&nbsp;&amp;&nbsp;
-              <span className="text-muted-foreground">Founder.</span>
+              Software Engineer.
             </motion.h1>
 
             {/* Bio */}
@@ -82,8 +81,7 @@ export default function Hero() {
               {...fade(0.16)}
               className="text-base sm:text-lg text-secondary leading-relaxed max-w-xl"
             >
-              I&apos;m Mostafijur Rahman Sajib — a software engineer and the founder of{' '}
-              <span className="font-semibold text-foreground">MRS TECH LABS</span>.
+              I&apos;m Mostafijur Rahman Sajib — a software engineer.
               I build APIs and scalable digital products, share what I learn through writing and
               videos, and explore the cutting edge of AI.
             </motion.p>

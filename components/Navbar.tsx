@@ -47,7 +47,7 @@ export default function Navbar() {
             <div className="max-w-5xl mx-auto px-4 sm:px-8 py-2.5 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 min-w-0">
                 <span className="text-xs sm:text-sm font-medium text-background/90 truncate">
-                  ✉️ Get my newsletter — tips on building, tech, and the founder life.
+                  ✉️ Get my newsletter — tips on building, tech, and engineering.
                 </span>
               </div>
               <div className="flex items-center gap-2 shrink-0">

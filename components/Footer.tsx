@@ -97,9 +97,7 @@ export default function Footer() {
               MR
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-              Software engineer &amp; founder of{' '}
-              <a href="https://mrstechlabs.com" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:underline">MRS TECH LABS</a>.
-              Building digital products and sharing knowledge with the world.
+              Software engineer. Building digital products and sharing knowledge with the world.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map((s) => (

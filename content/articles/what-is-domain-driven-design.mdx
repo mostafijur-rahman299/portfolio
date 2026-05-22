@@ -1,0 +1,145 @@
+---
+title: "What Is Domain-Driven Design? Why I Stopped Calling It a Waste of Time"
+description: "A backend engineer's honest take on Domain-Driven Design (DDD) — what it is, bounded contexts and aggregates explained simply, and when to use DDD vs. when to skip it."
+date: "2026-05-22"
+tags: ["Architecture", "DDD", "Backend", "Microservices", "System Design"]
+canonical: "https://mrsajib.com/articles/what-is-domain-driven-design"
+devto: "https://dev.to/mostafijsajib"
+published: true
+---
+
+*By Mostafijur Rahman | Software Engineer*
+
+![Domain-Driven Design layered architecture diagram with the domain layer at its core.](/articles/images/ddd-layered-architecture.svg)
+
+---
+
+The first time someone walked me through **Domain-Driven Design (DDD)**, my honest reaction was: this is a lot of ceremony for very little payoff.
+
+Aggregates, value objects, bounded contexts, repositories — a whole vocabulary to learn, and for what? I had shipped plenty of features without any of it. It looked like something senior engineers say in meetings to sound thoughtful before everyone goes back to writing `if` statements anyway. My first instinct was that DDD would slow me down: more files, more layers, more naming debates, less shipping.
+
+I was wrong. But it took working on a genuinely messy project to see why. So this article is part explanation of what Domain-Driven Design is, and part confession — the thing I dismissed as overhead turned out to be what saved the codebase from me.
+
+---
+
+## What Is Domain-Driven Design? (A Plain Explanation)
+
+Domain-Driven Design is an approach to building software where the **business domain** — the real problem the software solves — drives the design, instead of the database schema or the framework. Eric Evans formalized DDD in 2003 in a book most people call the "blue book." More than two decades on, microservices and event-driven systems have made it more relevant, not less.
+
+The single most important thing to understand: **DDD is not a framework.** There is nothing to install. It is closer to a discipline — a set of ideas about talking to the people who understand the business, agreeing on precise words, and letting those words shape the code.
+
+I'll be blunt about something the tutorials soften. The patterns are the easy, fun part — and they are also the part where teams go wrong. Most of the real value lives in the boring strategic work: the conversations and the boundaries, not how cleverly you structure your classes.
+
+---
+
+## A Real DDD Example: When One Word Meant Three Things
+
+The project that changed my mind had a hierarchy — call it Site, then Aggregator, then a unit under that. A "plan" existed at every level: a site plan, an aggregator plan, a unit plan.
+
+Early on, all of them were just `plan` in the code. Same name, same loosely shared object, passed around everywhere.
+
+It worked — for a while. Then features started colliding. A change to how one level's plan behaved quietly broke another. Every function that touched a plan needed a comment explaining *which* plan it meant. New people asked the same question every week: "wait, is this the site plan or the unit plan?" The code ran fine. The understanding around it was rotting.
+
+That is the exact problem Domain-Driven Design is built to attack. Once I had felt the pain, the patterns stopped looking like ceremony and started looking like names for things I had already been fighting.
+
+---
+
+## The Part That Actually Matters: Language and Boundaries
+
+### Ubiquitous Language: Name Things Honestly
+
+Here is the idea that would have saved me the most pain: pick precise words and use them *everywhere* — in conversation, in tickets, and in the code itself.
+
+If the business has a "draft plan" and a "submitted plan," those exact phrases belong in your class names and methods. Not `plan` with a `status` field everyone interprets differently. Not `data`, `item`, or `record`. The moment a name is vague, logic starts hiding inside it — and nobody can see the hiding place.
+
+This sounds too simple to matter. It is not. On that hierarchy project, the entire mess traced back to one overloaded word.
+
+### What Is a Bounded Context in DDD?
+
+A big system never has one clean model. "Customer" means one thing to billing, another to support, another to analytics. Forcing a single shared `Customer` object across all of them is how you get a class with forty fields nobody dares touch.
+
+A **bounded context** is a deliberate line you draw: inside this boundary, this model and these words mean exactly one thing. Cross the line, and you are allowed a different model. That permission — "you don't need one universal model" — was genuinely freeing once it clicked.
+
+It is also why bounded contexts keep showing up in the microservices conversation. When a team asks "how do we split this service?", a bounded context is the most reliable answer anyone has: split where the domain actually splits.
+
+![A DDD context map showing bounded contexts connected by labeled integration relationships.](/articles/images/ddd-context-map.svg)
+
+### Context Mapping: How Bounded Contexts Talk
+
+Once you have separate contexts, they still have to communicate. Context mapping is just being explicit about how. The pattern I reach for most is the **Anticorruption Layer** — a translation layer that stops a messy external or legacy model from leaking into your clean one. If you have ever wrapped a third-party API so its weirdness does not infect your codebase, you have already done DDD without the label.
+
+---
+
+## DDD Tactical Patterns: Entities, Value Objects, and Aggregates
+
+Inside a bounded context, DDD gives you concrete building blocks. They are language-agnostic — they work the same in Python, Java, or PHP.
+
+- **Entity** — an object with a stable identity over time. Its state changes, but it stays the same thing. An order is still that order after its items change.
+- **Value object** — no identity, only values. A money amount, a date range, an address. Two with identical fields are interchangeable.
+- **Aggregate** — a group of related objects treated as one consistency unit, with a single entry point called the **aggregate root**, which enforces the rules that must always hold true.
+- **Repository** — hides how aggregates are stored, so your domain code never cares about the database.
+- **Domain events** — `PlanSubmitted`, `PaymentFailed` — capture meaningful things that happened, and form the natural bridge to event-driven systems.
+
+Useful patterns, all of them. But notice they only make sense *after* the language and boundary work. Reach for them first, and you get elaborate code that models nothing real.
+
+---
+
+## Event Storming: How Teams Discover the Domain Model
+
+You cannot model a domain you do not understand. The most popular way to build that understanding fast is **Event Storming** — a workshop technique from Alberto Brandolini. You put domain experts and developers in front of a wall and map the business as a timeline of events, commands, and actors using colored sticky notes.
+
+The output is not decoration. Watching the events flow makes the bounded contexts and aggregates show up almost on their own. One tip from people who run these regularly: deliberately map the failure cases and long-running processes. A quick session captures only the happy path — and the happy path is never what breaks your design later.
+
+![An Event Storming session mapping business events with colored sticky notes on a timeline wall.](/articles/images/ddd-event-storming.svg)
+
+---
+
+## When to Use Domain-Driven Design (and When to Skip It)
+
+My old skepticism was not entirely wrong — it was just aimed at the wrong target.
+
+**Use DDD when:**
+- The domain is genuinely complex — rich business rules, many edge cases, intricate processes.
+- The software is expected to live and evolve for years.
+- You have access to domain experts to talk to.
+
+**Skip DDD when:**
+- The app is mostly straightforward CRUD with thin business logic.
+- The project is small or short-lived.
+- The complexity is *technical* (heavy algorithms, performance work) rather than *business* complexity.
+- You would be retrofitting it onto an old legacy system — often more expensive than it is worth.
+
+So my first instinct — "this will slow me down" — is actually correct *for simple projects*. It just turned out completely wrong for the complex one, which is where DDD earns its keep. The skill is not "always use DDD" or "never use it." It is recognizing which kind of project is in front of you.
+
+DDD also has thoughtful critics worth hearing. Some argue the original model is too thin for the hardest problem in design — splitting a system well. Others note that keeping a domain model "pure" takes more discipline than most teams can sustain. Fair points, and a reminder that DDD is a set of ideas to apply with judgment, not commandments to obey.
+
+---
+
+## Common DDD Mistakes to Avoid
+
+A few traps show up over and over:
+
+- **Skipping domain experts** — starting from database tables instead of conversations, which gives you code shaped like a schema rather than a business.
+- **Over-engineering** — creating aggregates and repositories before you understand the domain. My own early temptation, exactly.
+- **Trusting framework words** — many ORMs use `Repository` and `Entity` without following DDD ideas, quietly dragging you off course.
+- **Language drift** — without anyone guarding it, the shared vocabulary erodes and the model slowly stops matching reality.
+
+Chasing a "perfect" model is itself a mistake. The goal is software that stays understandable, not a flawless diagram.
+
+---
+
+## Where DDD Stands in 2026
+
+The center of gravity today is microservices and event-driven architecture, with bounded contexts defining service boundaries and domain events flowing between them. One distinction worth keeping straight: event-driven architecture is *how* services talk; event sourcing is *how* one service remembers its own history. They are not the same thing, and confusing them causes real pain.
+
+The newer thread is AI in the modeling loop — copilots that draft domain models, suggest events a workshop missed, or generate maps during Event Storming. Helpful as a starting point. But the genuinely hard part — sitting with domain experts and arguing about what a word means — is still human work, and I suspect it will stay that way.
+
+---
+
+## What I'd Tell My Earlier Self
+
+If I could send one message back to the version of me who rolled his eyes at DDD, it would be short.
+
+The patterns are not the point. You can memorize aggregates and value objects and still build a mess. The point is the boring stuff you wanted to skip: talk to the people who understand the business, agree on exact words, draw honest lines around the parts that mean different things, and let the code follow.
+
+Domain-Driven Design is overhead. On a simple project, that overhead is a bad trade. On a complex one meant to last, it is the cheapest insurance you will ever buy — and you only really learn that after a project teaches it to you the hard way.

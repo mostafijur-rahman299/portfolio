@@ -19,11 +19,11 @@ const BASE_URL = 'https://mrsajib.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'MR Sajib | Software Engineer & Founder',
+    default: 'MR Sajib | Software Engineer',
     template: '%s | MR Sajib',
   },
   description:
-    'Mostafijur Rahman (MR Sajib) — Software Engineer. Founder of MRS Tech Labs, building APIs, scalable backends, and digital products.',
+    'Mostafijur Rahman (MR Sajib) — Software Engineer. Building APIs, scalable backends, and digital products.',
   keywords: [
     'MR Sajib',
     'Mostafijur Rahman',
@@ -62,23 +62,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: BASE_URL,
     siteName: 'MR Sajib',
-    title: 'MR Sajib | Software Engineer & Founder',
+    title: 'MR Sajib | Software Engineer',
     description:
-      'Mostafijur Rahman (MR Sajib) — Software Engineer from Bangladesh. Founder of MRS Tech Labs, building APIs, scalable backends, and digital products.',
+      'Mostafijur Rahman (MR Sajib) — Software Engineer from Bangladesh. Building APIs, scalable backends, and digital products.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'MR Sajib — Software Engineer & Founder',
+        alt: 'MR Sajib — Software Engineer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MR Sajib | Software Engineer & Founder',
+    title: 'MR Sajib | Software Engineer',
     description:
-      'Mostafijur Rahman (MR Sajib) — Software Engineer from Bangladesh. Founder of MRS Tech Labs, building APIs, scalable backends, and digital products.',
+      'Mostafijur Rahman (MR Sajib) — Software Engineer from Bangladesh. Building APIs, scalable backends, and digital products.',
     images: ['/og-image.png'],
     creator: '@mrsajib',
   },
@@ -110,7 +110,7 @@ const jsonLd = {
   image: `${BASE_URL}/profile.png`,
   jobTitle: 'Software Engineer',
   description:
-    'Software Engineer from Bangladesh, building APIs, scalable backends, and digital products as founder of MRS Tech Labs.',
+    'Software Engineer from Bangladesh, building APIs, scalable backends, and digital products.',
   worksFor: {
     '@type': 'Organization',
     name: 'MRS Tech Labs',

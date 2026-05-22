@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <!-- Background - whiteboard feel -->
+  <rect width="900" height="520" fill="#1e293b" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" font-size="21" font-weight="700" fill="#f1f5f9" letter-spacing="0.3">Event Storming — Mapping the Domain</text>
+  <text x="450" y="58" text-anchor="middle" font-size="12" fill="#94a3b8">Timeline flows left → right. Sticky notes reveal bounded contexts and aggregates naturally.</text>
+
+  <!-- Timeline arrow -->
+  <line x1="60" y1="280" x2="840" y2="280" stroke="#334155" stroke-width="2"/>
+  <polygon points="840,275 855,280 840,285" fill="#334155"/>
+  <text x="858" y="284" font-size="11" fill="#475569">time</text>
+
+  <!-- ─── COLUMN 1: User registers ─── -->
+  <!-- Command (blue) -->
+  <rect x="75" y="195" width="110" height="52" rx="6" fill="#1d4ed8" transform="rotate(-1, 130, 221)"/>
+  <text x="130" y="216" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Register User</text>
+  <text x="130" y="230" text-anchor="middle" font-size="9" fill="#bfdbfe">[ Command ]</text>
+  <text x="130" y="243" text-anchor="middle" font-size="9" fill="#93c5fd">by: Visitor</text>
+
+  <!-- Event (orange) -->
+  <rect x="78" y="295" width="110" height="52" rx="6" fill="#ea580c" transform="rotate(1.5, 133, 321)"/>
+  <text x="133" y="316" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">UserRegistered</text>
+  <text x="133" y="330" text-anchor="middle" font-size="9" fill="#fed7aa">[ Domain Event ]</text>
+  <text x="133" y="343" text-anchor="middle" font-size="9" fill="#fdba74">✓ happened</text>
+
+  <!-- Actor (yellow) -->
+  <rect x="82" y="155" width="100" height="34" rx="6" fill="#ca8a04" transform="rotate(-0.5, 132, 172)"/>
+  <text x="132" y="170" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">🧑 New User</text>
+  <text x="132" y="183" text-anchor="middle" font-size="9" fill="#fef08a">[ Actor ]</text>
+
+  <!-- ─── COLUMN 2: Catalog browse ─── -->
+  <!-- Command -->
+  <rect x="215" y="195" width="115" height="52" rx="6" fill="#1d4ed8" transform="rotate(1, 272, 221)"/>
+  <text x="272" y="216" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Browse Catalog</text>
+  <text x="272" y="230" text-anchor="middle" font-size="9" fill="#bfdbfe">[ Command ]</text>
+  <text x="272" y="243" text-anchor="middle" font-size="9" fill="#93c5fd">by: Customer</text>
+
+  <!-- Event -->
+  <rect x="218" y="295" width="115" height="52" rx="6" fill="#ea580c" transform="rotate(-1.2, 275, 321)"/>
+  <text x="275" y="316" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">ProductViewed</text>
+  <text x="275" y="330" text-anchor="middle" font-size="9" fill="#fed7aa">[ Domain Event ]</text>
+  <text x="275" y="343" text-anchor="middle" font-size="9" fill="#fdba74">✓ happened</text>
+
+  <!-- Read model (green) -->
+  <rect x="218" y="360" width="115" height="38" rx="6" fill="#15803d" transform="rotate(0.8, 275, 379)"/>
+  <text x="275" y="376" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Product List</text>
+  <text x="275" y="390" text-anchor="middle" font-size="9" fill="#bbf7d0">[ Read Model ]</text>
+
+  <!-- ─── COLUMN 3: Add to cart ─── -->
+  <!-- Command -->
+  <rect x="360" y="195" width="118" height="52" rx="6" fill="#1d4ed8" transform="rotate(-1.5, 419, 221)"/>
+  <text x="419" y="216" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Add to Cart</text>
+  <text x="419" y="230" text-anchor="middle" font-size="9" fill="#bfdbfe">[ Command ]</text>
+  <text x="419" y="243" text-anchor="middle" font-size="9" fill="#93c5fd">by: Customer</text>
+
+  <!-- Event -->
+  <rect x="362" y="295" width="118" height="52" rx="6" fill="#ea580c" transform="rotate(2, 421, 321)"/>
+  <text x="421" y="316" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">ItemAddedToCart</text>
+  <text x="421" y="330" text-anchor="middle" font-size="9" fill="#fed7aa">[ Domain Event ]</text>
+  <text x="421" y="343" text-anchor="middle" font-size="9" fill="#fdba74">✓ happened</text>
+
+  <!-- Policy (lilac) -->
+  <rect x="362" y="360" width="118" height="38" rx="6" fill="#7e22ce" transform="rotate(-0.7, 421, 379)"/>
+  <text x="421" y="376" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Reserve Stock</text>
+  <text x="421" y="390" text-anchor="middle" font-size="9" fill="#e9d5ff">[ Policy / Rule ]</text>
+
+  <!-- ─── COLUMN 4: Place order ─── -->
+  <!-- Command -->
+  <rect x="508" y="195" width="118" height="52" rx="6" fill="#1d4ed8" transform="rotate(1, 567, 221)"/>
+  <text x="567" y="216" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Place Order</text>
+  <text x="567" y="230" text-anchor="middle" font-size="9" fill="#bfdbfe">[ Command ]</text>
+  <text x="567" y="243" text-anchor="middle" font-size="9" fill="#93c5fd">by: Customer</text>
+
+  <!-- Event -->
+  <rect x="510" y="295" width="118" height="52" rx="6" fill="#c2410c" stroke="#f97316" stroke-width="2" transform="rotate(-1, 569, 321)"/>
+  <text x="569" y="312" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">OrderPlaced</text>
+  <text x="569" y="326" text-anchor="middle" font-size="9" fill="#fed7aa">[ Domain Event ]</text>
+  <text x="569" y="339" text-anchor="middle" font-size="9" fill="#fbbf24">⚡ key event</text>
+  <text x="569" y="353" text-anchor="middle" font-size="9" fill="#fdba74">triggers billing + shipping</text>
+
+  <!-- Actor -->
+  <rect x="512" y="155" width="112" height="34" rx="6" fill="#ca8a04" transform="rotate(0.8, 568, 172)"/>
+  <text x="568" y="170" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">🛒 Customer</text>
+  <text x="568" y="183" text-anchor="middle" font-size="9" fill="#fef08a">[ Actor ]</text>
+
+  <!-- ─── COLUMN 5: Payment ─── -->
+  <!-- Command (system) -->
+  <rect x="658" y="195" width="118" height="52" rx="6" fill="#0e7490" transform="rotate(-1, 717, 221)"/>
+  <text x="717" y="216" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Charge Payment</text>
+  <text x="717" y="230" text-anchor="middle" font-size="9" fill="#a5f3fc">[ Command ]</text>
+  <text x="717" y="243" text-anchor="middle" font-size="9" fill="#67e8f9">by: System</text>
+
+  <!-- Event -->
+  <rect x="660" y="295" width="118" height="52" rx="6" fill="#ea580c" transform="rotate(1.2, 719, 321)"/>
+  <text x="719" y="316" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">PaymentCharged</text>
+  <text x="719" y="330" text-anchor="middle" font-size="9" fill="#fed7aa">[ Domain Event ]</text>
+  <text x="719" y="343" text-anchor="middle" font-size="9" fill="#fdba74">✓ happened</text>
+
+  <!-- Hotspot (red) — failure case -->
+  <rect x="660" y="360" width="118" height="38" rx="6" fill="#991b1b" stroke="#ef4444" stroke-width="1.5" transform="rotate(-0.5, 719, 379)"/>
+  <text x="719" y="376" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">⚠ Payment Failed?</text>
+  <text x="719" y="390" text-anchor="middle" font-size="9" fill="#fca5a5">[ Hotspot / Risk ]</text>
+
+  <!-- Bounded context boundaries -->
+  <!-- Identity BC -->
+  <rect x="65" y="140" width="140" height="240" rx="8" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="135" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#818cf8">IDENTITY BC</text>
+
+  <!-- Catalog BC -->
+  <rect x="205" y="140" width="155" height="270" rx="8" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="282" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#fb923c">CATALOG BC</text>
+
+  <!-- Orders BC -->
+  <rect x="350" y="140" width="285" height="270" rx="8" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="492" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#4ade80">ORDERS BC</text>
+
+  <!-- Billing BC -->
+  <rect x="645" y="140" width="145" height="270" rx="8" fill="none" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="717" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#38bdf8">BILLING BC</text>
+
+  <!-- Legend -->
+  <rect x="60" y="452" width="780" height="56" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <text x="80" y="470" font-size="11" font-weight="700" fill="#94a3b8">Legend:</text>
+  <!-- orange -->
+  <rect x="130" y="459" width="14" height="14" rx="3" fill="#ea580c"/>
+  <text x="150" y="470" font-size="10" fill="#94a3b8">Domain Event</text>
+  <!-- blue -->
+  <rect x="240" y="459" width="14" height="14" rx="3" fill="#1d4ed8"/>
+  <text x="260" y="470" font-size="10" fill="#94a3b8">Command</text>
+  <!-- yellow -->
+  <rect x="330" y="459" width="14" height="14" rx="3" fill="#ca8a04"/>
+  <text x="350" y="470" font-size="10" fill="#94a3b8">Actor</text>
+  <!-- green -->
+  <rect x="400" y="459" width="14" height="14" rx="3" fill="#15803d"/>
+  <text x="420" y="470" font-size="10" fill="#94a3b8">Read Model</text>
+  <!-- purple -->
+  <rect x="500" y="459" width="14" height="14" rx="3" fill="#7e22ce"/>
+  <text x="520" y="470" font-size="10" fill="#94a3b8">Policy / Rule</text>
+  <!-- red -->
+  <rect x="610" y="459" width="14" height="14" rx="3" fill="#991b1b" stroke="#ef4444" stroke-width="1"/>
+  <text x="630" y="470" font-size="10" fill="#94a3b8">Hotspot / Risk</text>
+  <!-- dashed -->
+  <line x1="130" y1="490" x2="165" y2="490" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="172" y="494" font-size="10" fill="#94a3b8">Bounded Context boundary — emerges naturally from the event flow</text>
+</svg>
