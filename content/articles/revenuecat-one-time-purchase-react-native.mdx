@@ -1,0 +1,182 @@
+---
+title: "I Added One-Time Purchases to My React Native App with RevenueCat — Here's Everything I Wish I Knew"
+description: "A practical guide to implementing lifetime one-time purchases (non-consumables) in a React Native Expo app using RevenueCat — including the gotcha that cost me an afternoon."
+date: "2026-06-06"
+tags: ["React Native", "Expo", "RevenueCat", "Mobile"]
+canonical: "https://mrsajib.com/articles/revenuecat-one-time-purchase-react-native"
+devto: "https://dev.to/mostafijsajib"
+published: true
+---
+
+Most "in-app purchase" tutorials for React Native assume you want subscriptions. I didn't.
+
+For my app, I wanted something simpler: pay once, unlock Pro forever. No recurring billing, no churn dashboards, no "your trial is ending" emails. Just a clean lifetime unlock.
+
+Turns out, doing this *well* with RevenueCat in an Expo app has a few sharp edges nobody warned me about. This is the guide I wish I'd had — the actual setup, the code that worked, and the one mistake that cost me an afternoon.
+
+> Stack for this guide: React Native + Expo (managed workflow with dev builds), `react-native-purchases`, RevenueCat dashboard, and Google Play Console.
+
+## Why one-time instead of subscription?
+
+I'll be honest — subscriptions make more money on paper. But for the kind of app I was building, a recurring charge felt wrong. People don't want to "subscribe" to a small utility; they want to buy it and move on.
+
+So the model became: a single **lifetime Pro** purchase. In RevenueCat terms, that means a **non-consumable** product tied to one entitlement called `pro`. Get that mental model right and everything else falls into place.
+
+A quick vocabulary check, because mixing these up is where most confusion starts:
+
+- **Consumable** — can be bought repeatedly (coins, power-ups). *Not what we want.*
+- **Non-consumable** — bought once, owned forever (lifetime unlock). **This is us.**
+- **Subscription** — recurring access. Not us either.
+
+If you accidentally configure your lifetime product as a consumable, RevenueCat will treat it as something the user "uses up," and restoring it later gets messy. Set it as non-consumable from day one.
+
+## Step 1: Configure the product in Google Play Console
+
+Before touching any code, the product has to exist on the store side.
+
+In Play Console, go to **Monetize → Products → In-app products** (not Subscriptions — that trips people up). Create a new product:
+
+- **Product ID**: something stable like `pro_lifetime`. You can't change this later, so pick carefully.
+- **Name & description**: what the user sees.
+- **Price**: set your launch price.
+- Activate it.
+
+That's the store-level setup. The product now exists, but your app doesn't know about it yet — that's what RevenueCat connects.
+
+## Step 2: Wire up RevenueCat
+
+In the RevenueCat dashboard:
+
+1. Create a **Project** and add your Android app with its package name.
+2. Under **Entitlements**, create one called `pro`. This is the thing your code checks — "does this user have Pro?"
+3. Under **Products**, add the `pro_lifetime` product ID you created in Play Console.
+4. Under **Offerings**, create a default offering and attach a package containing that product.
+
+The layering feels redundant at first (product → package → offering → entitlement), but it pays off: you can change pricing, swap products, or run experiments later *without shipping an app update*. Everything is driven from the dashboard.
+
+## Step 3: Install the SDK in Expo
+
+```bash
+npx expo install react-native-purchases
+```
+
+Because this needs native code, you can't run it in Expo Go — you need a **development build**:
+
+```bash
+npx expo prebuild
+npx expo run:android
+```
+
+If you've never made a dev build before, this is the part that surprises Expo developers. Expo Go won't cut it for IAP. Once your dev build is running, you're ready to initialize.
+
+## Step 4: Initialize and fetch offerings
+
+Initialize RevenueCat once, early in your app's lifecycle:
+
+```jsx
+import Purchases from "react-native-purchases";
+
+export function initRevenueCat() {
+  Purchases.configure({
+    apiKey: "your_google_play_api_key", // from RevenueCat dashboard
+  });
+}
+```
+
+Then fetch what's available to sell:
+
+```jsx
+async function getOffering() {
+  try {
+    const offerings = await Purchases.getOfferings();
+    const current = offerings.current;
+
+    if (current && current.availablePackages.length > 0) {
+      return current.availablePackages[0]; // our lifetime package
+    }
+  } catch (e) {
+    console.error("Failed to fetch offerings:", e);
+  }
+  return null;
+}
+```
+
+Notice you're never hardcoding prices in the app. The price string comes from the store, localized to the user's region automatically. That's one of the quiet wins of going through RevenueCat instead of rolling your own billing.
+
+## Step 5: Make the purchase
+
+```jsx
+async function buyPro(pkg) {
+  try {
+    const { customerInfo } = await Purchases.purchasePackage(pkg);
+
+    if (typeof customerInfo.entitlements.active.pro !== "undefined") {
+      // Pro unlocked — update your UI / state here
+      return true;
+    }
+  } catch (e) {
+    if (!e.userCancelled) {
+      console.error("Purchase failed:", e);
+    }
+  }
+  return false;
+}
+```
+
+The key check is `customerInfo.entitlements.active.pro`. If that entitlement is active, the user owns Pro. Note the `e.userCancelled` guard — users backing out of the purchase sheet is normal, not an error worth logging.
+
+## Step 6: Check entitlement on every launch
+
+A purchase isn't a one-time event you forget about. Every time the app starts, you check whether this user already owns Pro:
+
+```jsx
+async function isPro() {
+  try {
+    const customerInfo = await Purchases.getCustomerInfo();
+    return typeof customerInfo.entitlements.active.pro !== "undefined";
+  } catch (e) {
+    return false;
+  }
+}
+```
+
+And give users a **Restore Purchases** button — this is non-negotiable for non-consumables, and both stores expect it:
+
+```jsx
+async function restore() {
+  try {
+    const customerInfo = await Purchases.restorePurchases();
+    return typeof customerInfo.entitlements.active.pro !== "undefined";
+  } catch (e) {
+    return false;
+  }
+}
+```
+
+Without this, a user who reinstalls or switches devices loses access to something they paid for — and you'll get a one-star review for it.
+
+## The gotcha that cost me an afternoon
+
+Here's the part the tutorials skip.
+
+When you connect RevenueCat to Google Play, you need to set up a **Google Cloud service account** so RevenueCat can verify purchases server-side. I hit a "Credentials need attention" warning on the dashboard and went looking for help.
+
+I asked an AI assistant how to fix it. The steps it gave me were confidently wrong — outdated permission names, a flow that didn't match what I was actually seeing in Google Cloud. I burned real time following instructions for a UI that no longer existed.
+
+What actually fixed it: going to **RevenueCat's own documentation** and following their service-account setup step by step. The official docs matched the current Google Cloud console exactly, and the warning cleared.
+
+The lesson isn't "AI is useless" — I use it constantly. The lesson is that for **platform setup that changes frequently** (cloud consoles, billing permissions, store configs), the vendor's own docs are the source of truth. AI training data lags behind these UIs by months, and IAP plumbing is exactly the kind of thing that gets reorganized often.
+
+If you hit the credentials warning: don't improvise, don't trust a generic answer. Open the RevenueCat docs page for Google service account setup and follow it line by line.
+
+## A few smaller things I learned
+
+- **Sandbox testing works before credentials are fully green.** The "Credentials need attention" warning didn't block me from testing purchases in sandbox, which is why it's easy to ignore — right up until you go to production.
+- **Use a real test account** added in Play Console's license testing, not your developer account, to test the full purchase flow.
+- **Don't hardcode the price** anywhere in your UI. Read it from the package. Saves you a release when you change pricing.
+
+## Wrapping up
+
+A one-time lifetime purchase in React Native comes down to four things: configure a non-consumable product, map it to a `pro` entitlement in RevenueCat, drive the purchase from offerings, and check the entitlement on launch. The SDK does the heavy lifting.
+
+The only part that genuinely tripped me up was the Google Cloud credentials linking — and the fix there was simply trusting the official docs over a confident-but-stale answer. If you're building something similar, that's the hour I'd save you.
