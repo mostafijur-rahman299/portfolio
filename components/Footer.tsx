@@ -3,11 +3,11 @@
 import Link from 'next/link'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Writing', href: '#writing' },
-  { label: 'YouTube', href: '#youtube' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Projects', href: '/products' },
+  { label: 'Writing', href: '/articles' },
+  { label: 'YouTube', href: '/#youtube' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 const socialLinks = [
@@ -55,32 +55,14 @@ export default function Footer() {
                 Get my latest articles, projects, and videos delivered to your inbox.
               </p>
             </div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault()
-                const email = (e.currentTarget.elements.namedItem('email') as HTMLInputElement).value
-                window.open(
-                  `https://substack.com/@mostafijur?email=${encodeURIComponent(email)}`,
-                  '_blank',
-                  'noopener,noreferrer'
-                )
-              }}
-              className="flex w-full sm:w-auto gap-2"
+            <a
+              href="https://substack.com/@mostafijur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-background text-foreground font-semibold rounded-full text-sm hover:bg-surface transition-colors shrink-0 w-full sm:w-auto"
             >
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="your@email.com"
-                className="flex-1 min-w-0 sm:w-64 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-background placeholder-background/50 text-sm focus:outline-none focus:border-white/50 transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-5 py-3 bg-background text-foreground font-semibold rounded-full text-sm hover:bg-surface transition-colors shrink-0"
-              >
-                Subscribe
-              </button>
-            </form>
+              Subscribe on Substack
+            </a>
           </div>
         </div>
       </div>

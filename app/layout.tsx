@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     'Mostafijur Rahman',
     'Software Engineer',
     'Software Engineer Bangladesh',
-    'Software Engineer Bangladesh',
     'Node.js Developer',
     'API Development',
     'MRS Tech Labs',
@@ -65,21 +64,12 @@ export const metadata: Metadata = {
     title: 'MR Sajib | Software Engineer',
     description:
       'Mostafijur Rahman (MR Sajib) — Software Engineer from Bangladesh. Building APIs, scalable backends, and digital products.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'MR Sajib — Software Engineer',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'MR Sajib | Software Engineer',
     description:
       'Mostafijur Rahman (MR Sajib) — Software Engineer from Bangladesh. Building APIs, scalable backends, and digital products.',
-    images: ['/og-image.png'],
     creator: '@mrsajib',
   },
   icons: {
@@ -90,9 +80,6 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  verification: {
-    google: '',
-  },
 }
 
 export const viewport: Viewport = {

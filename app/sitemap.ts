@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllArticles } from '@/lib/articles'
+import { myProducts } from '@/lib/projects'
 
 const BASE_URL = 'https://mrsajib.com'
 
@@ -12,6 +13,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
+
+  const caseStudyEntries: MetadataRoute.Sitemap = myProducts
+    .filter((p) => p.caseStudy)
+    .map((product) => ({
+      url: `${BASE_URL}/products/${product.slug}`,
+      lastModified: new Date('2026-04-25'),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    }))
 
   return [
     {
@@ -32,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    ...caseStudyEntries,
     ...articleEntries,
   ]
 }

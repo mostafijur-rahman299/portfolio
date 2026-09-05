@@ -39,20 +39,43 @@ const contactLinks = [
 const inputClass =
   'w-full px-4 py-3.5 border border-input-border rounded-xl bg-input text-foreground text-sm placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/40 transition-all duration-200'
 
+type Status = 'idle' | 'submitting' | 'success' | 'error'
+
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setFormData({ name: '', email: '', message: '' })
-    setTimeout(() => setSubmitted(false), 4000)
+    setStatus('submitting')
+    setErrorMessage('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.')
+      }
+
+      setStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+      setTimeout(() => setStatus('idle'), 5000)
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    }
   }
 
   return (
@@ -174,14 +197,20 @@ export default function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn-primary w-full justify-center py-4 text-base">
-              {submitted ? (
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className="btn-primary w-full justify-center py-4 text-base disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {status === 'success' ? (
                 <>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   Message Sent!
                 </>
+              ) : status === 'submitting' ? (
+                'Sending...'
               ) : (
                 <>
                   Send Message
@@ -191,6 +220,21 @@ export default function Contact() {
                 </>
               )}
             </button>
+
+            <p role="status" aria-live="polite" className="text-sm">
+              {status === 'success' && (
+                <span className="text-highlight-text">Thanks — I&apos;ll get back to you within 24 hours.</span>
+              )}
+              {status === 'error' && (
+                <span className="text-destructive">
+                  {errorMessage}{' '}
+                  <a href="mailto:hello.mostafij@gmail.com" className="underline font-medium">
+                    Email me directly
+                  </a>{' '}
+                  instead.
+                </span>
+              )}
+            </p>
           </motion.form>
         </div>
       </div>

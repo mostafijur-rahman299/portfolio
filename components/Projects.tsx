@@ -1,67 +1,8 @@
- 'use client'
+'use client'
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-
-const projects = [
-  {
-    title: 'ToolEra',
-    description:
-      'A free online tool collection with 60+ utilities for developers, designers, and professionals. Includes password generators, image tools, code formatters, calculators, and more.',
-    tech: ['Next.js', 'TypeScript', 'SEO', 'Tools'],
-    status: 'Active',
-    link: 'https://thetoolera.com',
-    featured: true,
-  },
-  {
-    title: 'wapiflow',
-    description:
-      'A modern API integration platform that simplifies webhook management and workflow automation. Built with Next.js, TypeScript, and real-time database sync.',
-    tech: ['Next.js', 'TypeScript', 'Webhooks', 'Database'],
-    status: 'Active',
-    link: null,
-    featured: true,
-  },
-  {
-    title: 'TutorAsia',
-    description:
-      'An online tutoring platform connecting students with expert tutors. Features video sessions, progress tracking, and interactive learning tools.',
-    tech: ['React', 'Node.js', 'Video API', 'Analytics'],
-    status: 'Active',
-    link: null,
-    featured: true,
-  },
-  {
-    title: 'Battery Health Checker',
-    description:
-      'A utility tool that analyzes device battery health and gives recommendations for optimal performance.',
-    tech: ['React Native', 'System APIs', 'Analytics', 'Android'],
-    status: 'Complete',
-    link: 'https://play.google.com/store/apps/details?id=com.mrstech.batterycaremonitor',
-    linkLabel: 'View on Play Store',
-    featured: false,
-  },
-  {
-    title: 'Daily Motivation Quotes',
-    description:
-      'An elegant app delivering daily motivational quotes with sharing, favorites, and personalized themes.',
-    tech: ['React Native', 'APIs', 'Local Storage', 'Android'],
-    status: 'Complete',
-    link: 'https://play.google.com/store/apps/details?id=com.mrstech.MotivationQuotes',
-    linkLabel: 'View on Play Store',
-    featured: false,
-  },
-  {
-    title: 'TodoX',
-    description:
-      'A clean and intuitive task management app for Android, helping users stay organized and productive with a minimal, distraction-free interface.',
-    tech: ['React Native', 'Local Storage', 'Android'],
-    status: 'Complete',
-    link: 'https://play.google.com/store/apps/details?id=com.mahmudsajib01.TodoX',
-    linkLabel: 'View on Play Store',
-    featured: false,
-  },
-]
+import { myProducts as projects } from '@/lib/projects'
 
 export default function Projects() {
   return (
@@ -120,35 +61,35 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {project.link ? (
-                  project.link.startsWith('http') ? (
+                <div className="flex items-center justify-between gap-3 mt-auto">
+                  {project.caseStudy ? (
+                    <Link
+                      href={`/products/${project.slug}`}
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5"
+                    >
+                      Read case study
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  ) : project.link ? (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5 mt-auto"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5"
                     >
-                      {(project as any).linkLabel || 'View Project'}
+                      {project.linkLabel || 'View Project'}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </a>
                   ) : (
-                    <Link
-                      href={project.link}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5 mt-auto"
-                    >
-                      {(project as any).linkLabel || 'View Project'}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </Link>
-                  )
-                ) : (
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground mt-auto cursor-default">
-                    Coming Soon
-                  </span>
-                )}
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground cursor-default">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
               </motion.div>
             ))}
         </div>
@@ -182,29 +123,17 @@ export default function Projects() {
                 </div>
 
                 {project.link ? (
-                  project.link.startsWith('http') ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5 mt-auto"
-                    >
-                      {(project as any).linkLabel || 'View Project'}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </a>
-                  ) : (
-                    <Link
-                      href={project.link}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5 mt-auto"
-                    >
-                      {(project as any).linkLabel || 'View Project'}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </Link>
-                  )
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-secondary transition-all duration-200 group-hover:gap-2.5 mt-auto"
+                  >
+                    {project.linkLabel || 'View Project'}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
                 ) : (
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground mt-auto cursor-default">
                     Coming Soon

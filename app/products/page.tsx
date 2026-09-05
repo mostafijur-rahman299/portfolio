@@ -4,142 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-
-// ── Products I built & own ──────────────────────────────────────────────────
-
-const myProducts = [
-  {
-    title: 'ToolEra',
-    description:
-      'A free online tool collection with 60+ utilities for developers, designers, and professionals. Includes password generators, image tools, code formatters, calculators, and more.',
-    tech: ['Next.js', 'TypeScript', 'SEO', 'Tools'],
-    status: 'Active',
-    link: 'https://thetoolera.com',
-    linkLabel: 'Visit ToolEra',
-    year: '2024',
-    featured: true,
-  },
-  {
-    title: 'wapiflow',
-    description:
-      'A modern API integration platform that simplifies webhook management and workflow automation. Built with Next.js, TypeScript, and real-time database sync.',
-    tech: ['Next.js', 'TypeScript', 'Webhooks', 'Database'],
-    status: 'Active',
-    link: '#',
-    year: '2024',
-    featured: true,
-  },
-  {
-    title: 'TutorAsia',
-    description:
-      'An online tutoring platform connecting students with expert tutors. Features video sessions, progress tracking, and interactive learning tools.',
-    tech: ['React', 'Node.js', 'Video API', 'Analytics'],
-    status: 'Active',
-    link: '#',
-    year: '2023',
-    featured: true,
-  },
-  {
-    title: 'Battery Health Checker',
-    description:
-      'A utility tool that analyzes device battery health and gives recommendations for optimal performance.',
-    tech: ['React Native', 'System APIs', 'Analytics', 'Android'],
-    status: 'Complete',
-    link: 'https://play.google.com/store/apps/details?id=com.mrstech.batterycaremonitor',
-    linkLabel: 'View on Play Store',
-    year: '2023',
-    featured: false,
-  },
-  {
-    title: 'Daily Motivation Quotes',
-    description:
-      'An elegant app delivering daily motivational quotes with sharing, favorites, and personalized themes.',
-    tech: ['React Native', 'APIs', 'Local Storage', 'Android'],
-    status: 'Complete',
-    link: 'https://play.google.com/store/apps/details?id=com.mrstech.MotivationQuotes',
-    linkLabel: 'View on Play Store',
-    year: '2022',
-    featured: false,
-  },
-  {
-    title: 'TodoX',
-    description:
-      'A clean and intuitive task management app for Android, helping users stay organized and productive with a minimal, distraction-free interface.',
-    tech: ['React Native', 'Local Storage', 'Android'],
-    status: 'Complete',
-    link: 'https://play.google.com/store/apps/details?id=com.mahmudsajib01.TodoX',
-    linkLabel: 'View on Play Store',
-    year: '2022',
-    featured: false,
-  },
-]
-
-// ── Projects I worked on ────────────────────────────────────────────────────
-
-const clientProjects = [
-  {
-    title: 'Crinf.net',
-    description:
-      'A content and information platform delivering structured data and resources to its users. Contributed to backend architecture, API development, and performance optimisation.',
-    tech: ['Node.js', 'REST API', 'PostgreSQL', 'Backend'],
-    role: 'Backend Engineer',
-    status: 'Active',
-    link: 'https://crinf.net/',
-    linkLabel: 'Visit site',
-    year: '2023',
-  },
-  {
-    title: 'WuSeller',
-    description:
-      'A multi-vendor e-commerce platform enabling sellers to manage listings, orders, and payments. Built scalable backend services and integrated third-party payment gateways.',
-    tech: ['React', 'Node.js', 'E-commerce', 'Payments'],
-    role: 'Full Stack Engineer',
-    status: 'Active',
-    link: 'https://www.wuseller.com/',
-    linkLabel: 'Visit site',
-    year: '2023',
-  },
-  {
-    title: 'Telemedicine Platform',
-    description:
-      'A healthcare platform connecting patients with doctors for remote consultations. Developed real-time video call integration, appointment scheduling, and prescription management.',
-    tech: ['React', 'WebRTC', 'Node.js', 'Healthcare'],
-    role: 'Full Stack Engineer',
-    status: 'Complete',
-    link: '#',
-    year: '2022',
-  },
-  {
-    title: 'Resource Aggregation',
-    description:
-      'A platform that aggregates resources from multiple sources, normalises the data, and presents it through a unified API and dashboard for downstream consumers.',
-    tech: ['Node.js', 'Data Pipeline', 'REST API', 'Dashboard'],
-    role: 'Backend Engineer',
-    status: 'Complete',
-    link: '#',
-    year: '2022',
-  },
-  {
-    title: 'Electricity Management System',
-    description:
-      'A utility management system for tracking electricity consumption, billing, and reporting across multiple zones. Included real-time monitoring and automated alert features.',
-    tech: ['React', 'Node.js', 'IoT', 'Analytics'],
-    role: 'Full Stack Engineer',
-    status: 'Complete',
-    link: '#',
-    year: '2022',
-  },
-  {
-    title: 'WhatsApp Marketing Platform',
-    description:
-      'A bulk messaging and campaign management tool built on the WhatsApp Business API. Supports contact segmentation, scheduled broadcasts, and delivery analytics.',
-    tech: ['Node.js', 'WhatsApp API', 'Queue', 'Analytics'],
-    role: 'Backend Engineer',
-    status: 'Complete',
-    link: '#',
-    year: '2023',
-  },
-]
+import { myProducts, clientProjects, type Product, type ClientProject } from '@/lib/projects'
 
 // ── Shared helpers ──────────────────────────────────────────────────────────
 
@@ -148,9 +13,6 @@ const statusColor: Record<string, string> = {
   Complete: 'bg-surface text-muted-foreground border border-border',
   'In Progress': 'bg-amber-50 text-amber-700 border border-amber-200',
 }
-
-type Product = typeof myProducts[number]
-type ClientProject = typeof clientProjects[number]
 
 function ProductCard({ product, delay }: { product: Product; delay: number }) {
   const inner = (
@@ -171,9 +33,9 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
       </div>
       <div className="flex items-center justify-between mt-auto">
         <span className="text-xs text-muted-foreground">{product.year}</span>
-        {product.link !== '#' && (
+        {(product.caseStudy || product.link) && (
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:gap-2.5 transition-all duration-200">
-            {(product as any).linkLabel || 'View Product'}
+            {product.caseStudy ? 'Read case study' : product.linkLabel || 'View Product'}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -192,7 +54,9 @@ function ProductCard({ product, delay }: { product: Product; delay: number }) {
       transition={{ duration: 0.55, delay }}
       className="flex flex-col"
     >
-      {product.link !== '#' ? (
+      {product.caseStudy ? (
+        <Link href={`/products/${product.slug}`} className={className}>{inner}</Link>
+      ) : product.link ? (
         <a href={product.link} target="_blank" rel="noopener noreferrer" className={className}>{inner}</a>
       ) : (
         <div className={className}>{inner}</div>
@@ -236,7 +100,7 @@ function ProductRow({ product, delay }: { product: Product; delay: number }) {
       transition={{ duration: 0.5, delay }}
       className="group py-6 sm:py-7"
     >
-      {product.link !== '#' ? (
+      {product.link ? (
         <a href={product.link} target="_blank" rel="noopener noreferrer" className="block">{inner}</a>
       ) : (
         <div>{inner}</div>
@@ -268,7 +132,7 @@ function ClientProjectRow({ project, delay }: { project: ClientProject; delay: n
           {project.tech.map((t) => <span key={t} className="tag">{t}</span>)}
         </div>
       </div>
-      {project.link !== '#' && (
+      {project.link && (
         <div className="shrink-0 mt-1 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all duration-200">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -285,7 +149,7 @@ function ClientProjectRow({ project, delay }: { project: ClientProject; delay: n
       transition={{ duration: 0.5, delay }}
       className="group py-6 sm:py-7"
     >
-      {project.link !== '#' ? (
+      {project.link ? (
         <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">{inner}</a>
       ) : (
         <div>{inner}</div>
